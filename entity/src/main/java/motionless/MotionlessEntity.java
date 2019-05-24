@@ -1,6 +1,7 @@
 package motionless;
 
 import entity.Entity;
+import entity.Permeability;
 import entity.Sprite;
 
 /**
@@ -19,8 +20,8 @@ abstract class MotionlessEntity extends Entity {
      * @param permeability
      *            the permeability
      */
-    MotionlessEntity(final Sprite sprite) {
-        super(sprite);
+    MotionlessEntity(final Sprite sprite, final Permeability permeability) {
+        super(sprite, permeability);
     }
 
 }

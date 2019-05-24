@@ -2,6 +2,8 @@ package entity;
 
 import java.awt.Image;
 
+import fr.exia.showboard.ISquare;
+
 public interface IEntity extends ISquare {
 
     /**
