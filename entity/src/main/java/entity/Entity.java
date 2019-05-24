@@ -18,13 +18,14 @@ import java.awt.Image;
  * @see ISquare
  */
 public abstract class Entity implements IEntity {
+	
+	/** The id. */
+	private int id; 
 
     /** The sprite. */
     private Sprite       sprite;
 
-
-    /** The permeability. */
-    private Permeability permeability;
+    
 
     /**
      * Instantiates a new element.
@@ -34,9 +35,8 @@ public abstract class Entity implements IEntity {
      * @param permeability
      *            the permeability
      */
-    public Entity(final Sprite sprite, final Permeability permeability) {
+    public Entity(final Sprite sprite) {
         this.setSprite(sprite);
-        this.setPermeability(permeability);
     }
 
     /*
@@ -59,24 +59,6 @@ public abstract class Entity implements IEntity {
 
     /*
      * (non-Javadoc)
-     * @see fr.exia.insanevehicles.model.element.IElement#getPermeability()
-     */
-    public final Permeability getPermeability() {
-        return this.permeability;
-    }
-
-    /**
-     * Sets the permeability.
-     *
-     * @param permeability
-     *            the new permeability
-     */
-    private void setPermeability(final Permeability permeability) {
-        this.permeability = permeability;
-    }
-
-    /*
-     * (non-Javadoc)
      * @see fr.exia.showboard.ISquare#getImage()
      */
     /*
@@ -86,4 +68,8 @@ public abstract class Entity implements IEntity {
     public final Image getImage() {
         return this.getSprite().getImage();
     }
+
+	abstract public int getId();
+
+	abstract public void setId(int id);
 }

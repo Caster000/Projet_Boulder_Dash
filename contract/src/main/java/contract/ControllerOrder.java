@@ -14,5 +14,11 @@ public enum ControllerOrder {
 	/** The Deutch. */
 	Deutsch,
 	/** The Indonesia. */
-	Indonesia
+	Indonesia,
+	/** The Arab. */
+	Arab,
+	/** The Gallic. */
+	Gallic,
+	/** The Kurd. */
+	Kurd
 }
