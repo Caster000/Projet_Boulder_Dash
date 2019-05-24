@@ -1,4 +1,4 @@
-package entity.Motionless;
+package entity.motionless;
 
 import entity.Entity;
 import entity.Permeability;
@@ -9,11 +9,10 @@ public abstract class MotionlessEntity extends Entity{
     /** The permeability. */
     private Permeability permeability;
 
-	public MotionlessEntity(Sprite sprite, Permeability permeability) {
-		super(sprite);
-        this.setPermeability(permeability);
-		// TODO Auto-generated constructor stub
-	}	
+    MotionlessEntity(final Sprite sprite, final Permeability permeability) {
+        super(sprite, permeability);
+    }
+		
 
     /*
      * (non-Javadoc)

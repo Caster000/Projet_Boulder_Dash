@@ -1,22 +1,17 @@
-package entity.Motionless;
+package entity.motionless;
 
 import entity.Permeability;
 import entity.Sprite;
 
-public class Rock extends MotionlessEntity{
+public class Wall extends MotionlessEntity{
 	
-	private int id = 2;
-	private static Sprite SPRITE = new Sprite("Ro","Rock.jpg");
+	private int id = 3;
+	private static Sprite SPRITE = new Sprite("Wa","Empty.jpg");
 	
 
-	public Rock() {
+	public Wall() {
 		super(SPRITE, Permeability.BLOCKING);
 		// TODO Auto-generated constructor stub
-	}
-	
-	//when the players digs a rock
-	public void whenRockDestroyed() {
-		//not yet implemented
 	}
 
 	@Override

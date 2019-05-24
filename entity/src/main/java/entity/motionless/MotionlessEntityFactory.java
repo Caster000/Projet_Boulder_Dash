@@ -1,4 +1,4 @@
-package entity.Motionless;
+package entity.motionless;
 
 import entity.Permeability;
 

@@ -1,15 +1,15 @@
-package entity.Motionless;
+package entity.motionless;
 
 import entity.Permeability;
 import entity.Sprite;
 
-public class Wall extends MotionlessEntity{
+public class Empty extends MotionlessEntity{
 	
-	private int id = 3;
-	private static Sprite SPRITE = new Sprite("Wa","Empty.jpg");
+	private int id = 0;
+	private static Sprite SPRITE = new Sprite("Em","Empty.jpg");
 	
 
-	public Wall() {
+	public Empty() {
 		super(SPRITE, Permeability.BLOCKING);
 		// TODO Auto-generated constructor stub
 	}
@@ -23,5 +23,5 @@ public class Wall extends MotionlessEntity{
 	public void setId(int id) {
 		this.id = id;		
 	}
-
+	
 }
