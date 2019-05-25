@@ -75,25 +75,25 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case English:
-				this.model.loadHelloWorld("GB");
+				this.model.loadMap("GB");
 				break;
 			case Francais:
-				this.model.loadHelloWorld("FR");
+				this.model.loadMap("FR");
 				break;
 			case Deutsch:
-				this.model.loadHelloWorld("DE");
+				this.model.loadMap("DE");
 				break;
 			case Indonesia:
-				this.model.loadHelloWorld("ID");
+				this.model.loadMap("ID");
 				break;
 			case Arab:
-				this.model.loadHelloWorld("AR");
+				this.model.loadMap("AR");
 				break;
 			case Gallic:
-				this.model.loadHelloWorld("GA");
+				this.model.loadMap("GA");
 				break;
 			case Kurd:
-				this.model.loadHelloWorld("KU");
+				this.model.loadMap("KU");
 				break;
 			default:
 				break;

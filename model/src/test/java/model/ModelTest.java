@@ -33,7 +33,7 @@ public class ModelTest {
 
     @Test
     public void testGetMessage() {
-        Assert.assertEquals("", this.model.getHelloWorld().getMessage());
+        Assert.assertEquals("", this.model.getMap().getMessage());
     }
 
     /**
@@ -41,13 +41,13 @@ public class ModelTest {
      */
     @Test
     public void testGetMessageString() {
-        this.model.loadHelloWorld("GB");
-        Assert.assertEquals("Hello world", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("FR");
-        Assert.assertEquals("Bonjour le monde", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("DE");
-        Assert.assertEquals("Hallo Welt", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("ID");
-        Assert.assertEquals("Salamat pagi dunia", this.model.getHelloWorld().getMessage());
+        this.model.loadMap("GB");
+        Assert.assertEquals("Hello world", this.model.getMap().getMessage());
+        this.model.loadMap("FR");
+        Assert.assertEquals("Bonjour le monde", this.model.getMap().getMessage());
+        this.model.loadMap("DE");
+        Assert.assertEquals("Hallo Welt", this.model.getMap().getMessage());
+        this.model.loadMap("ID");
+        Assert.assertEquals("Salamat pagi dunia", this.model.getMap().getMessage());
     }
 }

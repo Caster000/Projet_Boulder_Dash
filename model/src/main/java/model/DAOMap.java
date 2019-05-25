@@ -5,9 +5,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import entity.HelloWorld;
+import entity.Map;
 
-public class DAOMap extends DAOEntity<Map>{
+public class DAOMap {
 	/**
 	 * Instantiates a new DAO hello world.
 	 *
@@ -16,8 +16,19 @@ public class DAOMap extends DAOEntity<Map>{
 	 * @throws SQLException
 	 *           the SQL exception
 	 */
+	/** The connection. */
+	private final Connection connection;
+
+	/**
+	 * Instantiates a new DAO entity.
+	 *
+	 * @param connection
+	 *          the connection
+	 * @throws SQLException
+	 *           the SQL exception
+	 */
 	public DAOMap(final Connection connection) throws SQLException {
-		super(connection);
+		this.connection = connection;
 	}
 
 	/*
@@ -25,7 +36,6 @@ public class DAOMap extends DAOEntity<Map>{
 	 *
 	 * @see model.DAOEntity#create(model.Entity)
 	 */
-	@Override
 	public boolean create(final Map entity) {
 		// Not implemented
 		return false;
@@ -36,7 +46,6 @@ public class DAOMap extends DAOEntity<Map>{
 	 *
 	 * @see model.DAOEntity#delete(model.Entity)
 	 */
-	@Override
 	public boolean delete(final Map entity) {
 		// Not implemented
 		return false;
@@ -47,7 +56,6 @@ public class DAOMap extends DAOEntity<Map>{
 	 *
 	 * @see model.DAOEntity#update(model.Entity)
 	 */
-	@Override
 	public boolean update(final Map entity) {
 		// Not implemented
 		return false;
@@ -58,7 +66,6 @@ public class DAOMap extends DAOEntity<Map>{
 	 *
 	 * @see model.DAOEntity#find(java.lang.String)
 	 */
-	@Override
 	public Map find(final String code) {
 		Map map = new Map();
 
@@ -77,5 +84,12 @@ public class DAOMap extends DAOEntity<Map>{
 		}
 		return null;
 	}
-
+	/**
+	 * Gets the connection.
+	 *
+	 * @return the connection
+	 */
+	protected Connection getConnection() {
+		return this.connection;
+	}
 }
