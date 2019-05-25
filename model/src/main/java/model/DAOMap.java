@@ -9,9 +9,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import entity.IEntity;
+//import entity.IEntity;
 import entity.Map;
-import entity.motionless.MotionlessEntityFactory;
+//import entity.motionless.MotionlessEntityFactory;
 
 public class DAOMap {
 	/**
@@ -84,13 +84,12 @@ public class DAOMap {
 			if (resultSet.first()) {
 				map = new Map(resultSet.getInt("id"), code, resultSet.getString("message"));
 			}
-			map.loadFile("message");
 			return map;
 		} catch (final SQLException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		}// catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		return null;
 	}
 	/**

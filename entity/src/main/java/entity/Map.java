@@ -35,10 +35,10 @@ public class Map implements IMap {
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
-    Map(final String fileName) throws IOException {
-        super();
-        this.loadFile(fileName);
-    }
+//    Map(final String fileName) throws IOException {
+//        super();
+//        this.loadFile(fileName);
+//    }
     
     public Map() {
 		this(0, "", "");
@@ -57,25 +57,25 @@ public class Map implements IMap {
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
-    public void loadFile(final String fileName) throws IOException {
-        final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-        String line;
-        int y = 0;
-        line = buffer.readLine();
-        this.setWidth(Integer.parseInt(line));
-        line = buffer.readLine();
-        this.setHeight(Integer.parseInt(line));
-        this.onTheMap = new IEntity[this.getWidth()][this.getHeight()];
-        line = buffer.readLine();
-        while (line != null) {
-            for (int x = 0; x < line.toCharArray().length; x++) {
-                this.setOnTheMapXY(MotionlessEntityFactory.getFromFileSymbol(line.toCharArray()[x]), x, y);
-            }
-            line = buffer.readLine();
-            y++;
-        }
-        buffer.close();
-    }
+//    public void loadFile(final String fileName) throws IOException {
+//        final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+//        String line;
+//        int y = 0;
+//        line = buffer.readLine();
+//        this.setWidth(Integer.parseInt(line));
+//        line = buffer.readLine();
+//        this.setHeight(Integer.parseInt(line));
+//        this.onTheMap = new IEntity[this.getWidth()][this.getHeight()];
+//        line = buffer.readLine();
+//        while (line != null) {
+//            for (int x = 0; x < line.toCharArray().length; x++) {
+//                this.setOnTheMapXY(MotionlessEntityFactory.getFromFileSymbol(line.toCharArray()[x]), x, y);
+//            }
+//            line = buffer.readLine();
+//            y++;
+//        }
+//        buffer.close();
+//    }
     /*
      * (non-Javadoc)
      * @see fr.exia.insanevehicles.model.IRoad#getWidth()
