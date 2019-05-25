@@ -91,7 +91,7 @@ public class Map implements IMap {
      * @param width
      *            the new width
      */
-    private void setWidth(final int width) {
+    public void setWidth(final int width) {
         this.width = width;
     }
 
@@ -110,7 +110,7 @@ public class Map implements IMap {
      * @param height
      *            the new height
      */
-    private void setHeight(final int height) {
+    public void setHeight(final int height) {
         this.height = height;
     }
     /*

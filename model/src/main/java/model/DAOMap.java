@@ -77,6 +77,7 @@ public class DAOMap {
 			final ResultSet resultSet = call.getResultSet();
 			if (resultSet.first()) {
 				map = new Map(resultSet.getInt("id"), code, resultSet.getString("message"));
+			
 			}
 			return map;
 		} catch (final SQLException e) {
