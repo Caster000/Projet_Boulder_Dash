@@ -57,7 +57,7 @@ public class Map implements IMap {
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
-    private void loadFile(final String fileName) throws IOException {
+    public void loadFile(final String fileName) throws IOException {
         final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
         String line;
         int y = 0;
