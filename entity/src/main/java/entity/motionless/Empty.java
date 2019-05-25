@@ -10,7 +10,7 @@ public class Empty extends MotionlessEntity{
 	
 
 	public Empty() {
-		super(SPRITE, Permeability.BLOCKING);
+		super(SPRITE, Permeability.PENETRABLE);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -5,12 +5,12 @@ import entity.Sprite;
 
 public class Rock extends MotionlessEntity{
 	
-	private int id = 2;
+	private int id = 3;
 	private static Sprite SPRITE = new Sprite('3',"Rock.jpg");
 	
 
 	public Rock() {
-		super(SPRITE, Permeability.BLOCKING);
+		super(SPRITE, Permeability.PENETRABLE);
 		// TODO Auto-generated constructor stub
 	}
 	

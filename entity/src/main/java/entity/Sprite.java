@@ -84,8 +84,8 @@ public class Sprite {
      * @param code
      *            the consoleImage to set
      */
-    private void setConsoleImage(final char code) {
-        this.consoleImage = code;
+    private void setConsoleImage(final char consoleImage) {
+        this.consoleImage = consoleImage;
     }
 
     /**

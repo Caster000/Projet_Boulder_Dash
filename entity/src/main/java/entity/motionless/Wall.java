@@ -5,7 +5,7 @@ import entity.Sprite;
 
 public class Wall extends MotionlessEntity{
 	
-	private int id = 3;
+	private int id = 1;
 	private static Sprite SPRITE = new Sprite('1',"Wall.jpg");
 	
 

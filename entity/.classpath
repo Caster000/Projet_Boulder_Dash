@@ -33,6 +33,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/JPU-BlankProject/libs/showboard.jar"/>
+	<classpathentry kind="lib" path="D:/workspace eclipse/Projet_Boulder_Dash/libs/showboard.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

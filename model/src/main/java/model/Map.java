@@ -17,6 +17,7 @@ public class Map implements IMap {
 
     /** The on the road. */
     private IEntity[][] onTheMap;
+    
     /** The id. */
 	private int			id;
 
@@ -38,9 +39,11 @@ public class Map implements IMap {
         super();
         this.loadFile(fileName);
     }
+    
     public Map() {
 		this(0, "", "");
 	}
+    
     public Map(final int id, final String key, final String message) {
 		this.setId(id);
 		this.setKey(key);
@@ -66,7 +69,7 @@ public class Map implements IMap {
         line = buffer.readLine();
         while (line != null) {
             for (int x = 0; x < line.toCharArray().length; x++) {
-                this.setOnTheRoadXY(MotionlessEntityFactory.getFromFileSymbol(line.toCharArray()[x]), x, y);
+                this.setOnTheMapXY(MotionlessEntityFactory.getFromFileSymbol(line.toCharArray()[x]), x, y);
             }
             line = buffer.readLine();
             y++;
@@ -120,17 +123,17 @@ public class Map implements IMap {
     }
 
     /**
-     * Sets the on the road XY.
+     * Sets the on the map XY.
      *
-     * @param element
+     * @param entity
      *            the element
      * @param x
      *            the x
      * @param y
      *            the y
      */
-    private void setOnTheRoadXY(final IEntity element, final int x, final int y) {
-        this.onTheMap[x][y] = element;
+    private void setOnTheMapXY(final IEntity entity, final int x, final int y) {
+        this.onTheMap[x][y] = entity;
     }
     /**
 	 * Gets the id.
