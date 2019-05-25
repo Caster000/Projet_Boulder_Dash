@@ -63,7 +63,7 @@ public abstract class Entity implements IEntity {
      * @see fr.exia.insanevehicles.model.element.IElement#getPermeability()
      */
     @Override
-    public final Permeability getPermeability() {
+    public Permeability getPermeability() {
         return this.permeability;
     }
 
