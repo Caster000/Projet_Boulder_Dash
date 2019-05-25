@@ -21,7 +21,7 @@ public class Sprite {
     private String  imageName;
 
     /** The console image. */
-    private String    consoleImage;
+    private char    consoleImage;
 
     /** The is image loaded. */
     private boolean imageLoaded;
@@ -34,7 +34,7 @@ public class Sprite {
      * @param imageName
      *            the image name
      */
-    public Sprite(final String consoleImage, final String imageName) {
+    public Sprite(final char consoleImage, final String imageName) {
         this.setConsoleImage(consoleImage);
         this.setImageName(imageName);
     }
@@ -64,7 +64,7 @@ public class Sprite {
      *
      * @return the consoleImage
      */
-    public final String getConsoleImage() {
+    public final char getConsoleImage() {
         return this.consoleImage;
     }
 
@@ -84,7 +84,7 @@ public class Sprite {
      * @param code
      *            the consoleImage to set
      */
-    private void setConsoleImage(final String code) {
+    private void setConsoleImage(final char code) {
         this.consoleImage = code;
     }
 

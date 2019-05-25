@@ -6,7 +6,7 @@ import entity.Sprite;
 public class Door extends MotionlessEntity{
 
 	private int id = 1;
-	private static Sprite SPRITE = new Sprite("Do","Door.jpg");
+	private static Sprite SPRITE = new Sprite('7',"Door.jpg");
 	
 	
 	public Door() {

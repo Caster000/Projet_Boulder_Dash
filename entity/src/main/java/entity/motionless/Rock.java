@@ -6,7 +6,7 @@ import entity.Sprite;
 public class Rock extends MotionlessEntity{
 	
 	private int id = 2;
-	private static Sprite SPRITE = new Sprite("Ro","Rock.jpg");
+	private static Sprite SPRITE = new Sprite('3',"Rock.jpg");
 	
 
 	public Rock() {

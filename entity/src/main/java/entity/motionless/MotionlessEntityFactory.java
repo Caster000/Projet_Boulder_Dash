@@ -56,7 +56,7 @@ public abstract class MotionlessEntityFactory {
      *            the file symbol
      * @return the from file symbol
      */
-    public static MotionlessEntity getFromFileSymbol(final String fileSymbol) {
+    public static MotionlessEntity getFromFileSymbol(final char fileSymbol) {
         for (final MotionlessEntity motionlessEntity : motionlessEntities) {
             if (motionlessEntity.getSprite().getConsoleImage() == fileSymbol) {
                 return motionlessEntity;
