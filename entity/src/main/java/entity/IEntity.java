@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.Image;
+import java.awt.Point;
 
 import fr.exia.showboard.ISquare;
 
@@ -26,5 +27,7 @@ public interface IEntity extends ISquare {
      */
    
     Image getImage();
+
+	Point getPosition();
 
 }

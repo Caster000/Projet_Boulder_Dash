@@ -15,18 +15,8 @@ public class Rock extends MotionlessEntity{
 	}
 	
 	//when the players digs a rock
-	public void whenRockDestroyed() {
+	public static void isDestroyed() {
 		//not yet implemented
-	}
-
-	@Override
-	public int getId() {
-		return this.id;
-	}
-
-	@Override
-	public void setId(int id) {
-		this.id = id;		
 	}
 
 }

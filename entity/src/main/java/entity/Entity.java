@@ -7,6 +7,7 @@ package entity;
  */
 
 import java.awt.Image;
+import java.awt.Point;
 
 //import fr.exia.showboard.ISquare;
 
@@ -27,6 +28,8 @@ public abstract class Entity implements IEntity {
 
     /** The permeability. */
     private Permeability permeability;
+
+	private Point position;
 
     /**
      * Instantiates a new element.
@@ -88,7 +91,15 @@ public abstract class Entity implements IEntity {
         return this.getSprite().getImage();
     }
 
-	abstract public int getId();
-
-	abstract public void setId(int id);
+	public int getId() {
+		return this.id;
+	}
+    
+	public void setId(int id) {
+		this.id = id;		
+	}
+	
+	public Point getPosition() {
+		return this.position;
+	}
 }

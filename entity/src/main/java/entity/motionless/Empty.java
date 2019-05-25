@@ -13,15 +13,5 @@ public class Empty extends MotionlessEntity{
 		super(SPRITE, Permeability.PENETRABLE);
 		// TODO Auto-generated constructor stub
 	}
-
-	@Override
-	public int getId() {
-		return this.id;
-	}
-
-	@Override
-	public void setId(int id) {
-		this.id = id;		
-	}
 	
 }

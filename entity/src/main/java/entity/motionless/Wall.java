@@ -13,15 +13,5 @@ public class Wall extends MotionlessEntity{
 		super(SPRITE, Permeability.BLOCKING);
 		// TODO Auto-generated constructor stub
 	}
-
-	@Override
-	public int getId() {
-		return this.id;
-	}
-
-	@Override
-	public void setId(int id) {
-		this.id = id;		
-	}
-
+	
 }
