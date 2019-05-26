@@ -16,7 +16,7 @@ public class Map implements IMap {
     private int          height;
 
     /** The on the road. */
-    private IEntity[][] onTheMap;
+    private Entity[][] onTheMap;
     
     /** The id. */
 	private int			id;
@@ -49,6 +49,12 @@ public class Map implements IMap {
 		this.setKey(key);
 		this.setMessage(message);
 	}
+    public Map(/*final int id,*/ int width, int height) {
+    	//this.setId(id);
+//    	this.setWidth(width);
+//    	this.setHeight(height);
+    	onTheMap = new Entity[width][height];
+    }
     /**
      * Loads file.
      *
@@ -118,7 +124,7 @@ public class Map implements IMap {
      * @see fr.exia.insanevehicles.model.IRoad#getOnTheRoadXY(int, int)
      */
     @Override
-    public final IEntity getOnTheMapXY(final int x, final int y) {
+    public final Entity getOnTheMapXY(final int x, final int y) {
         return this.onTheMap[x][y];
     }
 
@@ -132,7 +138,7 @@ public class Map implements IMap {
      * @param y
      *            the y
      */
-    private void setOnTheMapXY(final IEntity entity, final int x, final int y) {
+    public void setOnTheMapXY(final Entity entity, final int x, final int y) {
         this.onTheMap[x][y] = entity;
     }
     /**

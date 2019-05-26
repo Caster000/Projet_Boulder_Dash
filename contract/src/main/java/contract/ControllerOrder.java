@@ -20,5 +20,6 @@ public enum ControllerOrder {
 	/** The Gallic. */
 	Gallic,
 	/** The Kurd. */
-	Kurd
+	Kurd,
+	Map
 }

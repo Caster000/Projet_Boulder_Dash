@@ -60,13 +60,13 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage(java.lang.String)
 	 */
-	public void loadMap(final String code) {
-		try {
-			final DAOMap daoMap = new DAOMap(DBConnection.getInstance().getConnection());
-			this.setMap(daoMap.find(code));
-		} catch (final SQLException e) {
-			e.printStackTrace();
-		}
+	public void loadMap(final int id) {
+//		try {
+			final DAOMap daoMap = new DAOMap(/*DBConnection.getInstance().getConnection()*/);
+			this.setMap(daoMap.find(id));
+//		} catch (final SQLException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	/**
@@ -82,4 +82,5 @@ public final class Model extends Observable implements IModel {
 	public Observable getObservable() {
 		return this;
 	}
+
 }

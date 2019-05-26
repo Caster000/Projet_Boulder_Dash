@@ -41,13 +41,13 @@ public class ModelTest {
      */
     @Test
     public void testGetMessageString() {
-        this.model.loadMap("GB");
+        this.model.loadMap(1);
         Assert.assertEquals("Hello world", this.model.getMap().getMessage());
-        this.model.loadMap("FR");
+        this.model.loadMap(2);
         Assert.assertEquals("Bonjour le monde", this.model.getMap().getMessage());
-        this.model.loadMap("DE");
+        this.model.loadMap(3);
         Assert.assertEquals("Hallo Welt", this.model.getMap().getMessage());
-        this.model.loadMap("ID");
+        this.model.loadMap(4);
         Assert.assertEquals("Salamat pagi dunia", this.model.getMap().getMessage());
     }
 }
