@@ -45,7 +45,9 @@ public abstract class Mobile extends Entity implements IMobile{
 
 	abstract public void setY(int y);
     
-    abstract public boolean isAlive();
+    public boolean isAlive() {
+    	return this.isAlive;
+    }
     
     public void moveUp() {
     	this.setY(this.getY() - 1);

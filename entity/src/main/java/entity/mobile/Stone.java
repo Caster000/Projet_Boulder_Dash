@@ -6,6 +6,8 @@ import entity.Permeability;
 import entity.Sprite;
 
 public class Stone extends Block {
+	
+	private boolean isAlive = false;
 
 	private int id = 2;
 	private static Sprite SPRITE = new Sprite('2',"Stone.png");

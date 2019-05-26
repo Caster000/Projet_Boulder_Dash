@@ -6,7 +6,8 @@ import entity.Permeability;
 import entity.Sprite;
 
 public class Diamond extends Block {
-
+	
+	private boolean isAlive = false;
 	private int id = 4;
 	private static Sprite SPRITE = new Sprite('4',"Diamond.png");
 	private Point position;

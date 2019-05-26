@@ -29,6 +29,7 @@ public abstract class Entity implements IEntity {
     /** The permeability. */
     private Permeability permeability;
 
+    /** The position. */
 	private Point position;
 
     /**

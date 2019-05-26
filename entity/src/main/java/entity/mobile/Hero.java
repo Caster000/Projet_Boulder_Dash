@@ -8,7 +8,8 @@ import entity.motionless.Door;
 import entity.motionless.Rock;
 
 public class Hero extends Alive {
-
+	
+	private boolean isAlive = true;
 	private int id = 6;
 	private static Sprite SPRITE = new Sprite('6',"Hero.png");
 	private Point position;
@@ -64,12 +65,6 @@ public class Hero extends Alive {
 //  	}else if (this.getPosition() == Door.getPosition()) {
 //  		Door.isUsable();
 //  	}
-	}
-
-	@Override
-	public boolean isAlive() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	public int getNumberOfLife() {

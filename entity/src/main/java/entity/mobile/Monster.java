@@ -6,7 +6,8 @@ import entity.Permeability;
 import entity.Sprite;
 
 public class Monster extends Alive{
-
+	
+	private boolean isAlive = true;
 	private int id = 5;
 	private static Sprite SPRITE = new Sprite('5',"Monster.png");
 	private Point position;
@@ -38,12 +39,6 @@ public class Monster extends Alive{
 	
 	public final void setY(final int y) {
         this.getPosition().y = y;
-	}
-
-	@Override
-	public boolean isAlive() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

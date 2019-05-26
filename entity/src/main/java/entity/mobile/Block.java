@@ -36,8 +36,4 @@ public abstract class Block extends Mobile {
 //  		Monster.die();
 //		}
 	}
-	
-	public final boolean isAlive() {
-		return false;
-	}
 }
