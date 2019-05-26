@@ -11,9 +11,9 @@ public class Hero extends Alive {
 	
 	private boolean isAlive = true;
 	private int id = 6;
-	private static Sprite SPRITE = new Sprite('6',"Hero.png");
+	private static final Sprite SPRITE = new Sprite('6',"Hero.png");
 	private Point position;
-	private int numberOfLife;
+	private int numberOfLives;
 	private int numberOfDiamonds;
 
 	Hero(int x, int y, Sprite sprite, Permeability permeability) {
@@ -67,12 +67,12 @@ public class Hero extends Alive {
 //  	}
 	}
 
-	public int getNumberOfLife() {
-		return numberOfLife;
+	public int getNumberOfLives() {
+		return numberOfLives;
 	}
 
-	public void setNumberOfLife(int numberOfLife) {
-		this.numberOfLife = numberOfLife;
+	public void setNumberOfLives(int numberOfLives) {
+		this.numberOfLives = numberOfLives;
 	}
 
 	public int getNumberOfDiamonds() {

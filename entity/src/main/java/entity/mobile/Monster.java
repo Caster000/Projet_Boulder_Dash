@@ -9,7 +9,7 @@ public class Monster extends Alive{
 	
 	private boolean isAlive = true;
 	private int id = 5;
-	private static Sprite SPRITE = new Sprite('5',"Monster.png");
+	private static final Sprite SPRITE = new Sprite('5',"Monster.png");
 	private Point position;
 
 	Monster(int x, int y, Sprite sprite, Permeability permeability) {
@@ -35,10 +35,15 @@ public class Monster extends Alive{
 
 	public final void setX(final int x) {
         this.getPosition().x = x;
+//      if (hero.getPosition() == this.getPosition()) {
+//      	hero.die();
     }
 	
 	public final void setY(final int y) {
         this.getPosition().y = y;
+//      if (hero.getPosition() == this.getPosition()) {
+//  		hero.die();
+//      }
 	}
 
 }
