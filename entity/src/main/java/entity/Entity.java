@@ -19,9 +19,9 @@ import java.awt.Point;
  * @see ISquare
  */
 public abstract class Entity implements IEntity {
-	
-	/** The id. */
-	private int id; 
+    
+    /** The id. */
+    private int id; 
 
     /** The sprite. */
     private Sprite       sprite;
@@ -30,7 +30,7 @@ public abstract class Entity implements IEntity {
     private Permeability permeability;
 
     /** The position. */
-	private Point position;
+    private Point position;
 
     /**
      * Instantiates a new element.
@@ -70,7 +70,6 @@ public abstract class Entity implements IEntity {
     public Permeability getPermeability() {
         return this.permeability;
     }
-
     /**
      * Sets the permeability.
      *
@@ -92,15 +91,15 @@ public abstract class Entity implements IEntity {
         return this.getSprite().getImage();
     }
 
-	public int getId() {
-		return this.id;
-	}
+    public int getId() {
+        return this.id;
+    }
     
-	public void setId(int id) {
-		this.id = id;		
-	}
-	
-	public Point getPosition() {
-		return this.position;
-	}
+    public void setId(int id) {
+        this.id = id;        
+    }
+    
+    public Point getPosition() {
+        return this.position;
+    }
 }

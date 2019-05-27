@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import entity.IEntity;
-import entity.motionless.MotionlessEntityFactory;
+import entity.motionless.Empty;
 
 public class Map implements IMap {
-	 /** The width. */
+     /** The width. */
     private int          width;
 
     /** The height. */
@@ -19,13 +19,13 @@ public class Map implements IMap {
     private IEntity[][] onTheMap;
     
     /** The id. */
-	private int			id;
+    private int            id;
 
-	/** The key. */
-	private String	key;
+    /** The key. */
+    private String    key;
 
-	/** The message. */
-	private String	message;
+    /** The message. */
+    private String    message;
 
     /**
      * Instantiates a new road with the content of the file fileName.
@@ -41,19 +41,19 @@ public class Map implements IMap {
 //    }
     
     public Map() {
-		this(0, "", "");
-	}
+        this(0, "", "");
+    }
     
     public Map(final int id, final String key, final String message) {
-		this.setId(id);
-		this.setKey(key);
-		this.setMessage(message);
-	}
+        this.setId(id);
+        this.setKey(key);
+        this.setMessage(message);
+    }
     public Map(/*final int id,*/ int width, int height) {
-    	//this.setId(id);
-//    	this.setWidth(width);
-//    	this.setHeight(height);
-    	onTheMap = new Entity[width][height];
+        //this.setId(id);
+//        this.setWidth(width);
+//        this.setHeight(height);
+        onTheMap = new Entity[width][height];
     }
 
     /*
@@ -64,8 +64,7 @@ public class Map implements IMap {
     public final int getWidth() {
         return this.width;
     }
-
-    /**
+/**
      * Sets the width.
      *
      * @param width
@@ -116,59 +115,64 @@ public class Map implements IMap {
         this.onTheMap[x][y] = entity;
     }
     /**
-	 * Gets the id.
-	 *
-	 * @return the id
-	 */
-	public int getId() {
-		return this.id;
-	}
+     * Gets the id.
+     *
+     * @return the id
+     */
+    public int getId() {
+        return this.id;
+    }
 
-	/**
-	 * Sets the id.
-	 *
-	 * @param id
-	 *          the new id
-	 */
-	public void setId(final int id) {
-		this.id = id;
-	}
+    /**
+     * Sets the id.
+     *
+     * @param id
+     *          the new id
+     */
+    public void setId(final int id) {
+        this.id = id;
+    }
 
-	/**
-	 * Gets the key.
-	 *
-	 * @return the key
-	 */
-	public String getKey() {
-		return this.key;
-	}
+    /**
+     * Gets the key.
+     *
+     * @return the key
+     */
+    public String getKey() {
+        return this.key;
+    }
+    /**
+     * Sets the key.
+     *
+     * @param key
+     *          the new key
+     */
+    public void setKey(final String key) {
+        this.key = key;
+    }
 
-	/**
-	 * Sets the key.
-	 *
-	 * @param key
-	 *          the new key
-	 */
-	public void setKey(final String key) {
-		this.key = key;
-	}
+    /**
+     * Gets the message.
+     *
+     * @return the message
+     */
+    public String getMessage() {
+        return this.message;
+    }
 
-	/**
-	 * Gets the message.
-	 *
-	 * @return the message
-	 */
-	public String getMessage() {
-		return this.message;
-	}
+    /**
+     * Sets the message.
+     *
+     * @param message
+     *          the new message
+     */
+    public void setMessage(final String message) {
+        this.message = message;
+    }
 
-	/**
-	 * Sets the message.
-	 *
-	 * @param message
-	 *          the new message
-	 */
-	public void setMessage(final String message) {
-		this.message = message;
-	}
+    public void moveLeft(int x, int y) {
+        this.onTheMap[x-1][y] = this.onTheMap[x][y];
+        this.onTheMap[x][y] = new Empty();
+    }
+
 }

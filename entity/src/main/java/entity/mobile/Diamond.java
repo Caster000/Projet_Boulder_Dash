@@ -7,30 +7,34 @@ import entity.Sprite;
 import entity.mobile.Hero;
 
 public class Diamond extends Block {
-	
-	private boolean isAlive = true;
-	private int id = 4;
-	private Sprite sprite = new Sprite('4',"Diamond.png");
-	private Point position;
+    
+    private boolean isAlive = true;
+    private int id = 4;
+    private static Sprite sprite = new Sprite('4',"Diamond.png");
+    private Point position;
+    //temporary implementation of an hero object for testing purposes
+    private Hero hero = new Hero();
+    //may just be temporary
+    private static int x, y;
 
-	Diamond(int x, int y, Sprite sprite, Permeability permeability) {
-		super(x, y, sprite, permeability);
-	}
+    public Diamond() {
+        super(x, y, sprite, Permeability.PENETRABLE);
+    }
 
-	//I don't really know why, but I have to put it here
-	@Override
-	public void doNothing() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void isTaken() {
-		if(this.isAlive) {
-			this.sprite = new Sprite('0',"Empty");
-			this.id = 0;
-			//Hero.setNumberOfDiamonds(Hero.getNumberOfDiamonds() + 1);
-			this.isAlive = false;
-		}
-	}
+    //I don't really know why, but I have to put it here
+    @Override
+    public void doNothing() {
+        // TODO Auto-generated method stub
+        
+    }
+    
+    public void isTaken() {
+        if(this.isAlive) {
+            this.sprite = new Sprite('0',"Empty.png");
+            this.id = 0;
+            hero.setNumberOfDiamonds(hero.getNumberOfDiamonds() + 1);
+            this.isAlive = false;
+        }
+    }
 
 }

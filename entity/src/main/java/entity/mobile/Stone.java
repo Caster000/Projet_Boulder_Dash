@@ -6,31 +6,35 @@ import entity.Permeability;
 import entity.Sprite;
 
 public class Stone extends Block {
-	
-	private boolean isAlive = false;
-	private int id = 2;
-	private static final Sprite SPRITE = new Sprite('2',"Stone.png");
-	private Point position;
+    
+    private boolean isAlive = false;
+    private int id = 2;
+    private static final Sprite SPRITE = new Sprite('2',"Stone.png");
+    private Point position;
+    //may just be temporary
+    private static int x, y;
 
-	Stone(int x, int y, Sprite sprite, Permeability permeability) {
-		super(x, y, sprite, permeability);
-	}
-	
-	public boolean isMovable() {
-		//not yet implemented
-		return false;
-	}
+    public Stone() {
+        super(x, y, SPRITE, Permeability.PENETRABLE);
+    }
+    
+    
+    
+    public boolean isMovable() {
+        //not yet implemented
+        return false;
+    }
 
-	//I don't really know why, but I have to put it here
-	@Override
-	public void doNothing() {
-		// TODO Auto-generated method stub
-		
-	}
+    //I don't really know why, but I have to put it here
+    @Override
+    public void doNothing() {
+        // TODO Auto-generated method stub
+        
+    }
 
-	@Override
-	public Point getPosition() {
-		return this.position;
-	}
+    @Override
+    public Point getPosition() {
+        return this.position;
+    }
 
 }
