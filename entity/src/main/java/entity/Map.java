@@ -16,7 +16,7 @@ public class Map implements IMap {
     private int          height;
 
     /** The on the road. */
-    private Entity[][] onTheMap;
+    private IEntity[][] onTheMap;
     
     /** The id. */
 	private int			id;
@@ -55,33 +55,7 @@ public class Map implements IMap {
 //    	this.setHeight(height);
     	onTheMap = new Entity[width][height];
     }
-    /**
-     * Loads file.
-     *
-     * @param fileName
-     *            the file name
-     * @throws IOException
-     *             Signals that an I/O exception has occurred.
-     */
-//    public void loadFile(final String fileName) throws IOException {
-//        final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-//        String line;
-//        int y = 0;
-//        line = buffer.readLine();
-//        this.setWidth(Integer.parseInt(line));
-//        line = buffer.readLine();
-//        this.setHeight(Integer.parseInt(line));
-//        this.onTheMap = new IEntity[this.getWidth()][this.getHeight()];
-//        line = buffer.readLine();
-//        while (line != null) {
-//            for (int x = 0; x < line.toCharArray().length; x++) {
-//                this.setOnTheMapXY(MotionlessEntityFactory.getFromFileSymbol(line.toCharArray()[x]), x, y);
-//            }
-//            line = buffer.readLine();
-//            y++;
-//        }
-//        buffer.close();
-//    }
+
     /*
      * (non-Javadoc)
      * @see fr.exia.insanevehicles.model.IRoad#getWidth()
@@ -124,7 +98,7 @@ public class Map implements IMap {
      * @see fr.exia.insanevehicles.model.IRoad#getOnTheRoadXY(int, int)
      */
     @Override
-    public final Entity getOnTheMapXY(final int x, final int y) {
+    public final IEntity getOnTheMapXY(final int x, final int y) {
         return this.onTheMap[x][y];
     }
 
@@ -138,7 +112,7 @@ public class Map implements IMap {
      * @param y
      *            the y
      */
-    public void setOnTheMapXY(final Entity entity, final int x, final int y) {
+    public void setOnTheMapXY(final IEntity entity, final int x, final int y) {
         this.onTheMap[x][y] = entity;
     }
     /**

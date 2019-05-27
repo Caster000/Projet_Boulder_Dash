@@ -83,7 +83,7 @@ public class DAOMap {
 			Statement stStatement = null;
 			ResultSet resultSet = null;
 
-			String sqlRequestString = "SELECT * FROM helloworld WHERE `ID` = " + id;//"{call helloworldById(?)}";
+			String sqlRequestString = "SELECT * FROM map WHERE `ID` = " + id;//"{call helloworldById(?)}";
 			/////////////////////////////////////
 			
 
