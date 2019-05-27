@@ -86,9 +86,7 @@ public final class View implements IView, Runnable {
 		this.frame.setVisible(true);
 	}
 
-	public final void followMyHero(){
-		this.getCloseView().y = this.getHero().getY();
-	}
+
 	//private Rectangle getCloseView() {
 		//return this.CloseView();
 	//} Possible suivi de caméra pour le hero
@@ -108,9 +106,5 @@ public final class View implements IView, Runnable {
 		
 	}
 
-	@Override
-	public void followMyhero() {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

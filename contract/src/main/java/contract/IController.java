@@ -21,5 +21,5 @@ public interface IController {
 	 * @param controllerOrder
 	 *          the controller order
 	 */
-	 IOrderPerformer getOrderPeformer();
+	void orderPerform(UserOrder keyCodeToUserOrder);
 }

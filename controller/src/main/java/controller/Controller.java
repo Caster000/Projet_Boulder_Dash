@@ -5,14 +5,13 @@ import java.io.IOException;
 
 import contract.IController;
 import contract.IModel;
-import contract.IOrderPerformer;
 import contract.IView;
 import contract.UserOrder;
 
 /**
  * The Class Controller.
  */
-public final class Controller implements IController, IOrderPerformer {
+public final class Controller implements IController{
 	private static final int speed = 1;
 	private UserOrder stackOrder;
 	/** The view. */
@@ -48,32 +47,32 @@ public final class Controller implements IController, IOrderPerformer {
 	}
 	
 	public final void play() throws InterruptedException {
-		while (this.getModel().getHero().isAlive()) {
-			Thread.sleep(speed);
-			switch (this.getStackOrder()) {
-			case UP:
-				this.getModel().getHero().HeromoveUP();
-				break;
-			case DOWN:
-				this.getModel().getHero().HeromoveDOWN();
-				break;
-			case RIGHT:
-				this.getModel().getHero().HeromoveRIGHT();
-				break;
-			case LEFT:
-				this.getModel().getHero().HeromoveDOWN();
-				break;
-				default:
-					this.getModel().getHero().HeroDoNothing();
-					break;	
-			}
-			this.clearStackOrder();
-			if (this.getModel().getHero().isAlive()){
-				this.getModel().getHero().HeroDoNothing();
-			}
-			//this.getView().followMyhero();
-		
-			}
+//		while (this.getModel().getHero().isAlive()) {
+//			Thread.sleep(speed);
+//			switch (this.getStackOrder()) {
+//			case UP:
+//				this.getModel().getHero().HeromoveUP();
+//				break;
+//			case DOWN:
+//				this.getModel().getHero().HeromoveDOWN();
+//				break;
+//			case RIGHT:
+//				this.getModel().getHero().HeromoveRIGHT();
+//				break;
+//			case LEFT:
+//				this.getModel().getHero().HeromoveDOWN();
+//				break;
+//				default:
+//					this.getModel().getHero().HeroDoNothing();
+//					break;	
+//			}
+//			this.clearStackOrder();
+//			if (this.getModel().getHero().isAlive()){
+//				this.getModel().getHero().HeroDoNothing();
+//			}
+//			//this.getView().followMyhero();
+//		
+//			}
 		this.getView().displayMessage("Game Over !");
 			
 		}
@@ -164,10 +163,5 @@ public final class Controller implements IController, IOrderPerformer {
 		return model;
 	}
 
-	@Override
-	public IOrderPerformer getOrderPeformer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
