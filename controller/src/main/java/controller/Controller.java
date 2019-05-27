@@ -2,7 +2,7 @@ package controller;
 
 import java.io.IOException;
 
-import contract.ControllerOrder;
+
 import contract.IController;
 import contract.IModel;
 import contract.IView;
@@ -63,7 +63,7 @@ public final class Controller implements IController {
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
-
+	
 	/**
      * Order perform.
      *
@@ -75,38 +75,48 @@ public final class Controller implements IController {
 	 *
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
-	public void orderPerform(final ControllerOrder controllerOrder) {
-		switch (controllerOrder) {
-			case Map:
+	public void orderPerform(final UserOrder userOrder) {
+		switch (userOrder) {
+			case L1:
 				this.model.loadMap(1);
 				break;
-			case Francais:
+			case L2:
 				this.model.loadMap(2);
 				break;
-			case Deutsch:
+			case L3:
 				this.model.loadMap(3);
 				break;
-			case Indonesia:
+			case L4:
 				this.model.loadMap(4);
 				break;
-			case Arab:
+			case L5:
 				this.model.loadMap(5);
 				break;
-			case Gallic:
+			case UP:
 				this.model.loadMap(6);
 				break;
-			case Kurd:
+			case DOWN:
 				this.model.loadMap(7);
+				break;
+			case LEFT:
+				break;
+			case RIGHT:
 				break;
 			default:
 				break;
+			
+				
 		}
+		
 	}
 
-	@Override
-	public void orderPerform(UserOrder userOrder) throws IOException {
-		// TODO Auto-generated method stub
-		
+
+	public IView getView() {
+		return view;
+	}
+
+	public IModel getModel() {
+		return model;
 	}
 
 }
