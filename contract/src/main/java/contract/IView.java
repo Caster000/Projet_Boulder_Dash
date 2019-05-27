@@ -13,5 +13,8 @@ public interface IView {
 	 * @param message
 	 *          the message
 	 */
-	void printMessage(final String message);
+	void play();
+	void displayMessage(String string);
+	//void followMyhero();
+	
 }

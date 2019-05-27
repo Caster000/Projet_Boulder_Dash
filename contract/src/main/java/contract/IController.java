@@ -12,13 +12,14 @@ public interface IController {
 	/**
 	 * Control.
 	 */
+	
+	void play() throws InterruptedException;
 	public void control();
-
 	/**
 	 * Order perform.
 	 *
 	 * @param controllerOrder
 	 *          the controller order
 	 */
-	void orderPerform(UserOrder userOrder) throws IOException;
+	 IOrderPerformer getOrderPeformer();
 }

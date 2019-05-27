@@ -17,6 +17,7 @@ import contract.UserOrder;
  */
 public final class View implements IView, Runnable {
 
+	
 	/** The frame. */
 	private ViewFrame frame;
 	
@@ -85,6 +86,12 @@ public final class View implements IView, Runnable {
 		this.frame.setVisible(true);
 	}
 
+	public final void followMyHero(){
+		this.getCloseView().y = this.getHero().getY();
+	}
+	//private Rectangle getCloseView() {
+		//return this.CloseView();
+	//} Possible suivi de caméra pour le hero
 	/**
 	 * Sets the controller.
 	 *
@@ -96,7 +103,13 @@ public final class View implements IView, Runnable {
 	}
 
 	@Override
-	public void printMessage(String message) {
+	public void play() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void followMyhero() {
 		// TODO Auto-generated method stub
 		
 	}
