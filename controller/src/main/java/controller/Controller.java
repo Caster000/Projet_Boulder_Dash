@@ -93,10 +93,10 @@ public final class Controller implements IController {
 				this.model.loadMap(5);
 				break;
 			case UP:
-				this.model.loadMap(6);
+		
 				break;
 			case DOWN:
-				this.model.loadMap(7);
+				
 				break;
 			case LEFT:
 				break;
