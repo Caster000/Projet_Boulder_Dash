@@ -2,8 +2,8 @@ package view;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-
 
 import contract.IController;
 import contract.IModel;
@@ -18,7 +18,9 @@ import contract.UserOrder;
 public final class View implements IView, Runnable {
 
 	/** The frame. */
-	private final ViewFrame viewFrame;
+	private ViewFrame frame;
+	private IController boulderDashController;
+	private IModel boulderDashModel;
 
 	/**
 	 * Instantiates a new view.
@@ -71,8 +73,8 @@ public final class View implements IView, Runnable {
 	 *
 	 * @see contract.IView#printMessage(java.lang.String)
 	 */
-	public void printMessage(final String message) {
-		this.viewFrame.printMessage(message);
+	public void displayMessage(String message) {
+		JOptionPane.showMessageDialog(null, message);
 	}
 
 	/*
