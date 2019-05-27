@@ -7,14 +7,14 @@ public abstract class Alive extends Mobile {
 
 	private static final int SPPEED = 3;
 	
-	Alive(int x, int y, Sprite sprite, Permeability permeability) {
-		super(x, y, sprite, permeability);
+	Alive(/**int x, int y,*/ Sprite sprite, Permeability permeability) {
+		super(/*x, y,*/ sprite, permeability);
 	}
 	
 	abstract public void die();
-	
-	public int getsPEED() {
-		return this.SPPEED;
-	}
+//	
+//	public int getsPEED() {
+//		return this.SPPEED;
+//	}
 
 }

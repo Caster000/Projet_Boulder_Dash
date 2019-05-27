@@ -24,11 +24,11 @@ public class Diamond extends Block {
     }
 
     //I don't really know why, but I have to put it here
-    @Override
-    public void doNothing() {
-        // TODO Auto-generated method stub
-        
-    }
+//    @Override
+//    public void doNothing() {
+//        // TODO Auto-generated method stub
+//        
+//    }
     
     public void isTaken() {
         if(this.isAlive) {

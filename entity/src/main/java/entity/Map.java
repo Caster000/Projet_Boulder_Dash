@@ -63,7 +63,7 @@ public class Map implements IMap {
     }
     
     public Map() {
-        this(0, "", "");
+        onTheMap=new IEntity[1][1];
     }
     
     public Map(final int id, final String key, final String message) {
@@ -73,8 +73,8 @@ public class Map implements IMap {
     }
     public Map(/*final int id,*/ int width, int height) {
         //this.setId(id);
-//        this.setWidth(width);
-//        this.setHeight(height);
+        this.setWidth(width);
+        this.setHeight(height);
         onTheMap = new Entity[width][height];
     }
 
