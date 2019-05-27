@@ -241,7 +241,7 @@ public class Map implements IMap {
     		//On Titouan's code there's a function which updates the map, maybe we shall do something like that
     		HeroMovingChecks();
     	}else {
-    		System.out.println("can't move up");//print a message for testing purposes
+    		System.out.println("can't move down");//print a message for testing purposes
     	}
     	
     }
@@ -254,7 +254,7 @@ public class Map implements IMap {
     		//On Titouan's code there's a function which updates the map, maybe we shall do something like that
     		HeroMovingChecks();
     	}else {
-    		System.out.println("can't move up");//print a message for testing purposes
+    		System.out.println("can't move left");//print a message for testing purposes
     	}
     	
     }
@@ -267,7 +267,7 @@ public class Map implements IMap {
     		//On Titouan's code there's a function which updates the map, maybe we shall do something like that
     		HeroMovingChecks();
     	}else {
-    		System.out.println("can't move up");//print a message for testing purposes
+    		System.out.println("can't move right");//print a message for testing purposes
     	}
     	
     }
@@ -294,13 +294,37 @@ public class Map implements IMap {
         	}//there ain't no else on this if
         }else if(downEntity.getPermeability() == Permeability.PENETRABLE && downEntity.getId() != 4) {//the stone is already falling, it can go on all penetrable entity exept on a diamond 
     		moveDown(x, y);
-    	}else {
-    		B.setIsFalling(false);
+    	}else if(!slide(downEntity, B, x, y)) {//if the stone is nor sliding nor falling
+    		B.setIsFalling(false);//the stone is not or no more falling
     	}
+        
     }
     
-    public void slide() {
-        //not yet implemented
+    public boolean slide(IEntity downEntity, Block B, int x, int y) {
+    	IEntity downLeftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity down right of the Stone
+    	IEntity downRightEntity = this.getOnTheMapXY(x+1, y);//checks what's the entity down left of the Stone
+        if(downEntity.getId() == 4 || downEntity.getId() == 2 || downEntity.getId() == 1 && downLeftEntity.getId() == 4 || downLeftEntity.getId() == 2 || downLeftEntity.getId() == 1) {
+        	moveLeft(x, y);
+        	try {
+				Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+        	moveDown(x-1, y);//to slide, you need to move left or right then down
+        	B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
+        	return true;//the codes return that the sliding succeed
+        }else if(downEntity.getId() == 4 || downEntity.getId() == 2 || downEntity.getId() == 1 && downRightEntity.getId() == 4 || downRightEntity.getId() == 2 || downRightEntity.getId() == 1) {
+        	moveRight(x, y);
+        	try {
+				Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+        	moveDown(x-1, y);//to slide, you need to move left or right then down
+        	B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
+        	return true;//the codes return that the sliding succeed
+        }
+        return false;
     }
 
 }
