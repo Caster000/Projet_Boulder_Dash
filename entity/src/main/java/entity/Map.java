@@ -290,9 +290,9 @@ public class Map implements IMap {
         if (!B.isFalling()) {//checks if the Entity is falling
         	if (downEntity.getId() == 0) {//checks if downEntity is an Empty
         		moveDown(x, y);
-        		B.setIsFalling(true);
+        		B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
         	}//there ain't no else on this if
-        }else if(downEntity.getPermeability() == Permeability.PENETRABLE) {
+        }else if(downEntity.getPermeability() == Permeability.PENETRABLE && downEntity.getId() != 4) {//the stone is already falling, it can go on all penetrable entity exept on a diamond 
     		moveDown(x, y);
     	}else {
     		B.setIsFalling(false);
