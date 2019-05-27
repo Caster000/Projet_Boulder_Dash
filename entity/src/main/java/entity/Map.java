@@ -71,6 +71,7 @@ public class Map implements IMap {
         this.setKey(key);
         this.setMessage(message);
     }
+    
     public Map(/*final int id,*/ int width, int height) {
         //this.setId(id);
         this.setWidth(width);

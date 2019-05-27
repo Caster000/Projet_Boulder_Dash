@@ -7,6 +7,7 @@ import contract.IController;
 import contract.IModel;
 import contract.IView;
 import contract.UserOrder;
+import entity.Map;
 
 /**
  * The Class Controller.
@@ -20,6 +21,7 @@ public final class Controller implements IController{
 	/** The model. */
 	private IModel	model;
 
+	private Map map;
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -137,7 +139,7 @@ public final class Controller implements IController{
 				this.model.loadMap(5);
 				break;
 			case UP:
-		
+				this.map.heroMoveUp(hero., y);
 				break;
 			case DOWN:
 				
