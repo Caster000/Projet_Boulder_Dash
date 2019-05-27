@@ -1,9 +1,12 @@
 package controller;
 
+import java.io.IOException;
+
 import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
 import contract.IView;
+import contract.UserOrder;
 
 /**
  * The Class Controller.
@@ -98,6 +101,12 @@ public final class Controller implements IController {
 			default:
 				break;
 		}
+	}
+
+	@Override
+	public void orderPerform(UserOrder userOrder) throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
