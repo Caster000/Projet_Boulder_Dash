@@ -102,4 +102,25 @@ public abstract class Entity implements IEntity {
     public Point getPosition() {
         return this.position;
     }
+
+	public void isTaken() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void isUsable() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void die() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean isMovable(IEntity e) {
+		// TODO Auto-generated method stub
+		return false;
+		
+	}
 }

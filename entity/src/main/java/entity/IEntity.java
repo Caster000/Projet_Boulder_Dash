@@ -32,4 +32,12 @@ public interface IEntity extends ISquare {
 	
 	int getId();
 
+	void isTaken();
+
+	void isUsable();
+
+	void die();
+
+	boolean isMovable(IEntity e);
+
 }

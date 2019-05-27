@@ -2,6 +2,7 @@ package entity.mobile;
 
 import java.awt.Point;
 
+import entity.IEntity;
 import entity.Permeability;
 import entity.Sprite;
 
@@ -15,14 +16,15 @@ public class Stone extends Block {
     private static int x, y;
 
     public Stone() {
-        super(x, y, SPRITE, Permeability.PENETRABLE);
+        super(x, y, SPRITE, Permeability.BLOCKING);
     }
     
-    
-    
-    public boolean isMovable() {
-        //not yet implemented
+    public boolean isMovable(IEntity e) {
+    	if (e.getId() == 0) {
+    		return true;
+    	}else {
         return false;
+    	}
     }
 
     //I don't really know why, but I have to put it here

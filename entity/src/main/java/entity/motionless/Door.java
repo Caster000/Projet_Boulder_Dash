@@ -15,7 +15,7 @@ public class Door extends MotionlessEntity{
 	}
 	
 	//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
-	public static void isUsable(){
+	public void isUsable(){
 		//not yet implemented
 	}
 

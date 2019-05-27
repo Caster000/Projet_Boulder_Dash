@@ -13,10 +13,5 @@ public class Rock extends MotionlessEntity{
 		super(SPRITE, Permeability.PENETRABLE);
 		// TODO Auto-generated constructor stub
 	}
-	
-	//when the players digs a rock
-	public static void isDestroyed() {
-		//not yet implemented
-	}
 
 }

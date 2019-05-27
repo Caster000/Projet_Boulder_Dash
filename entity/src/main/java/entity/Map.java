@@ -7,14 +7,7 @@ import java.io.InputStreamReader;
 
 import entity.IEntity;
 import entity.mobile.Block;
-import entity.mobile.Diamond;
-import entity.mobile.Hero;
-import entity.mobile.Monster;
-import entity.mobile.Stone;
-import entity.motionless.Door;
 import entity.motionless.Empty;
-import entity.motionless.Rock;
-import entity.motionless.Wall;
 
 public class Map implements IMap {
      /** The width. */
@@ -34,16 +27,6 @@ public class Map implements IMap {
 
     /** The message. */
     private String    message;
-    
-    //for testing purposes
-    private Hero hero = new Hero();
-    private Monster monster = new Monster();
-    private Diamond diamond = new Diamond();
-    private Stone stone = new Stone();
-    private Rock rock = new Rock();
-    private Door door = new Door();
-    private Empty empty = new Empty();
-    private Wall wall = new Wall();
 
     /**
      * Instantiates a new road with the content of the file fileName.
@@ -87,6 +70,7 @@ public class Map implements IMap {
     public final int getWidth() {
         return this.width;
     }
+    
 /**
      * Sets the width.
      *
@@ -115,6 +99,7 @@ public class Map implements IMap {
     public void setHeight(final int height) {
         this.height = height;
     }
+    
     /*
      * (non-Javadoc)
      * @see fr.exia.insanevehicles.model.IRoad#getOnTheRoadXY(int, int)
@@ -137,6 +122,8 @@ public class Map implements IMap {
     public void setOnTheMapXY(final IEntity entity, final int x, final int y) {
         this.onTheMap[x][y] = entity;
     }
+    
+ 
     /**
      * Gets the id.
      *
@@ -164,6 +151,7 @@ public class Map implements IMap {
     public String getKey() {
         return this.key;
     }
+    
     /**
      * Sets the key.
      *
@@ -222,66 +210,109 @@ public class Map implements IMap {
     }
     
     //specific function for the hero to move up
-    public void heroMoveUp(int x, int y) {
+    public boolean heroMoveUp(IEntity hero, int x, int y) {
     	IEntity topEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
     	if (topEntity.getPermeability() == Permeability.PENETRABLE) {//if the entity is penetrable
     		moveUp(x, y);
     		//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-    		HeroMovingChecks();
+    		HeroMovingChecks(topEntity, hero);
+    		return true;
+    	}else if (topEntity.getId() == 2) {
+    		IEntity topTopEntity = this.getOnTheMapXY(x, y-1);//checks what's the entity left to where the hero wanted to move
+    			if(topEntity.isMovable(topTopEntity)) {
+    				moveRight(x-1, y);
+    				moveRight(x, y);
+    				return true;
+    			}else {
+    				return false;
+    		}
+    		
     	}else {
-    		System.out.println("can't move up");//print a message for testing purposes
+    		System.out.println("can't move right");//print a message for testing purposes
+    		return false;
     	}
-    	
     }
     
     //specific function for the hero to move down
-    public void heroMoveDown(int x, int y) {
-    	IEntity downEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
+    public boolean heroMoveDown(IEntity hero, int x, int y) {
+		System.out.println("down2");
+    	IEntity downEntity = this.getOnTheMapXY(x, y);//checks what's the entity where the hero wanted to move
     	if (downEntity.getPermeability() == Permeability.PENETRABLE) {//if the entity is penetrable
     		moveDown(x, y);
     		//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-    		HeroMovingChecks();
+    		HeroMovingChecks(downEntity, hero);
+    		return true;
+    	}else if (downEntity.getId() == 2) {
+    		IEntity downDownEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity left to where the hero wanted to move
+    			if(downEntity.isMovable(downDownEntity)) {
+    				moveRight(x-1, y);
+    				moveRight(x, y);
+    				return true;
+    			}else {
+    				return false;
+    		}
+    		
     	}else {
-    		System.out.println("can't move down");//print a message for testing purposes
+    		System.out.println("can't move right");//print a message for testing purposes
+    		return false;
     	}
-    	
     }
     
     //specific function for the hero to move left
-    public void heroMoveLeft(int x, int y) {
-    	IEntity leftEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
+    public boolean heroMoveLeft(IEntity hero, int x, int y) {
+    	IEntity leftEntity = this.getOnTheMapXY(x, y);//checks what's the entity where the hero wanted to move
     	if (leftEntity.getPermeability() == Permeability.PENETRABLE) {//if the entity is penetrable
     		moveLeft(x, y);
     		//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-    		HeroMovingChecks();
+    		HeroMovingChecks(leftEntity, hero);
+    		return true;
+    	}else if (leftEntity.getId() == 2) {
+    		IEntity leftLeftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity left to where the hero wanted to move
+    			if(leftEntity.isMovable(leftLeftEntity)) {
+    				moveRight(x-1, y);
+    				moveRight(x, y);
+    				return true;
+    			}else {
+    				return false;
+    		}
+    		
     	}else {
-    		System.out.println("can't move left");//print a message for testing purposes
+    		System.out.println("can't move right");//print a message for testing purposes
+    		return false;
     	}
-    	
     }
     
     //specific function for the hero to move right
-    public void heroMoveRight(int x, int y) {
+    public boolean heroMoveRight(IEntity hero, int x, int y) {
     	IEntity rightEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
     	if (rightEntity.getPermeability() == Permeability.PENETRABLE) {//if the entity is penetrable
     		moveRight(x, y);
     		//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-    		HeroMovingChecks();
+    		HeroMovingChecks(rightEntity, hero);
+    		return true;
+    	}else if (rightEntity.getId() == 2) {
+    		IEntity rightRightEntity = this.getOnTheMapXY(x+1, y);//checks what's the entity right to where the hero wanted to move
+    			if(rightEntity.isMovable(rightRightEntity)) {
+    				moveRight(x+1, y);
+    				moveRight(x, y);
+    				return true;
+    			}else {
+    				return false;
+    		}
+    		
     	}else {
     		System.out.println("can't move right");//print a message for testing purposes
+    		return false;
     	}
-    	
     }
     
-    public void HeroMovingChecks() { 
-    	if (hero.getPosition() == monster.getPosition()) {//different cases
+    public void HeroMovingChecks(IEntity e, IEntity hero) { 
+    	if (e.getId() == 5) {//different cases
     		hero.die();//die because of the monster
-    	}else if (hero.getPosition() == diamond.getPosition()) {
-    		diamond.isTaken();//the hero enters on the diamond so he can take it
-    	}else if (hero.getPosition() == rock.getPosition()) {
-    		rock.isDestroyed();//the hero digs a rock
-    	}else if (hero.getPosition() == door.getPosition()) {
-    		door.isUsable();//the hero checks if he can use the door he is on
+    	}else if (e.getId() == 4) {
+    		e.isTaken();//the hero enters on the diamond so he can take it
+    	}else if (e.getId() == 7) {
+    		e.isUsable();//the hero checks if he can use the door he is on
     	}
     	
     }
@@ -294,6 +325,7 @@ public class Map implements IMap {
         		B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
         	}//there ain't no else on this if
         }else if(downEntity.getPermeability() == Permeability.PENETRABLE && downEntity.getId() != 4) {//the stone is already falling, it can go on all penetrable entity exept on a diamond 
+    		fallerChecks(downEntity);
     		moveDown(x, y);
     	}else if(!slide(downEntity, B, x, y)) {//if the stone is nor sliding nor falling
     		B.setIsFalling(false);//the stone is not or no more falling
@@ -311,6 +343,7 @@ public class Map implements IMap {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+    		fallerChecks(downLeftEntity);
         	moveDown(x-1, y);//to slide, you need to move left or right then down
         	B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
         	return true;//the codes return that the sliding succeed
@@ -321,6 +354,7 @@ public class Map implements IMap {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+    		fallerChecks(downRightEntity);
         	moveDown(x-1, y);//to slide, you need to move left or right then down
         	B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
         	return true;//the codes return that the sliding succeed
@@ -328,4 +362,11 @@ public class Map implements IMap {
         return false;
     }
 
+    public void fallerChecks(IEntity e) { 
+    	if (e.getId() == 5) {//different cases
+    		e.die();//die because of the monster
+    	}else if (e.getId() == 6) {//different cases
+    		e.die();//die because of the monster
+    	}
+    }
 }

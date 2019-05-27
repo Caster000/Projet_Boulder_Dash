@@ -22,6 +22,12 @@ public final class Controller implements IController{
 	private IModel	model;
 
 	private Map map;
+	
+	private int heroX = 1;
+	
+	private int heroY = 1;
+	
+	private boolean hasMoved;
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -139,14 +145,30 @@ public final class Controller implements IController{
 				this.model.loadMap(5);
 				break;
 			case UP:
-				this.map.heroMoveUp(hero., y);
+				hasMoved = this.map.heroMoveUp(this.map.getOnTheMapXY(heroX, heroY), heroX, heroY);
+				if (hasMoved) {
+					heroY--;
+				}
 				break;
 			case DOWN:
-				
-				break;
+				printDown();
+				hasMoved = this.map.heroMoveDown(this.map.getOnTheMapXY(heroX, heroY), heroX, heroY);
+				/*hasMoved = this.map.heroMoveDown(heroX, heroY);
+				if (hasMoved) {
+					heroY++;
+				}				
+				break;*/
 			case LEFT:
+				hasMoved = this.map.heroMoveLeft(this.map.getOnTheMapXY(heroX, heroY), heroX, heroY);
+				if (hasMoved) {
+					heroX--;
+				}
 				break;
 			case RIGHT:
+				hasMoved = this.map.heroMoveRight(this.map.getOnTheMapXY(heroX, heroY), heroX, heroY);
+				if (hasMoved) {
+					heroX++;
+				}
 				break;
 			default:
 				break;
@@ -165,5 +187,24 @@ public final class Controller implements IController{
 		return model;
 	}
 
+	public int getHeroX() {
+		return heroX;
+	}
+
+	public void setHeroX(int heroX) {
+		this.heroX = heroX;
+	}
+
+	public int getHeroY() {
+		return heroY;
+	}
+
+	public void setHeroY(int heroY) {
+		this.heroY = heroY;
+	}
+
+	public void printDown() {
+		System.out.println("Down");
+	}
 
 }
