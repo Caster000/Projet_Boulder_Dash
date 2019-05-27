@@ -19,8 +19,7 @@ public final class View implements IView, Runnable {
 
 	/** The frame. */
 	private ViewFrame frame;
-	private IController boulderDashController;
-	private IModel boulderDashModel;
+	
 
 	/**
 	 * Instantiates a new view.
@@ -29,7 +28,7 @@ public final class View implements IView, Runnable {
 	 *          the model
 	 */
 	public View(final IModel model) {
-		this.viewFrame = new ViewFrame(model);
+		this.frame = new ViewFrame(model);
 		SwingUtilities.invokeLater(this);
 	}
 
@@ -83,7 +82,7 @@ public final class View implements IView, Runnable {
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
-		this.viewFrame.setVisible(true);
+		this.frame.setVisible(true);
 	}
 
 	/**
@@ -93,6 +92,12 @@ public final class View implements IView, Runnable {
 	 *          the new controller
 	 */
 	public void setController(final IController controller) {
-		this.viewFrame.setController(controller);
+		this.frame.setController(controller);
+	}
+
+	@Override
+	public void printMessage(String message) {
+		// TODO Auto-generated method stub
+		
 	}
 }
