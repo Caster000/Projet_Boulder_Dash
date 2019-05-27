@@ -13,7 +13,7 @@ public abstract class Block extends Mobile {
     //temporary implementation of a monster object for testing purposes
     private Monster monster = new Monster();
     
-    private boolean hasFallen = false;
+    private boolean isFalling = false;
 
     Block(int x, int y, Sprite sprite, Permeability permeability) {
         super(x, y, sprite, permeability);
@@ -39,12 +39,12 @@ public abstract class Block extends Mobile {
         }
     }
 
-	public boolean hasFallen() {
-		return hasFallen;
+	public boolean isFalling() {
+		return isFalling;
 	}
 
-	public void setHasFallen(boolean hasFallen) {
-		this.hasFallen = hasFallen;
+	public void setIsFalling(boolean isFalling) {
+		this.isFalling = isFalling;
 	}
     
 }

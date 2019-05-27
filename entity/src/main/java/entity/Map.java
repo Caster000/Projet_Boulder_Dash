@@ -58,6 +58,10 @@ public class Map implements IMap {
 //        this.loadFile(fileName);
 //    }
     
+    public IEntity[][] getOnTheMap() {
+        return onTheMap;
+    }
+    
     public Map() {
         this(0, "", "");
     }
@@ -231,8 +235,8 @@ public class Map implements IMap {
     
     //specific function for the hero to move down
     public void heroMoveDown(int x, int y) {
-    	IEntity topEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
-    	if (topEntity.getPermeability() == Permeability.PENETRABLE) {//if the entity is penetrable
+    	IEntity downEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
+    	if (downEntity.getPermeability() == Permeability.PENETRABLE) {//if the entity is penetrable
     		moveDown(x, y);
     		//On Titouan's code there's a function which updates the map, maybe we shall do something like that
     		HeroMovingChecks();
@@ -244,8 +248,8 @@ public class Map implements IMap {
     
     //specific function for the hero to move left
     public void heroMoveLeft(int x, int y) {
-    	IEntity topEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
-    	if (topEntity.getPermeability() == Permeability.PENETRABLE) {//if the entity is penetrable
+    	IEntity leftEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
+    	if (leftEntity.getPermeability() == Permeability.PENETRABLE) {//if the entity is penetrable
     		moveLeft(x, y);
     		//On Titouan's code there's a function which updates the map, maybe we shall do something like that
     		HeroMovingChecks();
@@ -257,8 +261,8 @@ public class Map implements IMap {
     
     //specific function for the hero to move right
     public void heroMoveRight(int x, int y) {
-    	IEntity topEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
-    	if (topEntity.getPermeability() == Permeability.PENETRABLE) {//if the entity is penetrable
+    	IEntity rightEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
+    	if (rightEntity.getPermeability() == Permeability.PENETRABLE) {//if the entity is penetrable
     		moveRight(x, y);
     		//On Titouan's code there's a function which updates the map, maybe we shall do something like that
     		HeroMovingChecks();
@@ -281,10 +285,18 @@ public class Map implements IMap {
     	
     }
     
-    public void fall(Block B){
-        if (!B.hasFallen) {
-        	
-        }
+    public void fall(Block B, int x, int y){
+    	IEntity downEntity = this.getOnTheMapXY(x, y);//checks what's the entity down of the Stone
+        if (!B.isFalling()) {//checks if the Entity is falling
+        	if (downEntity.getId() == 0) {//checks if downEntity is an Empty
+        		moveDown(x, y);
+        		B.setIsFalling(true);
+        	}//there ain't no else on this if
+        }else if(downEntity.getPermeability() == Permeability.PENETRABLE) {
+    		moveDown(x, y);
+    	}else {
+    		B.setIsFalling(false);
+    	}
     }
     
     public void slide() {

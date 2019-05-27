@@ -29,5 +29,7 @@ public interface IEntity extends ISquare {
     Image getImage();
 
 	Point getPosition();
+	
+	int getId();
 
 }
