@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import entity.IEntity;
+import entity.mobile.Block;
 import entity.mobile.Diamond;
 import entity.mobile.Hero;
 import entity.mobile.Monster;
@@ -278,6 +279,16 @@ public class Map implements IMap {
     		door.isUsable();//the hero checks if he can use the door he is on
     	}
     	
+    }
+    
+    public void fall(Block B){
+        if (!B.hasFallen) {
+        	
+        }
+    }
+    
+    public void slide() {
+        //not yet implemented
     }
 
 }

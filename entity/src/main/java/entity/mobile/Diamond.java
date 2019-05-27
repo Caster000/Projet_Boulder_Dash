@@ -9,9 +9,11 @@ import entity.mobile.Hero;
 public class Diamond extends Block {
     
     private boolean isAlive = true;
+    private boolean hasFallen = false;
     private int id = 4;
     private static Sprite sprite = new Sprite('4',"Diamond.png");
     private Point position;
+    
     //temporary implementation of an hero object for testing purposes
     private Hero hero = new Hero();
     //may just be temporary

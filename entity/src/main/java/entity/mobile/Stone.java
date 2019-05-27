@@ -8,6 +8,7 @@ import entity.Sprite;
 public class Stone extends Block {
     
     private boolean isAlive = false;
+    private boolean hasFallen = false;
     private int id = 2;
     private static final Sprite SPRITE = new Sprite('2',"Stone.png");
     private Point position;
