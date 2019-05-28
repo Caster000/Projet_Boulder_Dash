@@ -15,6 +15,7 @@ import entity.mobile.Monster;
 import entity.mobile.Stone;
 import entity.motionless.Door;
 import entity.motionless.Empty;
+import entity.motionless.Rock;
 import entity.motionless.Wall;
 
 import java.util.Timer;
@@ -215,6 +216,7 @@ public class Map extends TimerTask implements IMap {
 
 	//specific function for the hero to move up
 	public boolean heroMoveUp(IEntity hero, int x, int y) {
+		updateMap();
 		IEntity topEntity = this.getOnTheMapXY(x, y-1);//checks whant's the entity where the hero wanted to move
 		if (topEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(topEntity, hero);
@@ -223,11 +225,11 @@ public class Map extends TimerTask implements IMap {
 			return true;
 		}else if (topEntity instanceof Door){
 			System.out.println("it's a door");
-			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
+			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				System.out.println("Win !");
 				System.out.println("press 1");
-//				level++;
+				//				level++;
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -239,6 +241,7 @@ public class Map extends TimerTask implements IMap {
 
 	//specific function for the hero to move down
 	public boolean heroMoveDown(IEntity hero, int x, int y) {
+		updateMap();
 		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity where the hero wanted to move
 		if (downEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(downEntity, hero);
@@ -247,11 +250,11 @@ public class Map extends TimerTask implements IMap {
 			return true;
 		}else if (downEntity instanceof Door){
 			System.out.println("it's a door");
-			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
+			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				System.out.println("Win !");
 				System.out.println("press 1");
-//				level++;
+				//				level++;
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -263,6 +266,7 @@ public class Map extends TimerTask implements IMap {
 
 	//specific function for the hero to move left
 	public boolean heroMoveLeft(IEntity hero, int x, int y) {
+		updateMap();
 		IEntity leftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity where the hero wanted to move
 		if (leftEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(leftEntity, hero);
@@ -282,11 +286,11 @@ public class Map extends TimerTask implements IMap {
 
 		}else if (leftEntity instanceof Door){
 			System.out.println("it's a door");
-			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
+			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				System.out.println("Win !");
 				System.out.println("press 1");
-//				level++;
+				//				level++;
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -298,6 +302,7 @@ public class Map extends TimerTask implements IMap {
 
 	//specific function for the hero to move right
 	public boolean heroMoveRight(IEntity hero, int x, int y) {
+		updateMap();
 		IEntity rightEntity = this.getOnTheMapXY(x+1, y);//checks whant's the entity where the hero wanted to move
 		if (rightEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(rightEntity, hero);
@@ -314,11 +319,11 @@ public class Map extends TimerTask implements IMap {
 			}
 		}else if (rightEntity instanceof Door){
 			System.out.println("it's a door");
-			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
+			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				System.out.println("Win !");
 				System.out.println("press 1");
-//				level++;
+				//				level++;
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -333,26 +338,33 @@ public class Map extends TimerTask implements IMap {
 			hero.die();//die because of the monster
 		}else if (e instanceof Diamond) {
 			System.out.println("supposed to be taken");
-			hero.setNumberOfDiamonds(hero.getNumberOfDiamonds() + 1);
+			this.setNumberOfDiamonds(this.getNumberOfDiamonds() + 1);
 			System.out.println("Taken !");
-			System.out.println(hero.getNumberOfDiamonds());
+			System.out.println(this.getNumberOfDiamonds());
 		}
 
 	}
 
 	public void fall(Block B, int x, int y){
-		IEntity downEntity = this.getOnTheMapXY(x, y);//checks what's the entity down of the Stone
+//		System.out.println("Je suis un Block");
+		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity down of the Stone
 		if (!B.isFalling()) {//checks if the Entity is falling
+//			System.out.println("Je ne suis pas en train de tomber");
 			if (downEntity instanceof Empty) {//checks if downEntity is an Empty
 				moveDown(x, y);
 				B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
+				System.out.println("Je tombe");
 			}//there ain't no else on this if
 		}else if(downEntity instanceof IPermeability) {//the stone is already falling, it can go on all penetrable entity... 
-			if (downEntity instanceof Diamond) {//...except on a diamond
+			System.out.println("Je devrais tomber");
+			if (downEntity instanceof Diamond || downEntity instanceof Rock) {//...except on a diamond
+				System.out.println("...mais il y a un diamant ou un rock sous moi");
 				B.setIsFalling(false);
+			}else {
+				fallerChecks(downEntity);
+				moveDown(x, y);
+				System.out.println("Je continue de tomber");
 			}
-			fallerChecks(downEntity);
-			moveDown(x, y);
 		}else if(!slide(downEntity, B, x, y)) {//if the stone is nor sliding nor falling
 			B.setIsFalling(false);//the stone is not or no more falling
 		}
@@ -453,14 +465,26 @@ public class Map extends TimerTask implements IMap {
 		this.numberOfDiamonds = numberOfDiamonds;
 	}
 
+	public void updateMap() {
+		for(int y = height-1; y>0; y--) {
+			for(int x = width-1; x>0; x--) {
+				IEntity faller = this.getOnTheMapXY(x, y);
+				if (faller instanceof Block) {
+//					System.out.println("c'est un block");
+					Block B = (Block) onTheMap[x][y];
+					fall(B, x, y);
+				}
+			}
+		}
+	}
 
-//	public int getLevel() {
-//		return level;
-//	}
-//
-//
-//	public void setLevel(int level) {
-//		this.level = level;
-//	}
+	//	public int getLevel() {
+	//		return level;
+	//	}
+	//
+	//
+	//	public void setLevel(int level) {
+	//		this.level = level;
+	//	}
 
 }

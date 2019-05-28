@@ -134,6 +134,7 @@ public final class Controller implements IController{
 		case L1:
 			level++;
 			this.model.loadMap(/*this.model.getMap().getLevel()*/level);
+			this.model.getMap().setNumberOfDiamonds(0);
 			System.out.println(/*this.model.getMap().getLevel()*/level);
 			switch(/*this.model.getMap().getLevel()*/level) {
 			case 1 :
