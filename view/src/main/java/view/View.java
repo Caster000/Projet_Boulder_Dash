@@ -103,7 +103,7 @@ public final class View implements IView, Runnable {
 	}
 
 	/**
-	 * @param play
+	 * @param plays
 	 */
 	@Override
 	public void play() {
