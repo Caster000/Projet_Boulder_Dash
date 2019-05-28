@@ -83,9 +83,9 @@ public abstract class Entity implements IEntity {
         return this.position;
     }
 
-	public void isUsable() {
+	public boolean isUsable(IEntity hero, int req) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 	public void die() {

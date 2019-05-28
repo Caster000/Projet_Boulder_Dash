@@ -7,7 +7,7 @@ import fr.exia.showboard.ISquare;
 
 public interface IEntity extends ISquare {
 
-    /**
+	/**
      * Gets the sprite.
      *
      * @return the sprite
@@ -26,7 +26,7 @@ public interface IEntity extends ISquare {
 	
 	int getId();
 	
-	void isUsable();
+	boolean isUsable(IEntity hero, int req);
 
 	void die();
 

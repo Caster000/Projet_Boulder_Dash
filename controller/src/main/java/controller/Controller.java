@@ -131,6 +131,7 @@ public final class Controller implements IController{
 		switch (userOrder) {
 			case L1:
 				this.model.loadMap(1);
+				this.model.getMap().setRequiredNumberOfDiamonds(1);
 				break;
 			case L2:
 				this.model.loadMap(2);
