@@ -1,4 +1,4 @@
-package entity;
+/*package entity;
 
 import java.util.TimerTask;
 
@@ -21,5 +21,5 @@ public class CustomerTimer extends TimerTask {
 	public int getTimeSecond() {
 		return time/4;
 	}
-}
+}*/
 

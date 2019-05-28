@@ -4,10 +4,13 @@
  */
 package main;
 
+import java.util.Timer;
+
 import contract.UserOrder;
 import controller.Controller;
 import model.Model;
 import view.View;
+import entity.Map;
 
 /**
  * The Class Main.
@@ -30,5 +33,8 @@ public abstract class Main {
 
         controller.control();
         controller.orderPerform(UserOrder.L1);
+        
+        Timer chrono = new Timer();
+        chrono.schedule(new Map (), 250,250);
     }
 }
