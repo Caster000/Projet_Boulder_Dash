@@ -219,9 +219,9 @@ public class Map implements IMap {
 	public boolean heroMoveUp(IEntity hero, int x, int y) {
 		IEntity topEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
 		if (topEntity instanceof IPermeability) {//if the entity is penetrable
+			HeroMovingChecks(topEntity, hero);
 			moveUp(x, y);
 			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-			HeroMovingChecks(topEntity, hero);
 			return true;
 		}else if (topEntity instanceof Stone) {
 			IEntity topTopEntity = this.getOnTheMapXY(x, y-1);//checks what's the entity left to where the hero wanted to move
@@ -243,9 +243,9 @@ public class Map implements IMap {
 	public boolean heroMoveDown(IEntity hero, int x, int y) {
 		IEntity downEntity = this.getOnTheMapXY(x, y);//checks what's the entity where the hero wanted to move
 		if (downEntity instanceof IPermeability) {//if the entity is penetrable
+			HeroMovingChecks(downEntity, hero);
 			moveDown(x, y);
 			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-			HeroMovingChecks(downEntity, hero);
 			return true;
 		}else if (downEntity instanceof Stone) {
 			IEntity downDownEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity left to where the hero wanted to move
@@ -267,9 +267,9 @@ public class Map implements IMap {
 	public boolean heroMoveLeft(IEntity hero, int x, int y) {
 		IEntity leftEntity = this.getOnTheMapXY(x, y);//checks what's the entity where the hero wanted to move
 		if (leftEntity instanceof IPermeability) {//if the entity is penetrable
+			HeroMovingChecks(leftEntity, hero);
 			moveLeft(x, y);
 			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-			HeroMovingChecks(leftEntity, hero);
 			return true;
 		}else if (leftEntity instanceof Stone) {
 			IEntity leftLeftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity left to where the hero wanted to move
@@ -291,9 +291,9 @@ public class Map implements IMap {
 	public boolean heroMoveRight(IEntity hero, int x, int y) {
 		IEntity rightEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
 		if (rightEntity instanceof IPermeability) {//if the entity is penetrable
+			HeroMovingChecks(rightEntity, hero);
 			moveRight(x, y);
 			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-			HeroMovingChecks(rightEntity, hero);
 			return true;
 		}else if (rightEntity instanceof Stone) {
 			IEntity rightRightEntity = this.getOnTheMapXY(x+1, y);//checks what's the entity right to where the hero wanted to move
