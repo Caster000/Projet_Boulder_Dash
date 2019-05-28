@@ -144,6 +144,9 @@ public final class Controller implements IController{
 			case L5:
 				this.model.loadMap(5);
 				break;
+			case L6:
+				this.model.loadMap(6);
+				break;
 			case UP:
 				hasMoved = this.model.getMap().heroMoveUp(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
 				if (hasMoved) {

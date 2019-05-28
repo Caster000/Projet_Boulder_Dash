@@ -10,6 +10,7 @@ public enum UserOrder {
 	L3,
 	L4,
 	L5,
-	NULL
+	L6,
+	NULL,
 
 }

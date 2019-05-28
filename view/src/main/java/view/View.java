@@ -60,6 +60,8 @@ public final class View implements IView, Runnable {
 				return UserOrder.L4;
 			case KeyEvent.VK_5:
 				return UserOrder.L5;
+			case KeyEvent.VK_6:
+				return UserOrder.L6;
 				
 				
 			default:
