@@ -217,7 +217,7 @@ public class Map implements IMap {
 
 	//specific function for the hero to move up
 	public boolean heroMoveUp(IEntity hero, int x, int y) {
-		IEntity topEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
+		IEntity topEntity = this.getOnTheMapXY(x, y-1);//checks whant's the entity where the hero wanted to move
 		if (topEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(topEntity, hero);
 			moveUp(x, y);
@@ -241,7 +241,7 @@ public class Map implements IMap {
 
 	//specific function for the hero to move down
 	public boolean heroMoveDown(IEntity hero, int x, int y) {
-		IEntity downEntity = this.getOnTheMapXY(x, y);//checks what's the entity where the hero wanted to move
+		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity where the hero wanted to move
 		if (downEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(downEntity, hero);
 			moveDown(x, y);
@@ -265,7 +265,7 @@ public class Map implements IMap {
 
 	//specific function for the hero to move left
 	public boolean heroMoveLeft(IEntity hero, int x, int y) {
-		IEntity leftEntity = this.getOnTheMapXY(x, y);//checks what's the entity where the hero wanted to move
+		IEntity leftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity where the hero wanted to move
 		if (leftEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(leftEntity, hero);
 			moveLeft(x, y);
@@ -289,7 +289,7 @@ public class Map implements IMap {
 
 	//specific function for the hero to move right
 	public boolean heroMoveRight(IEntity hero, int x, int y) {
-		IEntity rightEntity = this.getOnTheMapXY(x, y);//checks whant's the entity where the hero wanted to move
+		IEntity rightEntity = this.getOnTheMapXY(x+1, y);//checks whant's the entity where the hero wanted to move
 		if (rightEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(rightEntity, hero);
 			moveRight(x, y);
