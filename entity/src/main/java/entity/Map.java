@@ -40,7 +40,7 @@ public class Map extends TimerTask implements IMap {
 	/** The message. */
 	private String    message;
 
-	private int time = 10 ;
+	private int time = 120 ;
 
 	private int requiredNumberOfDiamonds = 1;
 
@@ -445,10 +445,16 @@ public class Map extends TimerTask implements IMap {
 	@Override
 	public void run() {
 		System.out.println("time : " +getTimeSecond());
+		if(time ==30) {
+			System.out.println("Warning!");
+		}
 		if(time == 0) {
 			cancel();
-			System.out.println("Good Luck");
-
+			System.out.println("Next level or restart");
+		if(time > 0){
+				System.out.println("You win");
+				this.numberOfDiamonds = 1;
+			}
 		}
 		time --;
 	}
