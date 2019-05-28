@@ -17,13 +17,7 @@ public class Stone extends Block {
     /**
      * isMovable method
      */
-    public boolean isMovable(IEntity e) {
-    	if (e.getId() == 0) {
-    		return true;
-    	}else {
-        return false;
-    	}
-    }
+    
 
 //		do nothing method, non-implemented
 //    @Override

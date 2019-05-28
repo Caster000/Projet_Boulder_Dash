@@ -9,7 +9,6 @@ public class Hero extends Alive {
 //    private int id = 6;
     private static final Sprite SPRITE = new Sprite('6',"Hero.png");
     private int numberOfLives;
-    private int numberOfDiamonds;
 
     public Hero() {
         super(SPRITE);
@@ -19,12 +18,8 @@ public class Hero extends Alive {
     @Override
     public void die() {
         this.setNumberOfLives(getNumberOfLives() - 1);
-        this.setNumberOfDiamonds(0);
+        //this.setNumberOfDiamonds(0);
         //we have to add a restart function
-    }
-    
-    public void gameOver() {
-        //not yet implemented but we may redirect to a game over screen
     }
 
     public int getNumberOfLives() {
@@ -34,13 +29,9 @@ public class Hero extends Alive {
     public void setNumberOfLives(int numberOfLives) {
         this.numberOfLives = numberOfLives;
     }
-
-    public int getNumberOfDiamonds() {
-        return numberOfDiamonds;
-    }
-
-    public void setNumberOfDiamonds(int numberOfDiamonds) {
-        this.numberOfDiamonds = numberOfDiamonds;
+    
+    public void gameOver() {
+        //not yet implemented but we may redirect to a game over screen
     }
 
 	@Override

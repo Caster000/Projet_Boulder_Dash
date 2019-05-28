@@ -26,7 +26,6 @@ public class Diamond extends Block implements IPermeability{
      * isTaken method
      */
     public void isTaken(Hero hero) {
-    	hero.setNumberOfDiamonds(hero.getNumberOfDiamonds() + 1);
     }
 
 	@Override

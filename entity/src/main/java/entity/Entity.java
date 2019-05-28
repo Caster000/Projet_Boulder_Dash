@@ -29,6 +29,8 @@ public abstract class Entity implements IEntity {
     /** The position. */
     private Point position;
 
+    private int numberOfDiamonds;
+
     /**
      * Instantiates a new element.
      *
@@ -81,11 +83,6 @@ public abstract class Entity implements IEntity {
         return this.position;
     }
 
-	public void isTaken() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void isUsable() {
 		// TODO Auto-generated method stub
 		
@@ -96,9 +93,11 @@ public abstract class Entity implements IEntity {
 		
 	}
 
-	public boolean isMovable(IEntity e) {
-		// TODO Auto-generated method stub
-		return false;
-		
-	}
+    public int getNumberOfDiamonds() {
+        return numberOfDiamonds;
+    }
+
+    public void setNumberOfDiamonds(int numberOfDiamonds) {
+        this.numberOfDiamonds = numberOfDiamonds;
+    }
 }

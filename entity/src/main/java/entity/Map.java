@@ -223,16 +223,6 @@ public class Map implements IMap {
 			moveUp(x, y);
 			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
 			return true;
-		}else if (topEntity instanceof Stone) {
-			IEntity topTopEntity = this.getOnTheMapXY(x, y-1);//checks what's the entity left to where the hero wanted to move
-			if(topEntity.isMovable(topTopEntity)) {
-				moveRight(x-1, y);
-				moveRight(x, y);
-				return true;
-			}else {
-				return false;
-			}
-
 		}else {
 			System.out.println("can't move up");//print a message for testing purposes
 			return false;
@@ -247,16 +237,6 @@ public class Map implements IMap {
 			moveDown(x, y);
 			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
 			return true;
-		}else if (downEntity instanceof Stone) {
-			IEntity downDownEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity left to where the hero wanted to move
-			if(downEntity.isMovable(downDownEntity)) {
-				moveRight(x-1, y);
-				moveRight(x, y);
-				return true;
-			}else {
-				return false;
-			}
-
 		}else {
 			System.out.println("can't move down");//print a message for testing purposes
 			return false;
@@ -272,10 +252,11 @@ public class Map implements IMap {
 			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
 			return true;
 		}else if (leftEntity instanceof Stone) {
-			IEntity leftLeftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity left to where the hero wanted to move
-			if(leftEntity.isMovable(leftLeftEntity)) {
+			IEntity leftLeftEntity = this.getOnTheMapXY(x-2, y);//checks what's the entity left to where the hero wanted to move
+			if(leftLeftEntity instanceof Empty) {
 				moveRight(x-1, y);
 				moveRight(x, y);
+				System.out.println("pushed");
 				return true;
 			}else {
 				return false;
@@ -296,10 +277,11 @@ public class Map implements IMap {
 			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
 			return true;
 		}else if (rightEntity instanceof Stone) {
-			IEntity rightRightEntity = this.getOnTheMapXY(x+1, y);//checks what's the entity right to where the hero wanted to move
-			if(rightEntity.isMovable(rightRightEntity)) {
+			IEntity rightRightEntity = this.getOnTheMapXY(x+2, y);//checks what's the entity right to where the hero wanted to move
+			if(rightRightEntity instanceof Empty) {
 				moveRight(x+1, y);
 				moveRight(x, y);
+				System.out.println("pushed");
 				return true;
 			}else {
 				return false;
@@ -315,7 +297,10 @@ public class Map implements IMap {
 		if (e instanceof Monster) {//different cases
 			hero.die();//die because of the monster
 		}else if (e instanceof Diamond) {
-			e.isTaken();//the hero enters on the diamond so he can take it
+			System.out.println("supposed to be taken");
+	    	hero.setNumberOfDiamonds(hero.getNumberOfDiamonds() + 1);
+	    	System.out.println("Taken !");
+	    	System.out.println(hero.getNumberOfDiamonds());
 		}else if (e instanceof Door) {
 			e.isUsable();//the hero checks if he can use the door he is on
 		}
@@ -396,10 +381,11 @@ public class Map implements IMap {
 	}
 
 	public void fallerChecks(IEntity e) { 
-		if (e.getId() == 5) {//different cases
+		if (e.getId() == 5) {//if a monster is under a stone falling
 			e.die();//die because of the monster
-		}else if (e.getId() == 6) {//different cases
+		}else if (e.getId() == 6) {//if the hero is under a stone falling
 			e.die();//die because of the monster
 		}
 	}
+	
 }

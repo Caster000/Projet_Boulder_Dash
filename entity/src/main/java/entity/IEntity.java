@@ -25,13 +25,13 @@ public interface IEntity extends ISquare {
 	Point getPosition();
 	
 	int getId();
-
-	void isTaken();
-
+	
 	void isUsable();
 
 	void die();
 
-	boolean isMovable(IEntity e);
+	int getNumberOfDiamonds();
+
+	void setNumberOfDiamonds(int i);
 
 }
