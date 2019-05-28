@@ -5,25 +5,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.sql.Statement;
 
-import entity.EntityFactory;
-//import entity.IEntity;
-import entity.Map;
+import com.mysql.jdbc.CallableStatement;
 
+import entity.EntityFactory;
+import entity.Map;
 
 public class DAOMap {
 	/**
-	 * Instantiates a new DAO hello world.
+	 * Instantiates a new DAO entity.
 	 *
-	 * @param connection
-	 *          the connection
-	 * @throws SQLException
-	 *           the SQL exception
 	 */
-	/** The connection. */
-	//private final Connection connection;
+	public DAOMap()  {
+
+	}
 
 	/**
 	 * Instantiates a new DAO entity.
@@ -33,9 +29,9 @@ public class DAOMap {
 	 * @throws SQLException
 	 *           the SQL exception
 	 */
-	public DAOMap(/*final Connection connection*/)  {
-		//this.connection = connection;
-	}
+//	public DAOMap(final Connection connection)  {
+//		this.connection = connection;
+//	}
 
 	/*
 	 * (non-Javadoc)
@@ -70,48 +66,48 @@ public class DAOMap {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see model.DAOEntity#find(java.lang.String)
+	 *Take the map in the database and transform it in entity
 	 */
 	public Map find(final int id) {
 		Map map = new Map();
 
-	/////   access base de donnee   /////
-			String urlString = "jdbc:mysql://localhost/jpublankproject?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	/////   Database access   /////
+			String urlString = "jdbc:mysql://localhost/jpublankproject?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";		//all constant to database access
 			String loginString = "root";
 			String passwdString = "";
 			Connection cnConnection = null;
-			Statement stStatement = null;
+			CallableStatement stStatement = null;
 			ResultSet resultSet = null;
 
-			String sqlRequestString = "SELECT * FROM map WHERE `ID` = " + id;//"{call helloworldById(?)}";
+			String sqlRequestString = "{call mapById(?)}";//"SELECT * FROM map WHERE `ID` = " + id;
 			/////////////////////////////////////
 			
-
 			try {
-				// 1): Chargement du driver // sur la vm ?
-				//Class.forName(connectorString);//plus necessaire apparament (d'apres le message d'erreur)
-				// 2): Connexion
+				// 1): Loading driver 
+				// 2): Connection
 				cnConnection = DriverManager.getConnection(urlString, loginString, passwdString);
 				// 3): creation du statement (jsp ce que c'est)
-				stStatement = cnConnection.createStatement();
-				// 4): execute requete
-				resultSet = stStatement.executeQuery(sqlRequestString);
-				// 5):
+				stStatement = (CallableStatement) cnConnection.prepareCall(sqlRequestString);
+				stStatement.setInt(1,id);
+				stStatement.execute();
+				// 4): request
+				resultSet = stStatement.getResultSet();
+				// 5): Result
 			if (resultSet.first()) {
-				int width = resultSet.getInt("width");
-				int height = resultSet.getInt("height");
-				map = new Map(width,height);
+				int width = resultSet.getInt("width");		//get width
+				int height = resultSet.getInt("height");	//get height
+				map = new Map(width,height);				//instantiate map with parameters
 			
-				String TEMP_road_FromSQL = resultSet.getString("mapChar");
-                TEMP_road_FromSQL = TEMP_road_FromSQL.replaceAll("\r\n", "");
+				String TEMP_road_FromSQL = resultSet.getString("mapChar");		//take the map in character
+                TEMP_road_FromSQL = TEMP_road_FromSQL.replaceAll("\r\n", "");	//make it in 1 line
 
-                System.out.println(TEMP_road_FromSQL);
+                //System.out.println(TEMP_road_FromSQL); 	debug
 
                 for(int y=0; y < height; y++)
                 {
                     for(int x=0; x < width; x++)
                     {
-                        map.setOnTheMapXY(EntityFactory.getFromFileSymbol(TEMP_road_FromSQL.charAt(y*width + x)), x, y);
+                        map.setOnTheMapXY(EntityFactory.getFromFileSymbol(TEMP_road_FromSQL.charAt(y*width + x)), x, y);	//translation to entity
                         System.out.println(y*width + x);
                     }
                 }
@@ -125,26 +121,18 @@ public class DAOMap {
 			e.printStackTrace();
 		}finally {
 			try {
-				// 6): on vide la mémoire
+				// 6): we empty the memory
 				cnConnection.close();
 				stStatement.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-//			System.out.println(map.getOnTheMapXY(0, 0).toString());
+//			System.out.println(map.getOnTheMapXY(0, 0).toString());		debug
 //	        System.out.println(map.getOnTheMapXY(1, 1).toString());
 //	        System.out.println(map.getOnTheMapXY(3, 2).toString());
 		return map;
 	}
-	/**
-	 * Gets the connection.
-	 *
-	 * @return the connection
-	 */
-//	protected Connection getConnection() {
-//		return this.connection;
-//	}
 	
 	
 }

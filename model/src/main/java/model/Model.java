@@ -1,8 +1,6 @@
 package model;
 
-import java.sql.SQLException;
 import java.util.Observable;
-
 import contract.IModel;
 import entity.Map;
 
@@ -13,7 +11,7 @@ import entity.Map;
  */
 public final class Model extends Observable implements IModel {
 
-	/** The helloWorld. */
+	/** The map. */
 	private Map map;
 
 	/**
@@ -24,9 +22,9 @@ public final class Model extends Observable implements IModel {
 	}
 
 	/**
-     * Gets the hello world.
+     * Gets the map.
      *
-     * @return the hello world
+     * @return the map
      */
 	/*
 	 * (non-Javadoc)
@@ -38,10 +36,10 @@ public final class Model extends Observable implements IModel {
 	}
 
 	/**
-     * Sets the hello world.
+     * Sets the map.
      *
-     * @param helloWorld
-     *            the new hello world
+     * @param map
+     *            the new map
      */
 	private void setMap(final Map map) {
 		this.map = map;
@@ -50,7 +48,7 @@ public final class Model extends Observable implements IModel {
 	}
 
 	/**
-     * Load hello world.
+     * Load map.
      *
      * @param code
      *            the code

@@ -5,10 +5,10 @@ import entity.Sprite;
 
 public abstract class Alive extends Mobile {
 
-	private static final int SPPEED = 3;
+//	private static final int SPPEED = 3;
 	
-	Alive(/**int x, int y,*/ Sprite sprite, Permeability permeability) {
-		super(/*x, y,*/ sprite, permeability);
+	Alive(Sprite sprite, Permeability permeability) {
+		super(sprite, permeability);
 	}
 	
 	abstract public void die();
