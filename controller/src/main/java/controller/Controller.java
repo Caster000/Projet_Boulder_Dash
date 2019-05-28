@@ -172,6 +172,7 @@ public final class Controller implements IController{
 //				this.model.getMap().setLevel(6);
 				this.heroX = 2;
 				this.heroY = 2;
+				level = 0;
 				break;
 			}
 			break;

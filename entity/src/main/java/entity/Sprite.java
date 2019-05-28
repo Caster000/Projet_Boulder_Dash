@@ -57,6 +57,7 @@ public class Sprite {
      */
     public final void loadImage() throws IOException {
         this.setImage(ImageIO.read(new File("..\\images\\" + this.getImageName())));
+        
     }
 
     /**
