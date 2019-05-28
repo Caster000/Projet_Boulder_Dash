@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import com.mysql.jdbc.CallableStatement;
 
@@ -108,7 +107,7 @@ public class DAOMap {
                     for(int x=0; x < width; x++)
                     {
                         map.setOnTheMapXY(EntityFactory.getFromFileSymbol(TEMP_road_FromSQL.charAt(y*width + x)), x, y);	//translation to entity
-                        System.out.println(y*width + x);
+                       // System.out.println(y*width + x); debug
                     }
                 }
             }
