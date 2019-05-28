@@ -152,7 +152,7 @@ public final class Controller implements IController{
 				break;
 			case DOWN:
 				printDown();
-				hasMoved = this.map.heroMoveDown(this.map.getOnTheMapXY(heroX, heroY), heroX, heroY);
+				hasMoved = this.model.getMap().heroMoveDown(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
 				/*hasMoved = this.map.heroMoveDown(heroX, heroY);
 				if (hasMoved) {
 					heroY++;
