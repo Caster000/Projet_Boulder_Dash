@@ -45,8 +45,6 @@ public class Map extends TimerTask implements IMap {
 
 	private int numberOfDiamonds = 0;
 
-	private int level = 1;
-
 	public IEntity[][] getOnTheMap() {
 		return onTheMap;
 	}
@@ -228,7 +226,8 @@ public class Map extends TimerTask implements IMap {
 			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				System.out.println("Win !");
-
+				System.out.println("press 1");
+//				level++;
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -251,6 +250,8 @@ public class Map extends TimerTask implements IMap {
 			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				System.out.println("Win !");
+				System.out.println("press 1");
+//				level++;
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -284,6 +285,8 @@ public class Map extends TimerTask implements IMap {
 			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				System.out.println("Win !");
+				System.out.println("press 1");
+//				level++;
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -314,6 +317,8 @@ public class Map extends TimerTask implements IMap {
 			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				System.out.println("Win !");
+				System.out.println("press 1");
+//				level++;
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -449,13 +454,13 @@ public class Map extends TimerTask implements IMap {
 	}
 
 
-	public int getLevel() {
-		return level;
-	}
-
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
+//	public int getLevel() {
+//		return level;
+//	}
+//
+//
+//	public void setLevel(int level) {
+//		this.level = level;
+//	}
 
 }
