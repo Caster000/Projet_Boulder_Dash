@@ -52,17 +52,17 @@ public final class View implements IView, Runnable {
 				return UserOrder.LEFT;
 			case KeyEvent.VK_1:
 				return UserOrder.L1;
-			case KeyEvent.VK_2:
-				return UserOrder.L2;
-			case KeyEvent.VK_3:
-				return UserOrder.L3;
-			case KeyEvent.VK_4:
-				return UserOrder.L4;
-			case KeyEvent.VK_5:
-				return UserOrder.L5;
-			case KeyEvent.VK_6:
-				return UserOrder.L6;
-				
+//			case KeyEvent.VK_2:
+//				return UserOrder.L2;
+//			case KeyEvent.VK_3:
+//				return UserOrder.L3;
+//			case KeyEvent.VK_4:
+//				return UserOrder.L4;
+//			case KeyEvent.VK_5:
+//				return UserOrder.L5;
+//			case KeyEvent.VK_6:
+//				return UserOrder.L6;
+//				
 				
 			default:
 				return UserOrder.NULL;

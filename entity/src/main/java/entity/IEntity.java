@@ -21,4 +21,8 @@ public interface IEntity  {
 
 	void die();
 
+	int getNumberOfDiamonds();
+
+	void setNumberOfDiamonds(int i);
+
 }

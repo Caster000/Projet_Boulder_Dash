@@ -1,4 +1,5 @@
 package entity;
+
 import java.awt.event.KeyEvent;
 
 import java.io.BufferedReader;
@@ -15,7 +16,6 @@ import entity.mobile.Stone;
 import entity.motionless.Door;
 import entity.motionless.Empty;
 import entity.motionless.Wall;
-
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -38,23 +38,14 @@ public class Map extends TimerTask implements IMap {
 
 	/** The message. */
 	private String    message;
-	
+
 	private int time = 10 ;
 
 	private int requiredNumberOfDiamonds = 1;
 
-	/**
-	 * Instantiates a new road with the content of the file fileName.
-	 *
-	 * @param fileName
-	 *            the file name where the map of the road is
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 */
-	//    Map(final String fileName) throws IOException {
-	//        super();
-	//        this.loadFile(fileName);
-	//    }
+	private int numberOfDiamonds = 0;
+
+	private int level = 1;
 
 	public IEntity[][] getOnTheMap() {
 		return onTheMap;
@@ -197,217 +188,242 @@ public class Map extends TimerTask implements IMap {
 	}
 
 	//generic function for moving left
-		public void moveLeft(int x, int y) {
-			this.onTheMap[x-1][y] = this.onTheMap[x][y];//the entity moves
-			this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-			System.out.println("Went left");
-		}
+	public void moveLeft(int x, int y) {
+		this.onTheMap[x-1][y] = this.onTheMap[x][y];//the entity moves
+		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		System.out.println("Went left");
+	}
 
-		//generic function for moving right
-		public void moveRight(int x, int y) {
-			this.onTheMap[x+1][y] = this.onTheMap[x][y];//the entity moves
-			this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-			System.out.println("Went right");
-		}
+	//generic function for moving right
+	public void moveRight(int x, int y) {
+		this.onTheMap[x+1][y] = this.onTheMap[x][y];//the entity moves
+		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		System.out.println("Went right");
+	}
 
-		//generic function for moving up
-		public void moveUp(int x, int y) {
-			this.onTheMap[x][y-1] = this.onTheMap[x][y];//the entity moves
-			this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-			System.out.println("Went up");
-		}
+	//generic function for moving up
+	public void moveUp(int x, int y) {
+		this.onTheMap[x][y-1] = this.onTheMap[x][y];//the entity moves
+		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		System.out.println("Went up");
+	}
 
-		//generic function for moving down
-		public void moveDown(int x, int y) {
-			this.onTheMap[x][y+1] = this.onTheMap[x][y];//the entity moves
-			this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-			System.out.println("Went down");
-		}
+	//generic function for moving down
+	public void moveDown(int x, int y) {
+		this.onTheMap[x][y+1] = this.onTheMap[x][y];//the entity moves
+		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		System.out.println("Went down");
+	}
 
-		//specific function for the hero to move up
-		public boolean heroMoveUp(IEntity hero, int x, int y) {
-			IEntity topEntity = this.getOnTheMapXY(x, y-1);//checks whant's the entity where the hero wanted to move
-			if (topEntity instanceof IPermeability) {//if the entity is penetrable
-				HeroMovingChecks(topEntity, hero);
-				moveUp(x, y);
-				//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-				return true;
-			}else {
-				System.out.println("can't move up");//print a message for testing purposes
-				return false;
-			}
-		}
-
-		//specific function for the hero to move down
-		public boolean heroMoveDown(IEntity hero, int x, int y) {
-			IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity where the hero wanted to move
-			if (downEntity instanceof IPermeability) {//if the entity is penetrable
-				HeroMovingChecks(downEntity, hero);
-				moveDown(x, y);
-				//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-				return true;
-			}else {
-				System.out.println("can't move down");//print a message for testing purposes
-				return false;
-			}
-		}
-
-		//specific function for the hero to move left
-		public boolean heroMoveLeft(IEntity hero, int x, int y) {
-			IEntity leftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity where the hero wanted to move
-			if (leftEntity instanceof IPermeability) {//if the entity is penetrable
-				HeroMovingChecks(leftEntity, hero);
-				moveLeft(x, y);
-				//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-				return true;
-			}else if (leftEntity instanceof Stone) {
-				IEntity leftLeftEntity = this.getOnTheMapXY(x-2, y);//checks what's the entity left to where the hero wanted to move
-				if(leftLeftEntity instanceof Empty) {
-					moveRight(x-1, y);
-					moveRight(x, y);
-					System.out.println("pushed");
-					return true;
-				}else {
-					return false;
-				}
-
-			}else {
-				System.out.println("can't move left");//print a message for testing purposes
-				return false;
-			}
-		}
-
-		//specific function for the hero to move right
-		public boolean heroMoveRight(IEntity hero, int x, int y) {
-			IEntity rightEntity = this.getOnTheMapXY(x+1, y);//checks whant's the entity where the hero wanted to move
-			if (rightEntity instanceof IPermeability) {//if the entity is penetrable
-				HeroMovingChecks(rightEntity, hero);
+	//specific function for the hero to move up
+	public boolean heroMoveUp(IEntity hero, int x, int y) {
+		IEntity topEntity = this.getOnTheMapXY(x, y-1);//checks whant's the entity where the hero wanted to move
+		if (topEntity instanceof IPermeability) {//if the entity is penetrable
+			HeroMovingChecks(topEntity, hero);
+			moveUp(x, y);
+			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
+			return true;
+		}else if (topEntity instanceof Door){
+			System.out.println("it's a door");
+			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
-				//On Titouan's code there's a function which updates the map, maybe we shall do something like that
+				System.out.println("Win !");
+
 				return true;
-			}else if (rightEntity instanceof Stone) {
-				IEntity rightRightEntity = this.getOnTheMapXY(x+2, y);//checks what's the entity right to where the hero wanted to move
-				if(rightRightEntity instanceof Empty) {
-					moveRight(x+1, y);
-					moveRight(x, y);
-					System.out.println("pushed");
-					return true;
-				}
-			}else if (rightEntity instanceof Door){
-				System.out.println("it's a door");
-				if(hero.getNumberOfDiamonds() == requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
-					moveRight(x, y);
-					System.out.println("Win !");
-					return true;
-				}else {
-					System.out.println("can't move right");//print a message for testing purposes
-					return false;
-				}
+			}else {
+				System.out.println("can't move right");//print a message for testing purposes
+				return false;
 			}
-			return false;
 		}
+		return false;
+	}
 
-		public void HeroMovingChecks(IEntity e, IEntity hero) { 
-			if (e instanceof Monster) {//different cases
-				hero.die();//die because of the monster
-			}else if (e instanceof Diamond) {
-				System.out.println("supposed to be taken");
-				hero.setNumberOfDiamonds(hero.getNumberOfDiamonds() + 1);
-				System.out.println("Taken !");
-				System.out.println(hero.getNumberOfDiamonds());
+	//specific function for the hero to move down
+	public boolean heroMoveDown(IEntity hero, int x, int y) {
+		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity where the hero wanted to move
+		if (downEntity instanceof IPermeability) {//if the entity is penetrable
+			HeroMovingChecks(downEntity, hero);
+			moveDown(x, y);
+			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
+			return true;
+		}else if (downEntity instanceof Door){
+			System.out.println("it's a door");
+			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
+				moveRight(x, y);
+				System.out.println("Win !");
+				return true;
+			}else {
+				System.out.println("can't move right");//print a message for testing purposes
+				return false;
 			}
-
 		}
+		return false;
+	}
 
-		public void fall(Block B, int x, int y){
-			IEntity downEntity = this.getOnTheMapXY(x, y);//checks what's the entity down of the Stone
-			if (!B.isFalling()) {//checks if the Entity is falling
-				if (downEntity instanceof Empty) {//checks if downEntity is an Empty
-					moveDown(x, y);
-					B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
-				}//there ain't no else on this if
-			}else if(downEntity instanceof IPermeability) {//the stone is already falling, it can go on all penetrable entity... 
-				if (downEntity instanceof Diamond) {//...except on a diamond
-					B.setIsFalling(false);
-				}
-				fallerChecks(downEntity);
-				moveDown(x, y);
-			}else if(!slide(downEntity, B, x, y)) {//if the stone is nor sliding nor falling
-				B.setIsFalling(false);//the stone is not or no more falling
-			}
-
-		}
-
-		public boolean slide(IEntity downEntity, Block B, int x, int y) {
-			IEntity downLeftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity down right of the Stone
-			IEntity downRightEntity = this.getOnTheMapXY(x+1, y);//checks what's the entity down left of the Stone
-			IEntity leftEntity = this.getOnTheMapXY(x-1, y-1);//checks what's the entity left of the stone
-			IEntity rightEntity = this.getOnTheMapXY(x+1, y-1);//checks what's the entity right of the stone
-
-			if(downEntity instanceof Diamond || downEntity instanceof Stone || downEntity instanceof Wall) {
-				if (downLeftEntity instanceof Empty && leftEntity instanceof Empty) {
-					slideLeft(downLeftEntity, B, x, y);//we call the method which allows the entity to slide left
-					return true;//the codes return that the sliding succeed
-
-				} else if(downRightEntity instanceof Empty && rightEntity instanceof Empty) {
-					slideRight(downRightEntity, B, x, y);
-					return true;//the codes return that the sliding succeed
-
-				}
-			}else if(B.isFalling() == true) {
-				if(downLeftEntity instanceof Monster || downLeftEntity instanceof Hero || downLeftEntity instanceof Empty && leftEntity instanceof Empty) {
-					slideLeft(downLeftEntity, B, x, y);//we call the method which allows the entity to slide left
-					return true;//the codes return that the sliding succeed
-
-				}else if(downRightEntity instanceof Monster || downRightEntity instanceof Hero || downRightEntity instanceof Empty && rightEntity instanceof Empty) {
-					slideLeft(downLeftEntity, B, x, y);//we call the method which allows the entity to slide left
-					return true;//the codes return that the sliding succeed
-
-				}
-			}
-			return false;
-		}
-
-		public void slideLeft(IEntity downLeftEntity, Block B, int x, int y) {
+	//specific function for the hero to move left
+	public boolean heroMoveLeft(IEntity hero, int x, int y) {
+		IEntity leftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity where the hero wanted to move
+		if (leftEntity instanceof IPermeability) {//if the entity is penetrable
+			HeroMovingChecks(leftEntity, hero);
 			moveLeft(x, y);
-			try {
-				Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
+			return true;
+		}else if (leftEntity instanceof Stone) {
+			IEntity leftLeftEntity = this.getOnTheMapXY(x-2, y);//checks what's the entity left to where the hero wanted to move
+			if(leftLeftEntity instanceof Empty) {
+				moveRight(x-1, y);
+				moveRight(x, y);
+				System.out.println("pushed");
+				return true;
+			}else {
+				return false;
 			}
-			fallerChecks(downLeftEntity);
-			moveDown(x-1, y);//to slide, you need to move left or right then down
-			B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
-		}
 
-		public void slideRight(IEntity downRightEntity, Block B, int x, int y) {
+		}else if (leftEntity instanceof Door){
+			System.out.println("it's a door");
+			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
+				moveRight(x, y);
+				System.out.println("Win !");
+				return true;
+			}else {
+				System.out.println("can't move right");//print a message for testing purposes
+				return false;
+			}
+		}
+		return false;
+	}
+
+	//specific function for the hero to move right
+	public boolean heroMoveRight(IEntity hero, int x, int y) {
+		IEntity rightEntity = this.getOnTheMapXY(x+1, y);//checks whant's the entity where the hero wanted to move
+		if (rightEntity instanceof IPermeability) {//if the entity is penetrable
+			HeroMovingChecks(rightEntity, hero);
 			moveRight(x, y);
-			try {
-				Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
+			return true;
+		}else if (rightEntity instanceof Stone) {
+			IEntity rightRightEntity = this.getOnTheMapXY(x+2, y);//checks what's the entity right to where the hero wanted to move
+			if(rightRightEntity instanceof Empty) {
+				moveRight(x+1, y);
+				moveRight(x, y);
+				System.out.println("pushed");
+				return true;
 			}
-			fallerChecks(downRightEntity);
-			moveDown(x-1, y);//to slide, you need to move left or right then down
-			B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
-		}
-
-		public void fallerChecks(IEntity e) { 
-			if (e.getId() == 5) {//if a monster is under a stone falling
-				e.die();//die because of the monster
-			}else if (e.getId() == 6) {//if the hero is under a stone falling
-				e.die();//die because of the monster
+		}else if (rightEntity instanceof Door){
+			System.out.println("it's a door");
+			if(hero.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
+				moveRight(x, y);
+				System.out.println("Win !");
+				return true;
+			}else {
+				System.out.println("can't move right");//print a message for testing purposes
+				return false;
 			}
 		}
+		return false;
+	}
 
-
-		public int getRequiredNumberOfDiamonds() {
-			return requiredNumberOfDiamonds;
+	public void HeroMovingChecks(IEntity e, IEntity hero) { 
+		if (e instanceof Monster) {//different cases
+			hero.die();//die because of the monster
+		}else if (e instanceof Diamond) {
+			System.out.println("supposed to be taken");
+			hero.setNumberOfDiamonds(hero.getNumberOfDiamonds() + 1);
+			System.out.println("Taken !");
+			System.out.println(hero.getNumberOfDiamonds());
 		}
 
-		public void setRequiredNumberOfDiamonds(int requiredNumberOfDiamonds) {
-			this.requiredNumberOfDiamonds = requiredNumberOfDiamonds;
+	}
+
+	public void fall(Block B, int x, int y){
+		IEntity downEntity = this.getOnTheMapXY(x, y);//checks what's the entity down of the Stone
+		if (!B.isFalling()) {//checks if the Entity is falling
+			if (downEntity instanceof Empty) {//checks if downEntity is an Empty
+				moveDown(x, y);
+				B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
+			}//there ain't no else on this if
+		}else if(downEntity instanceof IPermeability) {//the stone is already falling, it can go on all penetrable entity... 
+			if (downEntity instanceof Diamond) {//...except on a diamond
+				B.setIsFalling(false);
+			}
+			fallerChecks(downEntity);
+			moveDown(x, y);
+		}else if(!slide(downEntity, B, x, y)) {//if the stone is nor sliding nor falling
+			B.setIsFalling(false);//the stone is not or no more falling
 		}
+
+	}
+
+	public boolean slide(IEntity downEntity, Block B, int x, int y) {
+		IEntity downLeftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity down right of the Stone
+		IEntity downRightEntity = this.getOnTheMapXY(x+1, y);//checks what's the entity down left of the Stone
+		IEntity leftEntity = this.getOnTheMapXY(x-1, y-1);//checks what's the entity left of the stone
+		IEntity rightEntity = this.getOnTheMapXY(x+1, y-1);//checks what's the entity right of the stone
+
+		if(downEntity instanceof Diamond || downEntity instanceof Stone || downEntity instanceof Wall) {
+			if (downLeftEntity instanceof Empty && leftEntity instanceof Empty) {
+				slideLeft(downLeftEntity, B, x, y);//we call the method which allows the entity to slide left
+				return true;//the codes return that the sliding succeed
+
+			} else if(downRightEntity instanceof Empty && rightEntity instanceof Empty) {
+				slideRight(downRightEntity, B, x, y);
+				return true;//the codes return that the sliding succeed
+
+			}
+		}else if(B.isFalling() == true) {
+			if(downLeftEntity instanceof Monster || downLeftEntity instanceof Hero || downLeftEntity instanceof Empty && leftEntity instanceof Empty) {
+				slideLeft(downLeftEntity, B, x, y);//we call the method which allows the entity to slide left
+				return true;//the codes return that the sliding succeed
+
+			}else if(downRightEntity instanceof Monster || downRightEntity instanceof Hero || downRightEntity instanceof Empty && rightEntity instanceof Empty) {
+				slideLeft(downLeftEntity, B, x, y);//we call the method which allows the entity to slide left
+				return true;//the codes return that the sliding succeed
+
+			}
+		}
+		return false;
+	}
+
+	public void slideLeft(IEntity downLeftEntity, Block B, int x, int y) {
+		moveLeft(x, y);
+		try {
+			Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		fallerChecks(downLeftEntity);
+		moveDown(x-1, y);//to slide, you need to move left or right then down
+		B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
+	}
+
+	public void slideRight(IEntity downRightEntity, Block B, int x, int y) {
+		moveRight(x, y);
+		try {
+			Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		fallerChecks(downRightEntity);
+		moveDown(x-1, y);//to slide, you need to move left or right then down
+		B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
+	}
+
+	public void fallerChecks(IEntity e) { 
+		if (e instanceof Monster) {//if a monster is under a stone falling
+			e.die();//hero die because of the stone
+		}else if (e instanceof Hero) {//if the hero is under a stone falling
+			e.die();//hero die because of the stone
+		}
+	}
+
+
+	public int getRequiredNumberOfDiamonds() {
+		return requiredNumberOfDiamonds;
+	}
+
+	public void setRequiredNumberOfDiamonds(int requiredNumberOfDiamonds) {
+		this.requiredNumberOfDiamonds = requiredNumberOfDiamonds;
+	}
 
 	@Override
 	public void run() {
@@ -415,12 +431,31 @@ public class Map extends TimerTask implements IMap {
 		if(time == 0) {
 			cancel();
 			System.out.println("Good Luck");
-			
+
 		}
 		time --;
 	}
+
 	public int getTimeSecond() {
 		return time;
 	}
-		
+
+	public int getNumberOfDiamonds() {
+		return numberOfDiamonds;
+	}
+
+	public void setNumberOfDiamonds(int numberOfDiamonds) {
+		this.numberOfDiamonds = numberOfDiamonds;
+	}
+
+
+	public int getLevel() {
+		return level;
+	}
+
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
 }

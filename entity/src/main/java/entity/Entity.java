@@ -13,6 +13,8 @@ public abstract class Entity implements IEntity {
     /** The sprite. */
     private Sprite       sprite;
 
+    private int numberOfDiamonds;
+
     /**
      * Instantiates a new element.
      *
@@ -57,4 +59,12 @@ public abstract class Entity implements IEntity {
 		// TODO Auto-generated method stub
 		
 	}
+
+    public int getNumberOfDiamonds() {
+        return numberOfDiamonds;
+    }
+
+    public void setNumberOfDiamonds(int numberOfDiamonds) {
+        this.numberOfDiamonds = numberOfDiamonds;
+    }
 }

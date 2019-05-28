@@ -132,22 +132,45 @@ public final class Controller implements IController{
 			case L1:
 				this.model.loadMap(1);
 				this.model.getMap().setRequiredNumberOfDiamonds(1);
+				this.model.getMap().setLevel(1);
+				this.heroX = 1;
+				this.heroY = 1;
 				break;
-			case L2:
-				this.model.loadMap(2);
-				break;
-			case L3:
-				this.model.loadMap(3);
-				break;
-			case L4:
-				this.model.loadMap(4);
-				break;
-			case L5:
-				this.model.loadMap(5);
-				break;
-			case L6:
-				this.model.loadMap(6);
-				break;
+//			case L2:
+//				this.model.loadMap(2);
+//				this.model.getMap().setRequiredNumberOfDiamonds(8);
+//				this.model.getMap().setLevel(2);
+//				this.heroX = 2;
+//				this.heroY = 2;
+//				break;
+//			case L3:
+//				this.model.loadMap(3);
+//				this.model.getMap().setRequiredNumberOfDiamonds(8);
+//				this.model.getMap().setLevel(3);
+//				this.heroX = 2;
+//				this.heroY = 2;
+//				break;
+//			case L4:
+//				this.model.loadMap(4);
+//				this.model.getMap().setRequiredNumberOfDiamonds(10);
+//				this.model.getMap().setLevel(4);
+//				this.heroX = 2;
+//				this.heroY = 2;
+//				break;
+//			case L5:
+//				this.model.loadMap(5);
+//				this.model.getMap().setRequiredNumberOfDiamonds(8);
+//				this.model.getMap().setLevel(5);
+//				this.heroX = 2;
+//				this.heroY = 2;
+//				break;
+//			case L6:
+//				this.model.loadMap(6);
+//				this.model.getMap().setRequiredNumberOfDiamonds(8);
+//				this.model.getMap().setLevel(6);
+//				this.heroX = 2;
+//				this.heroY = 2;
+//				break;
 			case UP:
 				hasMoved = this.model.getMap().heroMoveUp(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
 				if (hasMoved) {
