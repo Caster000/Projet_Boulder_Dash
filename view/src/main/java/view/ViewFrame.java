@@ -1,21 +1,21 @@
 package view;
 
+/**
+ * library
+ */
+
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import contract.IController;
 import contract.IModel;
-import java.awt.Toolkit;
 /**
  * The Class ViewFrame.
  *
- * @author Jean-Aymeric Diet
  */
 class ViewFrame extends JFrame implements KeyListener {
 
@@ -129,7 +129,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);//false
+		this.setResizable(true);//false
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
 		this.setSize(820 + this.getInsets().left + this.getInsets().right, 840 + this.getInsets().top + this.getInsets().bottom);

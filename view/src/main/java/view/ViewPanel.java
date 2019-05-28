@@ -1,5 +1,9 @@
 package view;
 
+/**
+ * library
+ */
+
 import java.awt.Graphics;
 import java.io.IOException;
 import java.util.Observable;
@@ -10,7 +14,6 @@ import javax.swing.JPanel;
 /**
  * The Class ViewPanel.
  *
- * @author Jean-Aymeric Diet
  */
 class ViewPanel extends JPanel implements Observer {
 
@@ -54,6 +57,11 @@ class ViewPanel extends JPanel implements Observer {
 	 *
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
+	
+	/**
+	 *@param update 
+	 */
+	
 	public void update(final Observable arg0, final Object arg1) {
 		this.repaint();
 	}
@@ -67,8 +75,6 @@ class ViewPanel extends JPanel implements Observer {
 	protected void paintComponent(final Graphics graphics) {
         graphics.clearRect(50, 50, this.getWidth(), this.getHeight());
 
-        //        graphics.drawString(this.getViewFrame().getModel().getHelloWorld().getMessage(), 10, 20);
-        //        graphics.drawString(this.getViewFrame().getModel().getHelloWorld().getMessage(), 25, 40);
         try {
             for(int y=0; y < this.getViewFrame().getModel().getMap().getHeight(); y++)
             {

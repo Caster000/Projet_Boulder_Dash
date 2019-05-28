@@ -13,7 +13,6 @@ import contract.UserOrder;
 /**
  * The Class View.
  *
- * @author Jean-Aymeric Diet
  */
 public final class View implements IView, Runnable {
 
@@ -91,7 +90,8 @@ public final class View implements IView, Runnable {
 
 	//private Rectangle getCloseView() {
 		//return this.CloseView();
-	//} Possible suivi de caméra pour le hero
+	//} For Possible camera tracking for the hero
+	
 	/**
 	 * Sets the controller.
 	 *
@@ -102,6 +102,9 @@ public final class View implements IView, Runnable {
 		this.frame.setController(controller);
 	}
 
+	/**
+	 * @param play
+	 */
 	@Override
 	public void play() {
 		// TODO Auto-generated method stub
