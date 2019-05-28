@@ -5,13 +5,12 @@ import entity.Sprite;
 
 public abstract class Alive extends Mobile implements IPermeability{
 
-//	private static final int SPPEED = 3;
+	protected final int SPEED = 3;
 	
 	Alive(Sprite sprite) {
 		super(sprite);
 	}
 	
-	abstract public void die();
 //	
 //	public int getsPEED() {
 //		return this.SPPEED;

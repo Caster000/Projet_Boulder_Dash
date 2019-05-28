@@ -2,7 +2,6 @@ package entity.mobile;
 
 import entity.IPermeability;
 import entity.Sprite;
-import entity.mobile.Hero;
 
 public class Diamond extends Block implements IPermeability{
     
@@ -15,19 +14,9 @@ public class Diamond extends Block implements IPermeability{
     public Diamond() {
         super(SPRITE);
     }
-
-    //I don't really know why, but I have to put it here
-//    @Override
-//    public void doNothing() {
-//        // TODO Auto-generated method stub
-//        
-//    }
     /**
-     * isTaken method
+     * permeability method 
      */
-    public void isTaken(Hero hero) {
-    }
-
 	@Override
 	public void permeability() {
 		// TODO Auto-generated method stub

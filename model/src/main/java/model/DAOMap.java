@@ -21,7 +21,7 @@ public class DAOMap {
 
 	}
 
-	/**
+	/*
 	 * Instantiates a new DAO entity.
 	 *
 	 * @param connection

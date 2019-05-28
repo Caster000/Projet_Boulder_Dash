@@ -1,7 +1,5 @@
 package entity.motionless;
 
-import entity.IEntity;
-import entity.IPermeability;
 import entity.Sprite;
 
 public class Door extends MotionlessEntity{
@@ -13,6 +11,5 @@ public class Door extends MotionlessEntity{
      */
 	public Door() {
 		super(SPRITE);
-	}
-	
+	}	
 }

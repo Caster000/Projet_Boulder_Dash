@@ -1,6 +1,5 @@
 package entity.motionless;
 
-import entity.IPermeability;
 import entity.Sprite;
 
 public class Wall extends MotionlessEntity{

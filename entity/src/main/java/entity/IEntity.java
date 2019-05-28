@@ -1,11 +1,8 @@
 package entity;
 
 import java.awt.Image;
-import java.awt.Point;
 
-import fr.exia.showboard.ISquare;
-
-public interface IEntity extends ISquare {
+public interface IEntity  {
 
 	/**
      * Gets the sprite.
@@ -22,16 +19,6 @@ public interface IEntity extends ISquare {
    
     Image getImage();
 
-	Point getPosition();
-	
-	int getId();
-	
-	boolean isUsable(IEntity hero, int req);
-
 	void die();
-
-	int getNumberOfDiamonds();
-
-	void setNumberOfDiamonds(int i);
 
 }
