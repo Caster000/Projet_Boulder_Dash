@@ -1,9 +1,9 @@
 package entity.motionless;
 
-import entity.Permeability;
+import entity.IPermeability;
 import entity.Sprite;
 
-public class Rock extends MotionlessEntity{
+public class Rock extends MotionlessEntity implements IPermeability{
 	
 //	private int id = 3;
 	private static final Sprite SPRITE = new Sprite('3',"Rock.png");
@@ -12,7 +12,7 @@ public class Rock extends MotionlessEntity{
      * Rock constructor
      */
 	public Rock() {
-		super(SPRITE, Permeability.PENETRABLE);
+		super(SPRITE);
 		// TODO Auto-generated constructor stub
 	}
 

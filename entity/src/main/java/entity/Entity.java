@@ -26,9 +26,6 @@ public abstract class Entity implements IEntity {
     /** The sprite. */
     private Sprite       sprite;
 
-    /** The permeability. */
-    private Permeability permeability;
-
     /** The position. */
     private Point position;
 
@@ -37,12 +34,9 @@ public abstract class Entity implements IEntity {
      *
      * @param sprite
      *            the sprite
-     * @param permeability
-     *            the permeability
      */
-    public Entity(final Sprite sprite, final Permeability permeability) {
+    public Entity(final Sprite sprite) {
         this.setSprite(sprite);
-        this.setPermeability(permeability);
     }
 
     /*
@@ -62,23 +56,7 @@ public abstract class Entity implements IEntity {
     protected final void setSprite(final Sprite sprite) {
         this.sprite = sprite;
     }
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.insanevehicles.model.element.IElement#getPermeability()
-     */
-    @Override
-    public Permeability getPermeability() {
-        return this.permeability;
-    }
-    /**
-     * Sets the permeability.
-     *
-     * @param permeability
-     *            the new permeability
-     */
-    private void setPermeability(final Permeability permeability) {
-        this.permeability = permeability;
-    }
+    
     /*
      * (non-Javadoc)
      * @see fr.exia.showboard.ISquare#getImage()

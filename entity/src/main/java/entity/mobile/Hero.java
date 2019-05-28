@@ -1,6 +1,6 @@
 package entity.mobile;
 
-import entity.Permeability;
+import entity.IPermeability;
 import entity.Sprite;
 
 public class Hero extends Alive {
@@ -12,7 +12,7 @@ public class Hero extends Alive {
     private int numberOfDiamonds;
 
     public Hero() {
-        super(SPRITE, Permeability.PENETRABLE);
+        super(SPRITE);
     }
 
     //this methods is called when the hero dies, it decreases his number of lives by one and set his number of diamonds to zero

@@ -1,7 +1,6 @@
 package entity.mobile;
 
 import entity.Entity;
-import entity.Permeability;
 import entity.Sprite;
 
 public abstract class Mobile extends Entity {
@@ -10,8 +9,8 @@ public abstract class Mobile extends Entity {
     /**
      * Mobile constructor
      */
-    public Mobile (Sprite sprite, Permeability permeability) {
-        super(sprite, permeability);
+    public Mobile (Sprite sprite) {
+        super(sprite);
     }
     
 //    @Override

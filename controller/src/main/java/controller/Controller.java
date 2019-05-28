@@ -145,34 +145,31 @@ public final class Controller implements IController{
 				this.model.loadMap(5);
 				break;
 			case UP:
-				hasMoved = this.map.heroMoveUp(this.map.getOnTheMapXY(heroX, heroY), heroX, heroY);
+				hasMoved = this.model.getMap().heroMoveUp(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
 				if (hasMoved) {
 					heroY--;
 				}
 				break;
 			case DOWN:
-				printDown();
 				hasMoved = this.model.getMap().heroMoveDown(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
-				/*hasMoved = this.map.heroMoveDown(heroX, heroY);
 				if (hasMoved) {
 					heroY++;
 				}				
-				break;*/
+				break;
 			case LEFT:
-				hasMoved = this.map.heroMoveLeft(this.map.getOnTheMapXY(heroX, heroY), heroX, heroY);
+				hasMoved = this.model.getMap().heroMoveLeft(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
 				if (hasMoved) {
 					heroX--;
 				}
 				break;
 			case RIGHT:
-				hasMoved = this.map.heroMoveRight(this.map.getOnTheMapXY(heroX, heroY), heroX, heroY);
+				hasMoved = this.model.getMap().heroMoveRight(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
 				if (hasMoved) {
 					heroX++;
 				}
 				break;
 			default:
 				break;
-			
 				
 		}
 		

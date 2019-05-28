@@ -1,14 +1,13 @@
 package entity.mobile;
 
-import entity.Permeability;
 import entity.Sprite;
 
 public abstract class Block extends Mobile {   
     
     private boolean isFalling = false;
 
-    Block(Sprite sprite, Permeability permeability) {
-        super(sprite, permeability);
+    Block(Sprite sprite) {
+        super(sprite);
     }
 
 	public boolean isFalling() {

@@ -14,12 +14,6 @@ public interface IEntity extends ISquare {
      */
     Sprite getSprite();
    
-    /**
-     * Gets the permeability.
-     *
-     * @return the permeability
-     */
-    Permeability getPermeability();
 
     /*
      * (non-Javadoc)

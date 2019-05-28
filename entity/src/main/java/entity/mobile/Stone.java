@@ -1,7 +1,6 @@
 package entity.mobile;
 
 import entity.IEntity;
-import entity.Permeability;
 import entity.Sprite;
 
 public class Stone extends Block {
@@ -13,7 +12,7 @@ public class Stone extends Block {
      * Stone Constructor
      */
     public Stone() {
-        super(SPRITE, Permeability.BLOCKING);
+        super(SPRITE);
     }
     /**
      * isMovable method

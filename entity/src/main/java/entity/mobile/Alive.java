@@ -1,14 +1,14 @@
 package entity.mobile;
 
-import entity.Permeability;
+import entity.IPermeability;
 import entity.Sprite;
 
-public abstract class Alive extends Mobile {
+public abstract class Alive extends Mobile implements IPermeability{
 
 //	private static final int SPPEED = 3;
 	
-	Alive(Sprite sprite, Permeability permeability) {
-		super(sprite, permeability);
+	Alive(Sprite sprite) {
+		super(sprite);
 	}
 	
 	abstract public void die();
