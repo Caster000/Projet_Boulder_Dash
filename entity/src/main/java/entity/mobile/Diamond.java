@@ -29,4 +29,10 @@ public class Diamond extends Block implements IPermeability{
     	hero.setNumberOfDiamonds(hero.getNumberOfDiamonds() + 1);
     }
 
+	@Override
+	public void permeability() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

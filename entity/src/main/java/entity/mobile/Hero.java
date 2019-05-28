@@ -43,4 +43,10 @@ public class Hero extends Alive {
         this.numberOfDiamonds = numberOfDiamonds;
     }
 
+	@Override
+	public void permeability() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

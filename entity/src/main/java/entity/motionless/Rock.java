@@ -16,4 +16,10 @@ public class Rock extends MotionlessEntity implements IPermeability{
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void permeability() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -31,4 +31,10 @@ public class Monster extends Alive {
         //We have to implement the becoming a diamond part
     }
 
+	@Override
+	public void permeability() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

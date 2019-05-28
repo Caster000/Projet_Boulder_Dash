@@ -15,5 +15,11 @@ public class Wall extends MotionlessEntity implements IPermeability{
 		super(SPRITE);
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public void permeability() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

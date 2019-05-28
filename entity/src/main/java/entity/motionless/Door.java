@@ -21,4 +21,10 @@ public class Door extends MotionlessEntity implements IPermeability{
 		//not yet implemented
 	}
 
+	@Override
+	public void permeability() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
