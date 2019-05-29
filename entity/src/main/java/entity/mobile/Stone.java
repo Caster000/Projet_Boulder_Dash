@@ -36,5 +36,4 @@ public class Stone extends Block {
 	public boolean isFalling() {
 		return this.isFalling;
 	}
-
 }

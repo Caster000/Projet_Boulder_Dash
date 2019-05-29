@@ -1,5 +1,7 @@
 package entity;
 
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
 import java.io.BufferedReader;
@@ -49,6 +51,12 @@ public class Map extends Observable implements IMap {
 	private int requiredNumberOfDiamonds = 1;
 
 	private int numberOfDiamonds = 0;
+
+	private int latestDirection = 0;
+
+	private int latestWhereToMove = 1;
+
+	private int latestWhereNotToMove = 0;
 
 	//timer
 	TimerTask task = new TimerTask() {
@@ -578,6 +586,8 @@ public class Map extends Observable implements IMap {
 							}
 						}
 					}
+				} else if(getOnTheMapXY(x, y) instanceof Monster){
+					monsterMoving(x, y);
 				}
 			}
 		}
@@ -602,7 +612,7 @@ public class Map extends Observable implements IMap {
 	//		this.level = level;
 	//	}
 
-	private void killPlayer(int x, int y) {
+	private void killPlayer(int x, int y){
 		System.out.println("The hero is dead");
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x][y-1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
@@ -613,6 +623,21 @@ public class Map extends Observable implements IMap {
 		this.onTheMap[x-1][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x-1][y-1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x-1][y+1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		try {
+
+			Robot r;
+			r = new Robot();
+			//    level--;
+			Thread.sleep(1000);
+			r.keyPress(KeyEvent.VK_1);System.out.println("Robot press");
+			Thread.sleep(100);
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 
 	}
@@ -630,6 +655,221 @@ public class Map extends Observable implements IMap {
 		this.onTheMap[x-1][y+1] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
 
 
+	}
+
+	private void monsterMoving(int x, int y) {
+		int whereToMove = 0;//bouger à droite = 1, bouger en haut = 2, bouger en bas = 4, bouger à gauche = 8
+		int whereNotToMove = 0;//mur à droite-haut = 1, bouger en haut-gauche = 2, mur en bas-droite = 8, mur à gauche-bas = 4
+		IEntity downEntity = this.getOnTheMapXY(x, y+1);
+		IEntity topEntity = this.getOnTheMapXY(x, y-1);
+		IEntity leftEntity = this.getOnTheMapXY(x-1, y);
+		IEntity rightEntity = this.getOnTheMapXY(x+1, y);
+		IEntity downLeftEntity = this.getOnTheMapXY(x-1, y+1);
+		IEntity topRightEntity = this.getOnTheMapXY(x+1, y-1);
+		IEntity leftUpEntity = this.getOnTheMapXY(x-1, y);
+		IEntity rightDownEntity = this.getOnTheMapXY(x+1, y);
+		if (downEntity instanceof Empty) {
+			whereToMove += 4;
+		}
+		if (topEntity instanceof Empty) {
+			whereToMove += 2;
+		}
+		if (leftEntity instanceof Empty) {
+			whereToMove += 8;
+		}
+		if (rightEntity instanceof Empty) {
+			whereToMove += 1;
+		}
+		if (downLeftEntity instanceof Empty) {
+
+		}else {
+			whereNotToMove += 4;
+		}
+		if (topRightEntity instanceof Empty) {
+
+		}else {
+			whereNotToMove += 1;
+		}
+		if (leftUpEntity instanceof Empty) {
+
+		}else {
+			whereNotToMove += 2;
+		}
+		if (rightDownEntity instanceof Empty) {
+
+		}else {
+			whereNotToMove += 8;
+		}
+		if (whereToMove == latestWhereToMove/* || whereToMove == latestWhereToMove-1 || whereToMove == latestWhereToMove-2 || whereToMove == latestWhereToMove-4 || whereToMove == latestWhereToMove-8*/) {
+			whereToMove = latestDirection; 
+		}
+		switch (whereToMove) {
+		case 1 :
+			moveRight(x, y);
+			latestWhereToMove = 1;
+			break;
+		case 2 :
+			moveUp(x, y);
+			latestWhereToMove = 2;
+			break;
+		case 3 :
+			if (latestWhereToMove == 8) {
+				moveUp(x, y);
+				latestWhereToMove = 2;
+			}else {
+				moveRight(x, y);
+				latestWhereToMove = 1;
+			}
+			break;
+		case 4 :
+			moveDown(x, y);
+			latestWhereToMove = 4;
+			break;
+		case 5 :
+			if (latestWhereToMove == 8) {
+				moveDown(x, y);
+				latestWhereToMove = 4;
+			}else {
+				moveRight(x, y);
+				latestWhereToMove = 1;
+			}
+			break;
+		case 6 :
+			if (latestWhereToMove == 2) {
+				moveDown(x, y);
+				latestWhereToMove = 4;
+			}else {
+				moveUp(x, y);
+				latestWhereToMove = 2;
+			}
+			break;
+		case 7 :
+			if (latestWhereToMove == 4) {
+				moveDown(x, y);
+				latestWhereToMove = 4;
+			}else if (latestWhereToMove == 8){
+				if (whereNotToMove == 1 || whereNotToMove == 3 || whereNotToMove == 5 || whereNotToMove == 7 || whereNotToMove == 9 || whereNotToMove == 11 || whereNotToMove == 13 || whereNotToMove == 15) {
+					moveUp(x, y);
+					latestWhereToMove = 2;
+				}else {
+					moveDown(x, y);
+					latestWhereToMove = 4;
+				}
+			}else {
+				moveRight(x, y);
+				latestWhereToMove = 1;
+			}
+			break;
+		case 8 :
+			moveLeft(x, y);
+			latestWhereToMove = 8;
+			break;
+		case 9 :
+			if (latestWhereToMove == 8) {
+				moveRight(x, y);
+				latestWhereToMove = 1;
+			}else {
+				moveLeft(x, y);
+				latestWhereToMove = 8;
+			}
+			break;
+		case 10 :
+			if (latestWhereToMove == 1) {
+				moveRight(x, y);
+				latestWhereToMove = 2;
+			}else {
+				moveLeft(x, y);
+				latestWhereToMove = 8;
+			}
+			break;
+		case 11 :
+			if (latestWhereToMove == 1) {
+				moveLeft(x, y);
+				latestWhereToMove = 8;
+			} else if (latestWhereToMove == 8) {
+				if (whereNotToMove == 1 || whereNotToMove == 3 || whereNotToMove == 5 || whereNotToMove == 7 || whereNotToMove == 9 || whereNotToMove == 11 || whereNotToMove == 13 || whereNotToMove == 15) {
+					moveUp(x, y);
+					latestWhereToMove = 2;
+				}else {
+					moveLeft(x, y);
+					latestWhereToMove = 8;
+				}
+			} else if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
+				moveLeft(x, y);
+				latestWhereToMove = 8;
+			}else {
+				moveRight(x, y);
+				latestWhereToMove = 1;
+			}
+			break;
+		case 12 :
+			if (latestWhereToMove == 1) {
+				moveDown(x, y);
+				latestWhereToMove = 4;
+			} else {
+				moveLeft(x, y);
+				latestWhereToMove = 8;
+			}
+			break;
+		case 13 :
+			if (latestWhereToMove == 1) {
+				moveRight(x, y);
+				latestWhereToMove = 1;
+			} else if (latestWhereToMove == 8) {
+				if (whereNotToMove == 8 || whereNotToMove == 9 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveDown(x, y);
+					latestWhereToMove = 4;
+				}else {
+					moveLeft(x, y);
+					latestWhereToMove = 8;
+				}
+			} else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 15) {
+				moveLeft(x, y);
+				latestWhereToMove = 8;
+			}else {
+				moveRight(x, y);
+				latestWhereToMove = 1;
+			}
+			break;
+		case 14 :
+			if (latestWhereToMove == 2) {
+				moveUp(x, y);
+				latestWhereToMove = 2;
+			} else if (latestWhereToMove == 4) {
+				if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveLeft(x, y);
+					latestWhereToMove = 8;
+				}else {
+					moveDown(x, y);
+					latestWhereToMove = 2;
+				}
+			} else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 15) {
+				moveDown(x, y);
+				latestWhereToMove = 4;
+			}else {
+				moveUp(x, y);
+				latestWhereToMove = 2;
+			}
+			break;
+		case 15 :
+			switch(latestWhereToMove) {
+			case 8 :
+				moveUp(x, y);
+				latestWhereToMove = 2;
+				break;
+			case 4 :
+				moveLeft(x, y);
+				latestWhereToMove = 8;
+				break;
+			case 2 :
+				moveRight(x, y);
+				latestWhereToMove = 1;
+				break;
+			case 1 :
+				moveDown(x, y);
+				latestWhereToMove = 4;
+			}
+		}
 	}
 
 }
