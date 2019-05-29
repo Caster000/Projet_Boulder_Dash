@@ -291,8 +291,8 @@ public class Map extends Observable implements IMap {
 		}else if (leftEntity instanceof Stone) {
 			IEntity leftLeftEntity = this.getOnTheMapXY(x-2, y);//checks what's the entity left to where the hero wanted to move
 			if(leftLeftEntity instanceof Empty) {
-				moveRight(x-1, y);
-				moveRight(x, y);
+				moveLeft(x-1, y);
+				moveLeft(x, y);
 				System.out.println("pushed");
 				return true;
 			}else {
@@ -375,7 +375,7 @@ public class Map extends Observable implements IMap {
 			if(downEntity instanceof Diamond || downEntity instanceof Rock){
 				return false;
 			}else {
-				fallerChecks(downEntity);
+				fallerChecks(downEntity, x, y);
 				moveDown(x, y);
 				return true;
 			}
@@ -420,7 +420,7 @@ public class Map extends Observable implements IMap {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		fallerChecks(downLeftEntity);
+		fallerChecks(downLeftEntity, x, y);
 		moveDown(x-1, y);//to slide, you need to move left or right then down
 		B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
@@ -432,17 +432,17 @@ public class Map extends Observable implements IMap {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		fallerChecks(downRightEntity);
+		fallerChecks(downRightEntity, x, y);
 		moveDown(x-1, y);//to slide, you need to move left or right then down
 		B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
 
-	public void fallerChecks(IEntity e) { 
+	public void fallerChecks(IEntity e, int x, int y) { 
 		if (e instanceof Monster) {//if a monster is under a stone falling
 			e.die();//hero die because of the stone
-			killPlayer();
 		}else if (e instanceof Hero) {//if the hero is under a stone falling
 			e.die();//hero die because of the stone
+			killPlayer(x, y+1);
 		}
 	}
 
@@ -516,7 +516,7 @@ public class Map extends Observable implements IMap {
 						if (downEntity instanceof Diamond || downEntity instanceof Rock) {
 							System.out.println("no");
 						}else {
-							killPlayer();
+							killPlayer(x, y+1);
 							System.out.println(faller.isFalling());
 							moveDown(x, y);//need to do at end
 							if (downDownEntity instanceof IPermeability) {
@@ -569,8 +569,18 @@ public class Map extends Observable implements IMap {
 	//		this.level = level;
 	//	}
 
-	private void killPlayer() {
+	private void killPlayer(int x, int y) {
 		System.out.println("Hero is dead");
+		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x][y-1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x][y+1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x+1][y-1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x+1][y+1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x+1][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x-1][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x-1][y-1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x-1][y+1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
+		
 
 	}
 
