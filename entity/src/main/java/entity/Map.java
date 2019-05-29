@@ -47,12 +47,21 @@ public class Map extends Observable implements IMap {
 	private int requiredNumberOfDiamonds = 1;
 
 	private int numberOfDiamonds = 0;
+	
+	//timer
+	TimerTask task = new TimerTask() {
+		public void run(){
+			updateMap();
+		}
+	};
+	Timer timer;
 
 	public IEntity[][] getOnTheMap() {
 		return onTheMap;
 	}
 
 	public Map() {
+		timer = new Timer();
 		onTheMap=new IEntity[1][1];
 	}
 
@@ -62,8 +71,9 @@ public class Map extends Observable implements IMap {
 		this.setMessage(message);
 	}
 
-	public Map(/*final int id,*/ int width, int height) {
-		//this.setId(id);
+	public Map( int width, int height) {
+		timer=new Timer();
+		timer.schedule(task, 200,200);
 		this.setWidth(width);
 		this.setHeight(height);
 		onTheMap = new Entity[width][height];
