@@ -8,13 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
-
-public class Testdiamond {
-
-	int id = 1;
-	Testdiamond diamond;
-	boolean isFalling = false;
+public class TryAndCatch {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -26,30 +20,20 @@ public class Testdiamond {
 
 	@Before
 	public void setUp() throws Exception {
-		diamond = new Testdiamond();
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
-	
-	/**
-	 * tests if the diamond have the correct id
-	 */
-	
 	@Test
 	public void test() {
-		int expected = id;
-		assertEquals(expected, diamond.id);
-	}
-	
-	
-	
-	@Test
-	public void testisFalling() throws Exception {	
-		diamond = new Testdiamond();
-		assertFalse(diamond.isFalling);
+		
+		try {
+			Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
