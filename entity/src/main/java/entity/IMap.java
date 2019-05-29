@@ -1,6 +1,8 @@
 package entity;
 
 
+import java.util.Observable;
+
 import entity.IEntity;
 
 public interface IMap {
@@ -30,6 +32,6 @@ public interface IMap {
      */
     IEntity getOnTheMapXY(int x, int y);
 
-   
+   Observable getObservable();
 }
 

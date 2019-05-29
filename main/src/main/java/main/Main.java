@@ -34,7 +34,7 @@ public abstract class Main {
         controller.control();
         controller.orderPerform(UserOrder.L1);
         
-        Timer chrono = new Timer();
-        chrono.schedule(new Map (), 250,250);
+//        Timer chrono = new Timer();
+//        chrono.schedule(new Map (), 250,250);
     }
 }

@@ -18,10 +18,11 @@ import entity.motionless.Empty;
 import entity.motionless.Rock;
 import entity.motionless.Wall;
 
+import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Map extends TimerTask implements IMap {
+public class Map extends Observable implements IMap {
 	/** The width. */
 	private int          width;
 
@@ -442,22 +443,22 @@ public class Map extends TimerTask implements IMap {
 		this.requiredNumberOfDiamonds = requiredNumberOfDiamonds;
 	}
 
-	@Override
-	public void run() {
-		System.out.println("time : " +getTimeSecond());
-		if(time ==30) {
-			System.out.println("Warning!");
-		}
-		if(time == 0) {
-			cancel();
-			System.out.println("Next level or restart");
-		if(time > 0){
-				System.out.println("You win");
-				this.numberOfDiamonds = 1;
-			}
-		}
-		time --;
-	}
+//	@Override
+//	public void run() {
+//		System.out.println("time : " +getTimeSecond());
+//		if(time ==30) {
+//			System.out.println("Warning!");
+//		}
+//		if(time == 0) {
+//			cancel();
+//			System.out.println("Next level or restart");
+//		if(time > 0){
+//				System.out.println("You win");
+//				this.numberOfDiamonds = 1;
+//			}
+//		}
+//		time --;
+//	}
 
 	public int getTimeSecond() {
 		return time;
@@ -482,6 +483,14 @@ public class Map extends TimerTask implements IMap {
 				}
 			}
 		}
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	@Override
+	public Observable getObservable() {
+		// TODO Auto-generated method stub
+		return this;
 	}
 
 	//	public int getLevel() {

@@ -85,6 +85,7 @@ public final class View implements IView, Runnable {
 	 */
 	public void run() {
 		this.frame.setVisible(true);
+
 	}
 
 

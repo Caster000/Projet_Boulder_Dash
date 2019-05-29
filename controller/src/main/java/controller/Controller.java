@@ -83,7 +83,7 @@ public final class Controller implements IController{
 		//			//this.getView().followMyhero();
 		//		
 		//			}
-		this.getView().displayMessage("Game Over !");
+		//this.getView().displayMessage("Game Over !");
 
 	}
 
