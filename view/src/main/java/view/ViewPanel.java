@@ -57,11 +57,11 @@ class ViewPanel extends JPanel implements Observer {
 	 *
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
-	
+
 	/**
 	 *@param update 
 	 */
-	
+
 	public void update(final Observable arg0, final Object arg1) {
 		this.repaint();
 	}
@@ -73,34 +73,35 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
-        graphics.clearRect(50, 50, this.getWidth(), this.getHeight());
+		graphics.clearRect(50, 50, this.getWidth(), this.getHeight());
 
-        try {
-            for(int y=0; y < this.getViewFrame().getModel().getMap().getHeight(); y++)
-            {
-                for(int x=0; x < this.getViewFrame().getModel().getMap().getWidth(); x++)
-                {
-                    this.getViewFrame().getModel().getMap().getOnTheMap()[x][y].getSprite().loadImage();
-                    
-                }
-            }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        for(int y=0; y < this.getViewFrame().getModel().getMap().getHeight(); y++)
-        {
-            for(int x=0; x < this.getViewFrame().getModel().getMap().getWidth(); x++)
-            {
-                graphics.drawImage(this.getViewFrame().getModel().getMap().getOnTheMap()[x][y].getSprite().getImage(), x*50, y*50, this);
-            }
-        }
-        try{System.out.println("J'actualise_2");
+		try {
+			for(int y=0; y < this.getViewFrame().getModel().getMap().getHeight(); y++)
+			{
+				for(int x=0; x < this.getViewFrame().getModel().getMap().getWidth(); x++)
+				{
+					this.getViewFrame().getModel().getMap().getOnTheMap()[x][y].getSprite().loadImage();
+
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(int y=0; y < this.getViewFrame().getModel().getMap().getHeight(); y++)
+		{
+			for(int x=0; x < this.getViewFrame().getModel().getMap().getWidth(); x++)
+			{
+				graphics.drawImage(this.getViewFrame().getModel().getMap().getOnTheMap()[x][y].getSprite().getImage(), x*50, y*50, this);
+			}
+		}
+		try{
+//			System.out.println("J'actualise_2");
 		viewFrame.getModel().getMap().getObservable().addObserver(this);
-	
-	}catch(Exception e){ 
-		 e.printStackTrace();
+
+		}catch(Exception e){ 
+			e.printStackTrace();
+		}
 	}
-    }
-	
+
 }

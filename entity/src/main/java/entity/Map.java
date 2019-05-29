@@ -47,7 +47,7 @@ public class Map extends Observable implements IMap {
 	private int requiredNumberOfDiamonds = 1;
 
 	private int numberOfDiamonds = 0;
-	
+
 	//timer
 	TimerTask task = new TimerTask() {
 		public void run(){
@@ -123,7 +123,10 @@ public class Map extends Observable implements IMap {
 	 */
 	@Override
 	public final IEntity getOnTheMapXY(final int x, final int y) {
-		return this.onTheMap[x][y];
+		if (x <= width-1 && y <= height-1) {
+			return this.onTheMap[x][y];
+		}
+		return null;
 	}
 
 	/**
@@ -202,28 +205,28 @@ public class Map extends Observable implements IMap {
 	public void moveLeft(int x, int y) {
 		this.onTheMap[x-1][y] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-		System.out.println("Went left");
+		//		System.out.println("Went left");
 	}
 
 	//generic function for moving right
 	public void moveRight(int x, int y) {
 		this.onTheMap[x+1][y] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-		System.out.println("Went right");
+		//		System.out.println("Went right");
 	}
 
 	//generic function for moving up
 	public void moveUp(int x, int y) {
 		this.onTheMap[x][y-1] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-		System.out.println("Went up");
+		//		System.out.println("Went up");
 	}
 
 	//generic function for moving down
 	public void moveDown(int x, int y) {
 		this.onTheMap[x][y+1] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-		System.out.println("Went down");
+		//		System.out.println("Went down");
 	}
 
 	//specific function for the hero to move up
@@ -359,16 +362,16 @@ public class Map extends Observable implements IMap {
 
 	public boolean fall(int x, int y){
 		IGravity faller = (IGravity) onTheMap[x][y];
-//		System.out.println(faller.isFalling());							//debug
+		//		System.out.println(faller.isFalling());							//debug
 		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity down of the Stone
 		if(!faller.isFalling()) {
-//			System.out.println("je ne suis pas en train de tomber"); 				//debug
+			//			System.out.println("je ne suis pas en train de tomber"); 				//debug
 			if(downEntity instanceof Empty){
 				moveDown(x, y);
 				return true;
 			}
 		}else if(downEntity instanceof IPermeability){
-//			System.out.println("mais moi oui !");					//debug
+			//			System.out.println("mais moi oui !");					//debug
 			if(downEntity instanceof Diamond || downEntity instanceof Rock){
 				return false;
 			}else {
@@ -452,22 +455,22 @@ public class Map extends Observable implements IMap {
 		this.requiredNumberOfDiamonds = requiredNumberOfDiamonds;
 	}
 
-//	@Override
-//	public void run() {
-//		System.out.println("time : " +getTimeSecond());
-//		if(time ==30) {
-//			System.out.println("Warning!");
-//		}
-//		if(time == 0) {
-//			cancel();
-//			System.out.println("Next level or restart");
-//		if(time > 0){
-//				System.out.println("You win");
-//				this.numberOfDiamonds = 1;
-//			}
-//		}
-//		time --;
-//	}
+	//	@Override
+	//	public void run() {
+	//		System.out.println("time : " +getTimeSecond());
+	//		if(time ==30) {
+	//			System.out.println("Warning!");
+	//		}
+	//		if(time == 0) {
+	//			cancel();
+	//			System.out.println("Next level or restart");
+	//		if(time > 0){
+	//				System.out.println("You win");
+	//				this.numberOfDiamonds = 1;
+	//			}
+	//		}
+	//		time --;
+	//	}
 
 	public int getTimeSecond() {
 		return time;
@@ -481,19 +484,74 @@ public class Map extends Observable implements IMap {
 		this.numberOfDiamonds = numberOfDiamonds;
 	}
 
-	public void updateMap(){
-		for(int x=width-1; x>0; x--){
-			for(int y=height-1; y>0; y--){
-				IEntity Entity = this.getOnTheMapXY(x, y);//checks what's the entity where the hero wanted to move
-				if(Entity instanceof IGravity){
+	public void updateMap() {
+		for(int x=width-1; x > 0; x--)
+		{
+			for(int y=height-1; y > 0; y--)
+			{
+				if(getOnTheMapXY(x, y) instanceof IGravity)
+				{
+
 					IGravity faller = (IGravity) onTheMap[x][y];
-					faller.setFalling(fall(x, y));
-					System.out.println(faller.isFalling());
+					IEntity downEntity = this.getOnTheMapXY(x, y+1);
+					IEntity downDownEntity = this.getOnTheMapXY(x, y+2);
+
+					if(downEntity instanceof Empty)
+					{
+						System.out.println(faller.isFalling());
+						moveDown(x, y);//need to do at end
+						//						IGravity diam = (IGravity) onTheMap[x][y];//debug
+						//						System.out.println("isFalling ? : " + faller.isFalling());//debug
+						if (downDownEntity instanceof IPermeability) {
+							if (downDownEntity instanceof Diamond || downDownEntity instanceof Rock) {
+								faller.setIsFalling(false);
+							}else {
+								faller.setIsFalling(true);
+
+							}
+						}else {
+							faller.setIsFalling(false);
+						}
+					}else if (downEntity instanceof IPermeability && faller.isFalling()) {
+						if (downEntity instanceof Diamond || downEntity instanceof Rock) {
+							System.out.println("no");
+						}else {
+							killPlayer();
+							System.out.println(faller.isFalling());
+							moveDown(x, y);//need to do at end
+							if (downDownEntity instanceof IPermeability) {
+								if (downDownEntity instanceof Diamond || downDownEntity instanceof Rock) {
+									faller.setIsFalling(false);
+								}else {
+									faller.setIsFalling(true);
+
+								}
+							} else {
+								faller.setIsFalling(false);
+							}
+						}
+
+
+						//					else if(DownEntity(y, x) instanceof ISliding)
+						//					{
+						//						if( (getRightEntity(y, x) instanceof Air) && (getRightBotEntity(y, x) instanceof Air))
+						//						{
+						//							moveRight(y, x);
+						//						}
+						//						else if( (getLeftEntity(y, x) instanceof Air) && (getLeftBotEntity(y, x) instanceof Air))
+						//						{
+						//							moveLeft(y, x);
+						//						}
+						//					}
+					}
 				}
 			}
 		}
-		this.setChanged();
-		this.notifyObservers();
+
+
+		setChanged();
+		notifyObservers();
+
 	}
 
 	@Override
@@ -510,7 +568,7 @@ public class Map extends Observable implements IMap {
 	//	public void setLevel(int level) {
 	//		this.level = level;
 	//	}
-	
+
 	private void killPlayer() {
 		System.out.println("Hero is dead");
 

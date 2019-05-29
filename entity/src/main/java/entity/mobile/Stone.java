@@ -4,6 +4,7 @@ import entity.Sprite;
 
 public class Stone extends Block {
 	protected final int SPEED = 2;
+	boolean isFalling = false;
 
     private static final Sprite SPRITE = new Sprite('2',"Stone.png");
     /**
@@ -26,9 +27,14 @@ public class Stone extends Block {
 	}
 
 	@Override
-	public void setFalling(boolean bool) {
-		// TODO Auto-generated method stub
+	public void setIsFalling(boolean isFalling) {
+		this.isFalling = isFalling;
 		
+	}
+
+	@Override
+	public boolean isFalling() {
+		return this.isFalling;
 	}
 
 }

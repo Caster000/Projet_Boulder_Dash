@@ -8,7 +8,7 @@ public interface IGravity {
 
 	
 
-	public void setFalling(boolean bool);
+	public void setIsFalling(boolean bool);
 
 	public boolean isFalling();
 
