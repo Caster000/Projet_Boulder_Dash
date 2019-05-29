@@ -27,6 +27,8 @@ public class Map extends Observable implements IMap {
 	/** The width. */
 	private int          width;
 
+	private int numberOfRow = 0;
+
 	/** The height. */
 	private int          height;
 
@@ -383,58 +385,58 @@ public class Map extends Observable implements IMap {
 		return false;
 	}
 
-	public boolean slide(IEntity downEntity, Block B, int x, int y) {
-		IEntity downLeftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity down right of the Stone
-		IEntity downRightEntity = this.getOnTheMapXY(x+1, y);//checks what's the entity down left of the Stone
-		IEntity leftEntity = this.getOnTheMapXY(x-1, y-1);//checks what's the entity left of the stone
-		IEntity rightEntity = this.getOnTheMapXY(x+1, y-1);//checks what's the entity right of the stone
+	public int slide(IEntity downEntity, IGravity faller, int x, int y) {
+		IEntity downLeftEntity = this.getOnTheMapXY(x-1, y+1);//checks what's the entity down right of the Stone
+		IEntity downRightEntity = this.getOnTheMapXY(x+1, y+1);//checks what's the entity down left of the Stone
+		IEntity leftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity left of the stone
+		IEntity rightEntity = this.getOnTheMapXY(x+1, y);//checks what's the entity right of the stone
 
 		if(downEntity instanceof Diamond || downEntity instanceof Stone || downEntity instanceof Wall) {
 			if (downLeftEntity instanceof Empty && leftEntity instanceof Empty) {
-				slideLeft(downLeftEntity, B, x, y);//we call the method which allows the entity to slide left
-				return true;//the codes return that the sliding succeed
+				slideLeft(downLeftEntity, faller, x, y);//we call the method which allows the entity to slide left
+				return 1;//the codes return that the sliding succeed
 
 			} else if(downRightEntity instanceof Empty && rightEntity instanceof Empty) {
-				slideRight(downRightEntity, B, x, y);
-				return true;//the codes return that the sliding succeed
+				slideRight(downRightEntity, faller, x, y);
+				return 2;//the codes return that the sliding succeed
 
 			}
-		}else if(B.isFalling() == true) {
+		}else if(faller.isFalling() == true) {
 			if(downLeftEntity instanceof Monster || downLeftEntity instanceof Hero || downLeftEntity instanceof Empty && leftEntity instanceof Empty) {
-				slideLeft(downLeftEntity, B, x, y);//we call the method which allows the entity to slide left
-				return true;//the codes return that the sliding succeed
+				slideLeft(downLeftEntity, faller, x, y);//we call the method which allows the entity to slide left
+				return 1;//the codes return that the sliding succeed
 
 			}else if(downRightEntity instanceof Monster || downRightEntity instanceof Hero || downRightEntity instanceof Empty && rightEntity instanceof Empty) {
-				slideLeft(downLeftEntity, B, x, y);//we call the method which allows the entity to slide left
-				return true;//the codes return that the sliding succeed
+				slideLeft(downLeftEntity, faller, x, y);//we call the method which allows the entity to slide left
+				return 2;//the codes return that the sliding succeed
 
 			}
 		}
-		return false;
+		return 0;
 	}
 
-	public void slideLeft(IEntity downLeftEntity, Block B, int x, int y) {
+	public void slideLeft(IEntity downLeftEntity, IGravity faller, int x, int y) {
 		moveLeft(x, y);
 		try {
-			Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
+			Thread.sleep(100);//a little pause in the execution so that the user can see the sliding
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		fallerChecks(downLeftEntity, x, y);
 		moveDown(x-1, y);//to slide, you need to move left or right then down
-		B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
+		faller.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
 
-	public void slideRight(IEntity downRightEntity, Block B, int x, int y) {
+	public void slideRight(IEntity downRightEntity, IGravity faller, int x, int y) {
 		moveRight(x, y);
 		try {
-			Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
+			Thread.sleep(100);//a little pause in the execution so that the user can see the sliding
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		fallerChecks(downRightEntity, x, y);
 		moveDown(x-1, y);//to slide, you need to move left or right then down
-		B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
+		faller.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
 
 	public boolean fallerChecks(IEntity e, int x, int y) { 
@@ -489,16 +491,18 @@ public class Map extends Observable implements IMap {
 	}
 
 	public void updateMap() {
+		int leftOrRight = 0;
 		for(int x=width-1; x > 0; x--)
 		{
 			for(int y=height-1; y > 0; y--)
 			{
 				if(getOnTheMapXY(x, y) instanceof IGravity)
 				{
-
 					IGravity faller = (IGravity) onTheMap[x][y];
 					IEntity downEntity = this.getOnTheMapXY(x, y+1);
 					IEntity downDownEntity = this.getOnTheMapXY(x, y+2);
+					IEntity downDownLeftEntity = this.getOnTheMapXY(x-1, y+2);
+					IEntity downDownRightEntity = this.getOnTheMapXY(x+1, y+2);
 
 					if(downEntity instanceof Empty)
 					{
@@ -548,6 +552,31 @@ public class Map extends Observable implements IMap {
 						//							moveLeft(y, x);
 						//						}
 						//					}
+					}else {
+						leftOrRight = slide(downEntity, faller, x, y);
+						if(leftOrRight == 1) {
+							if (downDownLeftEntity instanceof IPermeability) {
+								if (downDownLeftEntity instanceof Diamond || downDownLeftEntity instanceof Rock) {
+									faller.setIsFalling(false);
+								}else {
+									faller.setIsFalling(true);
+
+								}
+							} else {
+								faller.setIsFalling(false);
+							}
+						}else if(leftOrRight == 2) {
+							if (downDownRightEntity instanceof IPermeability) {
+								if (downDownLeftEntity instanceof Diamond || downDownRightEntity instanceof Rock) {
+									faller.setIsFalling(false);
+								}else {
+									faller.setIsFalling(true);
+
+								}
+							} else {
+								faller.setIsFalling(false);
+							}
+						}
 					}
 				}
 			}
@@ -556,7 +585,6 @@ public class Map extends Observable implements IMap {
 
 		setChanged();
 		notifyObservers();
-
 	}
 
 	@Override
@@ -575,7 +603,7 @@ public class Map extends Observable implements IMap {
 	//	}
 
 	private void killPlayer(int x, int y) {
-		System.out.println("Hero is dead");
+		System.out.println("The hero is dead");
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x][y-1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x][y+1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
@@ -590,7 +618,7 @@ public class Map extends Observable implements IMap {
 	}
 
 	private void killMonster(int x, int y) {
-		System.out.println("Hero is dead");
+		System.out.println("A monster is dead");
 		this.onTheMap[x][y] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x][y-1] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x][y+1] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
