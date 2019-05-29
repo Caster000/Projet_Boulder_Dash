@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  * library
  */
@@ -19,6 +22,7 @@ class ViewPanel extends JPanel implements Observer {
 
 	/** The view frame. */
 	private ViewFrame					viewFrame;
+	Font  f1  = new Font("Impact", Font.ITALIC,  35);
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
 
@@ -65,23 +69,21 @@ class ViewPanel extends JPanel implements Observer {
 	public void update(final Observable arg0, final Object arg1) {
 		this.repaint();
 	}
-
-	/*
+/*
 	 * (non-Javadoc)
 	 *
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
-		graphics.clearRect(50, 50, this.getWidth(), this.getHeight());
-
+		//graphics.clearRect(50, 50, this.getWidth(), this.getHeight());
+		super.paintComponent(graphics);
 		try {
 			for(int y=0; y < this.getViewFrame().getModel().getMap().getHeight(); y++)
 			{
 				for(int x=0; x < this.getViewFrame().getModel().getMap().getWidth(); x++)
 				{
 					this.getViewFrame().getModel().getMap().getOnTheMap()[x][y].getSprite().loadImage();
-
 				}
 			}
 		} catch (IOException e) {
@@ -95,6 +97,10 @@ class ViewPanel extends JPanel implements Observer {
 				graphics.drawImage(this.getViewFrame().getModel().getMap().getOnTheMap()[x][y].getSprite().getImage(), x*50, y*50, this);
 			}
 		}
+		graphics.setFont(f1);
+		graphics.setColor(Color.orange);
+		graphics.drawString("Diamond : "+this.getViewFrame().getModel().getMap().getNumberOfDiamonds() + "/" + this.getViewFrame().getModel().getMap().getRequiredNumberOfDiamonds(), 1, 845);
+		
 		try{
 //			System.out.println("J'actualise_2");
 		viewFrame.getModel().getMap().getObservable().addObserver(this);
@@ -102,6 +108,7 @@ class ViewPanel extends JPanel implements Observer {
 		}catch(Exception e){ 
 			e.printStackTrace();
 		}
+		
 	}
-
+	
 }
