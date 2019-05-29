@@ -12,5 +12,23 @@ public class Stone extends Block {
     public Stone() {
         super(SPRITE);
     }
+    
+//	@Override
+//	public void gravity() {
+//		// TODO Auto-generated method stub
+//		
+//	}
+
+	@Override
+	public void fall() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFalling(boolean bool) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

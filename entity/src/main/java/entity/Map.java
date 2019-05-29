@@ -11,6 +11,7 @@ import entity.IEntity;
 import entity.mobile.Block;
 import entity.mobile.Diamond;
 import entity.mobile.Hero;
+import entity.mobile.IGravity;
 import entity.mobile.Monster;
 import entity.mobile.Stone;
 import entity.motionless.Door;
@@ -346,30 +347,27 @@ public class Map extends Observable implements IMap {
 
 	}
 
-	public void fall(Block B, int x, int y){
-//		System.out.println("Je suis un Block");
+	public boolean fall(int x, int y){
+		IGravity faller = (IGravity) onTheMap[x][y];
+//		System.out.println(faller.isFalling());							//debug
 		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity down of the Stone
-		if (!B.isFalling()) {//checks if the Entity is falling
-//			System.out.println("Je ne suis pas en train de tomber");
-			if (downEntity instanceof Empty) {//checks if downEntity is an Empty
+		if(!faller.isFalling()) {
+//			System.out.println("je ne suis pas en train de tomber"); 				//debug
+			if(downEntity instanceof Empty){
 				moveDown(x, y);
-				B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
-				System.out.println("Je tombe");
-			}//there ain't no else on this if
-		}else if(downEntity instanceof IPermeability) {//the stone is already falling, it can go on all penetrable entity... 
-			System.out.println("Je devrais tomber");
-			if (downEntity instanceof Diamond || downEntity instanceof Rock) {//...except on a diamond
-				System.out.println("...mais il y a un diamant ou un rock sous moi");
-				B.setIsFalling(false);
+				return true;
+			}
+		}else if(downEntity instanceof IPermeability){
+//			System.out.println("mais moi oui !");					//debug
+			if(downEntity instanceof Diamond || downEntity instanceof Rock){
+				return false;
 			}else {
 				fallerChecks(downEntity);
 				moveDown(x, y);
-				System.out.println("Je continue de tomber");
+				return true;
 			}
-		}else if(!slide(downEntity, B, x, y)) {//if the stone is nor sliding nor falling
-			B.setIsFalling(false);//the stone is not or no more falling
 		}
-
+		return false;
 	}
 
 	public boolean slide(IEntity downEntity, Block B, int x, int y) {
@@ -429,6 +427,7 @@ public class Map extends Observable implements IMap {
 	public void fallerChecks(IEntity e) { 
 		if (e instanceof Monster) {//if a monster is under a stone falling
 			e.die();//hero die because of the stone
+			killPlayer();
 		}else if (e instanceof Hero) {//if the hero is under a stone falling
 			e.die();//hero die because of the stone
 		}
@@ -472,14 +471,14 @@ public class Map extends Observable implements IMap {
 		this.numberOfDiamonds = numberOfDiamonds;
 	}
 
-	public void updateMap() {
-		for(int y = height-1; y>0; y--) {
-			for(int x = width-1; x>0; x--) {
-				IEntity faller = this.getOnTheMapXY(x, y);
-				if (faller instanceof Block) {
-//					System.out.println("c'est un block");
-					Block B = (Block) onTheMap[x][y];
-					fall(B, x, y);
+	public void updateMap(){
+		for(int x=width-1; x>0; x--){
+			for(int y=height-1; y>0; y--){
+				IEntity Entity = this.getOnTheMapXY(x, y);//checks what's the entity where the hero wanted to move
+				if(Entity instanceof IGravity){
+					IGravity faller = (IGravity) onTheMap[x][y];
+					faller.setFalling(fall(x, y));
+					System.out.println(faller.isFalling());
 				}
 			}
 		}
@@ -501,5 +500,10 @@ public class Map extends Observable implements IMap {
 	//	public void setLevel(int level) {
 	//		this.level = level;
 	//	}
+	
+	private void killPlayer() {
+		System.out.println("Hero is dead");
+
+	}
 
 }
