@@ -407,7 +407,7 @@ public class Map extends Observable implements IMap {
 				return 1;//the codes return that the sliding succeed
 
 			}else if(downRightEntity instanceof Monster || downRightEntity instanceof Hero || downRightEntity instanceof Empty && rightEntity instanceof Empty) {
-				slideLeft(downLeftEntity, faller, x, y);//we call the method which allows the entity to slide left
+				slideLeft(downRightEntity, faller, x, y);//we call the method which allows the entity to slide left
 				return 2;//the codes return that the sliding succeed
 
 			}
@@ -435,7 +435,7 @@ public class Map extends Observable implements IMap {
 			e.printStackTrace();
 		}
 		fallerChecks(downRightEntity, x, y);
-		moveDown(x-1, y);//to slide, you need to move left or right then down
+		moveDown(x+1, y);//to slide, you need to move left or right then down
 		faller.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
 
