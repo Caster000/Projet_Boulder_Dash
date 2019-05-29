@@ -1,27 +1,19 @@
 package controller;
 
-import java.io.IOException;
-
-
 import contract.IController;
 import contract.IModel;
 import contract.IView;
 import contract.UserOrder;
-import entity.Map;
 
 /**
  * The Class Controller.
  */
 public final class Controller implements IController{
-	private static final int speed = 1;
-	private UserOrder stackOrder;
 	/** The view. */
 	private IView	view;
 
 	/** The model. */
 	private IModel	model;
-
-	private Map map;
 
 	private int heroX = 1;
 
@@ -40,64 +32,9 @@ public final class Controller implements IController{
 	 */
 	public Controller(final IView view, final IModel model)  {
 		this.setView(view);
-		this.setModel(model);
-		this.clearStackOrder();
+		this.setModel(model);;
 	}
 
-	/**
-	 * Control.
-	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IController#control()
-	 */
-	public void control() {
-		this.view.play();
-	}
-
-	public final void play() throws InterruptedException {
-		//		while (this.getModel().getHero().isAlive()) {
-		//			Thread.sleep(speed);
-		//			switch (this.getStackOrder()) {
-		//			case UP:
-		//				this.getModel().getHero().HeromoveUP();
-		//				break;
-		//			case DOWN:
-		//				this.getModel().getHero().HeromoveDOWN();
-		//				break;
-		//			case RIGHT:
-		//				this.getModel().getHero().HeromoveRIGHT();
-		//				break;
-		//			case LEFT:
-		//				this.getModel().getHero().HeromoveDOWN();
-		//				break;
-		//				default:
-		//					this.getModel().getHero().HeroDoNothing();
-		//					break;	
-		//			}
-		//			this.clearStackOrder();
-		//			if (this.getModel().getHero().isAlive()){
-		//				this.getModel().getHero().HeroDoNothing();
-		//			}
-		//			//this.getView().followMyhero();
-		//		
-		//			}
-		//this.getView().displayMessage("Game Over !");
-
-	}
-
-
-	private void clearStackOrder() {
-		this.stackOrder = UserOrder.NULL;
-	}
-
-
-
-
-	private UserOrder getStackOrder() {
-		return this.stackOrder;
-	}
 	/**
 	 * Sets the view.
 	 *
@@ -135,7 +72,7 @@ public final class Controller implements IController{
 			level++;
 			this.model.loadMap(/*this.model.getMap().getLevel()*/level);
 			this.model.getMap().setNumberOfDiamonds(0);
-			System.out.println(/*this.model.getMap().getLevel()*/level);
+			//System.out.println(/*this.model.getMap().getLevel()*/level);	debug
 			switch(/*this.model.getMap().getLevel()*/level) {
 			case 1 :
 				this.model.getMap().setRequiredNumberOfDiamonds(1);
@@ -147,31 +84,31 @@ public final class Controller implements IController{
 				this.model.getMap().setRequiredNumberOfDiamonds(8);
 				//this.model.getMap().setLevel(2);
 				this.heroX = 2;
-				System.out.println(heroX);
+				//System.out.println(heroX);	debug
 				this.heroY = 2;
 				break;
 			case 3 :
 				this.model.getMap().setRequiredNumberOfDiamonds(8);
-//				this.model.getMap().setLevel(3);
+				//				this.model.getMap().setLevel(3);
 				this.heroX = 2;
 				this.heroY = 2;
 				break;
 			case 4 :
 				this.model.getMap().setRequiredNumberOfDiamonds(10);
-//				this.model.getMap().setLevel(4);
+				//				this.model.getMap().setLevel(4);
 				this.heroX = 2;
 				this.heroY = 2;
 				break;
 			case 5 :
 				this.model.getMap().setRequiredNumberOfDiamonds(8);
-//				this.model.getMap().setLevel(5);
+				//				this.model.getMap().setLevel(5);
 				this.heroX = 2;
 				this.heroY = 2;
 				break;
 			case 6 :
 				this.model.getMap().setRequiredNumberOfDiamonds(8);
-//				this.model.getMap().setLevel(6);
-				this.heroX = 2;
+				//				this.model.getMap().setLevel(6);
+				this.heroX = 1;
 				this.heroY = 2;
 				level = 0;
 				break;
@@ -248,9 +185,9 @@ public final class Controller implements IController{
 		this.heroY = heroY;
 	}
 
-	public void printDown() {
-		System.out.println("Down");
-	}
+	//	public void printDown() {			debug
+	//		System.out.println("Down");
+	//	}
 
 	public int getLevel() {
 		return level;

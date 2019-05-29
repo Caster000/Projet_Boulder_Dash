@@ -10,12 +10,6 @@ import java.io.IOException;
 public interface IController {
 
 	/**
-	 * Control.
-	 */
-	
-	void play() throws InterruptedException;
-	public void control();
-	/**
 	 * Order perform.
 	 *
 	 * @param controllerOrder

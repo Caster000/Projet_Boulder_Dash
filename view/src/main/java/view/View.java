@@ -2,9 +2,7 @@ package view;
 
 import java.awt.event.KeyEvent;
 
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-
 import contract.IController;
 import contract.IModel;
 import contract.IView;
@@ -14,7 +12,7 @@ import contract.UserOrder;
  * The Class View.
  *
  */
-public final class View implements IView, Runnable {
+public final class View implements  IView,Runnable {
 
 	
 	/** The frame. */
@@ -72,15 +70,6 @@ public final class View implements IView, Runnable {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see contract.IView#printMessage(java.lang.String)
-	 */
-	public void displayMessage(String message) {
-		JOptionPane.showMessageDialog(null, message);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
@@ -102,15 +91,5 @@ public final class View implements IView, Runnable {
 	public void setController(final IController controller) {
 		this.frame.setController(controller);
 	}
-
-	/**
-	 * @param plays
-	 */
-	@Override
-	public void play() {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }

@@ -1,5 +1,4 @@
 package contract;
-
 /**
  * The Interface IView.
  *
@@ -7,14 +6,4 @@ package contract;
  */
 public interface IView {
 
-	/**
-	 * Prints the message.
-	 *
-	 * @param message
-	 *          the message
-	 */
-	void play();
-	void displayMessage(String string);
-	//void followMyhero();
-	
 }
