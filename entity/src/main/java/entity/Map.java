@@ -437,13 +437,17 @@ public class Map extends Observable implements IMap {
 		B.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
 
-	public void fallerChecks(IEntity e, int x, int y) { 
+	public boolean fallerChecks(IEntity e, int x, int y) { 
 		if (e instanceof Monster) {//if a monster is under a stone falling
 			e.die();//hero die because of the stone
+			killMonster(x, y+1);
+			return true;
 		}else if (e instanceof Hero) {//if the hero is under a stone falling
 			e.die();//hero die because of the stone
 			killPlayer(x, y+1);
+			return true;
 		}
+		return false;
 	}
 
 
@@ -516,18 +520,19 @@ public class Map extends Observable implements IMap {
 						if (downEntity instanceof Diamond || downEntity instanceof Rock) {
 							System.out.println("no");
 						}else {
-							killPlayer(x, y+1);
-							System.out.println(faller.isFalling());
-							moveDown(x, y);//need to do at end
-							if (downDownEntity instanceof IPermeability) {
-								if (downDownEntity instanceof Diamond || downDownEntity instanceof Rock) {
-									faller.setIsFalling(false);
-								}else {
-									faller.setIsFalling(true);
+							if(fallerChecks(downEntity, x, y)) {
+								System.out.println(faller.isFalling());
+								moveDown(x, y);//need to do at end
+								if (downDownEntity instanceof IPermeability) {
+									if (downDownEntity instanceof Diamond || downDownEntity instanceof Rock) {
+										faller.setIsFalling(false);
+									}else {
+										faller.setIsFalling(true);
 
+									}
+								} else {
+									faller.setIsFalling(false);
 								}
-							} else {
-								faller.setIsFalling(false);
 							}
 						}
 
@@ -580,7 +585,22 @@ public class Map extends Observable implements IMap {
 		this.onTheMap[x-1][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x-1][y-1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x-1][y+1] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-		
+
+
+	}
+
+	private void killMonster(int x, int y) {
+		System.out.println("Hero is dead");
+		this.onTheMap[x][y] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x][y-1] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x][y+1] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x+1][y-1] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x+1][y+1] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x+1][y] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x-1][y] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x-1][y-1] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
+		this.onTheMap[x-1][y+1] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
+
 
 	}
 
