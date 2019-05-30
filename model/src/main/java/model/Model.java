@@ -81,4 +81,10 @@ public final class Model extends Observable implements IModel {
 		return this;
 	}
 
+	@Override
+	public void setMapNull() {
+		this.map = null;
+		
+	}
+
 }
