@@ -592,9 +592,9 @@ public class Map extends Observable implements IMap {
 							}
 						}
 					}
-//				} else if(getOnTheMapXY(x, y) instanceof Monster){
-//					monsterMoving(x, y);
-//					System.out.println("A monster was supposed to move");
+				} else if(getOnTheMapXY(x, y) instanceof Monster){
+					monsterMoving(x, y);
+					System.out.println("A monster was supposed to move");
 				}
 			}
 		}
@@ -689,15 +689,23 @@ public class Map extends Observable implements IMap {
 		System.out.println(downLeftEntity.getClass());
 		if (downEntity instanceof Empty) {
 			whereToMove += 4;
+		} else if (downEntity instanceof Hero) {
+			killPlayer(x, y);//die because of the monster
 		}
 		if (topEntity instanceof Empty) {
 			whereToMove += 2;
+		}else if (topEntity instanceof Hero) {
+			killPlayer(x, y);//die because of the monster
 		}
 		if (leftEntity instanceof Empty) {
 			whereToMove += 8;
+		}else if (leftEntity instanceof Hero) {
+			killPlayer(x, y);//die because of the monster
 		}
 		if (rightEntity instanceof Empty) {
 			whereToMove += 1;
+		}else if (rightEntity instanceof Hero) {
+			killPlayer(x, y);//die because of the monster
 		}
 		if (downLeftEntity instanceof Empty) {
 
@@ -724,12 +732,12 @@ public class Map extends Observable implements IMap {
 		}
 		System.out.println(whereToMove);
 		System.out.println(whereNotToMove);
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		switch (whereToMove) {
 		case 1 :
 			moveRight(x, y);
@@ -885,6 +893,7 @@ public class Map extends Observable implements IMap {
 			case 1 :
 				moveDown(x, y);
 				latestWhereToMove = 4;
+			break;
 			}
 		}
 	}
