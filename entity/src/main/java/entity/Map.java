@@ -29,8 +29,6 @@ public class Map extends Observable implements IMap {
 	/** The width. */
 	private int          width;
 
-	private int numberOfRow = 0;
-
 	/** The height. */
 	private int          height;
 
@@ -54,13 +52,31 @@ public class Map extends Observable implements IMap {
 
 	private int latestDirection = 0;
 
-	private int latestWhereToMove = 1;
+	private int latestWhereToMove1 = 1;
+
+	private int latestWhereToMove2 = 1;
+
+	private int latestWhereToMove3 = 1;
 
 	private int latestWhereNotToMove = 0;
 
 	private boolean mapIsAlive = true;
 
 	private int xu = 0;
+	
+	private boolean monster1SupMonster2 = false;
+	
+	private boolean monster2SupMonster3 = false;
+	
+	private boolean monster3SupMonster1 = false;
+	
+	private boolean oldMonster1SupMonster2 = false;
+	
+	private boolean oldMonster2SupMonster3 = false;
+	
+	private boolean oldMonster3SupMonster1 = false;
+	
+	private int temp;
 
 	//timer
 	TimerTask task = new TimerTask() {
@@ -502,11 +518,13 @@ public class Map extends Observable implements IMap {
 		this.numberOfDiamonds = numberOfDiamonds;
 	}
 
-	public void updateMap() {
+	public int updateMap() {
 		int monster1x = 0;
 		int monster1y = 0;
 		int monster2x = 0;
 		int monster2y = 0;
+		int monster3x = 0;
+		int monster3y = 0;
 //		System.out.println(xu);							//debug
 //		xu++;											//debug
 		if (xu >= 5) {
@@ -603,9 +621,12 @@ public class Map extends Observable implements IMap {
 					if (monster1x == 0) {
 						monster1x = x;
 						monster1y = y;
-					} else {
+					} else if (monster2x == 0){
 						monster2x = x;
 						monster2y = y;
+					} else {
+						monster3x = x;
+						monster3y = y;
 					}
 //						monsterMoving(x, y);
 //						System.out.println("A monster was supposed to move");
@@ -614,15 +635,45 @@ public class Map extends Observable implements IMap {
 
 			}
 		}
+//		if (monster1y == monster2y && monster1x < monster2x || monster1y > monster2y) {
+//			monster1SupMonster2 = true;
+//		}
+//		if (monster2y == monster3y && monster2x < monster3x || monster2y > monster3y) {
+//			monster2SupMonster3 = true;
+//		}
+//		if (monster3y == monster1y && monster3x < monster1x || monster3y > monster1y) {
+//			monster3SupMonster1 = true;
+//		}
+//		if (monster1SupMonster2 == oldMonster1SupMonster2) {
+//			if (monster3SupMonster1 == oldMonster3SupMonster1) {
+//				if (monster1x != 0) {
+//					latestWhereToMove1 = monsterMoving(monster1x, monster1y, latestWhereToMove1);
+//				}
+//				if (monster2SupMonster3 == oldMonster2SupMonster3) {
+//					if (monster2x != 0) {
+//						latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove2);
+//					}
+//					if (monster3x != 0) {
+//						latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
+//					}
+//				}
+//			}
+//		}else {
+//			
+//		}
 		if (monster1x != 0) {
-			monsterMoving(monster1x, monster1y);
-			if (monster2x != 0) {
-				monsterMoving(monster2x, monster2y);
-			}
+			latestWhereToMove1 = monsterMoving(monster1x, monster1y, latestWhereToMove1);
+		}
+		if (monster2x != 0) {
+			latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove2);
+		}
+		if (monster3x != 0) {
+			latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
 		}
 
 		setChanged();
 		notifyObservers();
+		return 0;
 	}
 
 	@Override
@@ -686,7 +737,7 @@ public class Map extends Observable implements IMap {
 
 	}
 
-	private void monsterMoving(int x, int y) {
+	private int monsterMoving(int x, int y, int latestWhereToMove) {
 		if (!mapIsAlive) {
 			this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		}
@@ -700,14 +751,14 @@ public class Map extends Observable implements IMap {
 		IEntity topRightEntity = this.getOnTheMapXY(x+1, y-1);
 		IEntity leftUpEntity = this.getOnTheMapXY(x-1, y-1);
 		IEntity rightDownEntity = this.getOnTheMapXY(x+1, y+1);
-		System.out.println(downEntity.getClass());
-		System.out.println(rightDownEntity.getClass());
-		System.out.println(rightEntity.getClass());
-		System.out.println(topRightEntity.getClass());
-		System.out.println(topEntity.getClass());
-		System.out.println(leftUpEntity.getClass());
-		System.out.println(leftEntity.getClass());
-		System.out.println(downLeftEntity.getClass());
+//		System.out.println(downEntity.getClass());
+//		System.out.println(rightDownEntity.getClass());
+//		System.out.println(rightEntity.getClass());
+//		System.out.println(topRightEntity.getClass());
+//		System.out.println(topEntity.getClass());
+//		System.out.println(leftUpEntity.getClass());
+//		System.out.println(leftEntity.getClass());
+//		System.out.println(downLeftEntity.getClass());
 		if (downEntity instanceof Empty) {
 			whereToMove += 4;
 		} else if (downEntity instanceof Hero) {
@@ -748,11 +799,8 @@ public class Map extends Observable implements IMap {
 		}else {
 			whereNotToMove += 8;
 		}
-		if (whereToMove == latestWhereToMove/* || whereToMove == latestWhereToMove-1 || whereToMove == latestWhereToMove-2 || whereToMove == latestWhereToMove-4 || whereToMove == latestWhereToMove-8*/) {
-			whereToMove = latestDirection; 
-		}
-		System.out.println(whereToMove);
-		System.out.println(whereNotToMove);
+//		System.out.println(whereToMove);
+//		System.out.println(whereNotToMove);
 		//		try {
 		//			Thread.sleep(1000);
 		//		} catch (InterruptedException e) {
@@ -762,8 +810,7 @@ public class Map extends Observable implements IMap {
 		switch (whereToMove) {
 		case 1 :
 			moveRight(x, y);
-			latestWhereToMove = 1;
-			break;
+			return 1;
 		case 2 :
 			moveUp(x, y);
 			latestWhereToMove = 2;
@@ -771,152 +818,137 @@ public class Map extends Observable implements IMap {
 		case 3 :
 			if (latestWhereToMove == 8) {
 				moveUp(x, y);
-				latestWhereToMove = 2;
+				return 2;
 			}else {
 				moveRight(x, y);
-				latestWhereToMove = 1;
+				return 1;
 			}
-			break;
 		case 4 :
 			moveDown(x, y);
-			latestWhereToMove = 4;
-			break;
+			return 4;
 		case 5 :
 			if (latestWhereToMove == 8) {
 				moveDown(x, y);
-				latestWhereToMove = 4;
+				return 4;
 			}else {
 				moveRight(x, y);
-				latestWhereToMove = 1;
+				return 1;
 			}
-			break;
 		case 6 :
 			if (latestWhereToMove == 2) {
 				moveDown(x, y);
-				latestWhereToMove = 4;
+				return 4;
 			}else {
 				moveUp(x, y);
-				latestWhereToMove = 2;
+				return 2;
 			}
-			break;
 		case 7 :
 			if (latestWhereToMove == 4) {
 				moveDown(x, y);
-				latestWhereToMove = 4;
+				return 4;
 			}else if (latestWhereToMove == 8){
 				if (whereNotToMove == 1 || whereNotToMove == 3 || whereNotToMove == 5 || whereNotToMove == 7 || whereNotToMove == 9 || whereNotToMove == 11 || whereNotToMove == 13 || whereNotToMove == 15) {
 					moveUp(x, y);
-					latestWhereToMove = 2;
+					return 2;
 				}else {
 					moveDown(x, y);
-					latestWhereToMove = 4;
+					return 4;
 				}
 			}else {
 				moveUp(x, y);
-				latestWhereToMove = 2;
+				return 2;
 			}
-			break;
 		case 8 :
 			moveLeft(x, y);
-			latestWhereToMove = 8;
-			break;
+			return 8;
 		case 9 :
 			if (latestWhereToMove == 8) {
 				moveRight(x, y);
-				latestWhereToMove = 1;
+				return 1;
 			}else {
 				moveLeft(x, y);
-				latestWhereToMove = 8;
+				return 8;
 			}
-			break;
 		case 10 :
 			if (latestWhereToMove == 1) {
 				moveUp(x, y);
-				latestWhereToMove = 2;
+				return 2;
 			}else {
 				moveLeft(x, y);
-				latestWhereToMove = 8;
+				return 8;
 			}
-			break;
 		case 11 :
 			if (latestWhereToMove == 8) {
 				moveLeft(x, y);
-				latestWhereToMove = 8;
+				return 8;
 			} else if (latestWhereToMove == 1) {
 				moveRight(x, y);
-				latestWhereToMove = 1;
+				return 1;
 			} else if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
 				moveLeft(x, y);
-				latestWhereToMove = 8;
+				return 8;
 			}else {
 				moveRight(x, y);
-				latestWhereToMove = 1;
+				return 1;
 			}
-			break;
 		case 12 :
 			if (latestWhereToMove == 1) {
 				moveDown(x, y);
-				latestWhereToMove = 4;
+				return 4;
 			} else {
 				moveLeft(x, y);
-				latestWhereToMove = 8;
+				return 8;
 			}
-			break;
 		case 13 :
 			if (latestWhereToMove == 1) {
 				moveRight(x, y);
-				latestWhereToMove = 1;
+				return 1;
 			} else if (latestWhereToMove == 8) {
 				moveLeft(x, y);
-				latestWhereToMove = 8;
+				return 8;
 			} else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 15) {
 				moveLeft(x, y);
-				latestWhereToMove = 8;
+				return 8;
 			}else {
 				moveRight(x, y);
-				latestWhereToMove = 1;
+				return 1;
 			}
-			break;
 		case 14 :
 			if (latestWhereToMove == 2) {
 				moveUp(x, y);
-				latestWhereToMove = 2;
+				return 2;
 			} else if (latestWhereToMove == 4) {
 				if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
 					moveLeft(x, y);
-					latestWhereToMove = 8;
+					return 8;
 				}else {
 					moveDown(x, y);
-					latestWhereToMove = 2;
+					return 2;
 				}
 			} else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 15) {
 				moveDown(x, y);
-				latestWhereToMove = 4;
+				return 4;
 			}else {
 				moveUp(x, y);
-				latestWhereToMove = 2;
+				return 2;
 			}
-			break;
 		case 15 :
 			switch(latestWhereToMove) {
 			case 8 :
 				moveUp(x, y);
-				latestWhereToMove = 2;
-				break;
+				return 2;
 			case 4 :
 				moveLeft(x, y);
-				latestWhereToMove = 8;
-				break;
+				return 8;
 			case 2 :
 				moveRight(x, y);
-				latestWhereToMove = 1;
-				break;
+				return 1;
 			case 1 :
 				moveDown(x, y);
-				latestWhereToMove = 4;
-				break;
+				return 4;
 			}
 		}
+		return 0;
 	}
 
 }
