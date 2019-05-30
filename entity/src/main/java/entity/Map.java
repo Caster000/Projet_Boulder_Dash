@@ -57,9 +57,9 @@ public class Map extends Observable implements IMap {
 	private int latestWhereToMove = 1;
 
 	private int latestWhereNotToMove = 0;
-	
+
 	private boolean mapIsAlive = true;
-	
+
 	private int xu = 0;
 
 	//timer
@@ -503,8 +503,15 @@ public class Map extends Observable implements IMap {
 	}
 
 	public void updateMap() {
-//		System.out.println(xu);
-//		xu++;
+		int monster1x = 0;
+		int monster1y = 0;
+		int monster2x = 0;
+		int monster2y = 0;
+//		System.out.println(xu);							//debug
+//		xu++;											//debug
+		if (xu >= 5) {
+			xu = 0;
+		}
 		int leftOrRight = 0;
 		for(int x=width-1; x > 0; x--)
 		{
@@ -593,12 +600,26 @@ public class Map extends Observable implements IMap {
 						}
 					}
 				} else if(getOnTheMapXY(x, y) instanceof Monster){
-					monsterMoving(x, y);
-					System.out.println("A monster was supposed to move");
-				}
+					if (monster1x == 0) {
+						monster1x = x;
+						monster1y = y;
+					} else {
+						monster2x = x;
+						monster2y = y;
+					}
+//						monsterMoving(x, y);
+//						System.out.println("A monster was supposed to move");
+					}
+				
+
 			}
 		}
-
+		if (monster1x != 0) {
+			monsterMoving(monster1x, monster1y);
+			if (monster2x != 0) {
+				monsterMoving(monster2x, monster2y);
+			}
+		}
 
 		setChanged();
 		notifyObservers();
@@ -732,12 +753,12 @@ public class Map extends Observable implements IMap {
 		}
 		System.out.println(whereToMove);
 		System.out.println(whereNotToMove);
-//		try {
-//			Thread.sleep(1000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		//		try {
+		//			Thread.sleep(1000);
+		//		} catch (InterruptedException e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
 		switch (whereToMove) {
 		case 1 :
 			moveRight(x, y);
@@ -893,7 +914,7 @@ public class Map extends Observable implements IMap {
 			case 1 :
 				moveDown(x, y);
 				latestWhereToMove = 4;
-			break;
+				break;
 			}
 		}
 	}
