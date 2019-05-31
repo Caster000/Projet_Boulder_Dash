@@ -63,24 +63,26 @@ public class Map extends Observable implements IMap {
 	private boolean mapIsAlive = true;
 
 	private int xu = 0;
-	
+
 	private int oldMonster1x = 0;
-	
+
 	private int oldMonster1y = 0;
-	
+
 	private int oldMonster2x = 0;
-	
+
 	private int oldMonster2y = 0;
-	
+
 	private int oldMonster3x = 0;
-	
+
 	private int oldMonster3y = 0;
-	
+
 	private int level = 3;
-	
+
 	private int numberOfLives = 3;
-	
+
 	private double random;
+
+	private int debug = 0; 
 
 	//timer
 	TimerTask task = new TimerTask() {
@@ -575,15 +577,18 @@ public class Map extends Observable implements IMap {
 		int monster2y = 0;
 		int monster3x = 0;
 		int monster3y = 0;
-//		System.out.println(xu);							//debug
+		//		System.out.println(xu);							//debug
 		xu++;											//debug
-		
-		
+
+
 		int leftOrRight = 0;
 		for(int x=width-1; x > 0; x--)
 		{
 			for(int y=height-1; y > 0; y--)
 			{
+				if (xu == 1) {
+					System.out.println(getOnTheMapXY(x, y).getClass() +" x : "+ x +" y : "+ y);
+				}
 				if(getOnTheMapXY(x, y) instanceof IGravity)
 				{
 					IGravity faller = (IGravity) onTheMap[x][y];
@@ -611,6 +616,11 @@ public class Map extends Observable implements IMap {
 					}else if (downEntity instanceof IPermeability && faller.isFalling()) {
 						if (downEntity instanceof Diamond || downEntity instanceof Rock) {
 							System.out.println("no");
+							debug++;
+							if (debug > 40) {
+								debug = 0;
+								faller.setIsFalling(false);
+							}
 						}else {
 							if(fallerChecks(downEntity, x, y)) {
 								System.out.println(faller.isFalling());
@@ -671,18 +681,18 @@ public class Map extends Observable implements IMap {
 						monster1x = x;
 						monster1y = y;
 					} else if (monster2x == 0){
-//						System.out.println("il y a au moins deux monstres");			//debug
+						//						System.out.println("il y a au moins deux monstres");			//debug
 						monster2x = x;
 						monster2y = y;
 					} else {
-//						System.out.println("il y a trois monstres");			//debug
+						//						System.out.println("il y a trois monstres");			//debug
 						monster3x = x;
 						monster3y = y;
 					}
-//						monsterMoving(x, y);			//debug
-//						System.out.println("A monster was supposed to move");			//debug
-					}
-				
+					//						monsterMoving(x, y);			//debug
+					//						System.out.println("A monster was supposed to move");			//debug
+				}
+
 
 			}
 		}
@@ -743,7 +753,7 @@ public class Map extends Observable implements IMap {
 		oldMonster2y = monster2y;
 		oldMonster3x = monster3x;
 		oldMonster3y = monster3y;
-		
+
 
 		setChanged();
 		notifyObservers();
@@ -825,14 +835,14 @@ public class Map extends Observable implements IMap {
 		IEntity topRightEntity = this.getOnTheMapXY(x+1, y-1);
 		IEntity leftUpEntity = this.getOnTheMapXY(x-1, y-1);
 		IEntity rightDownEntity = this.getOnTheMapXY(x+1, y+1);
-//		System.out.println(downEntity.getClass());
-//		System.out.println(rightDownEntity.getClass());
-//		System.out.println(rightEntity.getClass());
-//		System.out.println(topRightEntity.getClass());
-//		System.out.println(topEntity.getClass());
-//		System.out.println(leftUpEntity.getClass());
-//		System.out.println(leftEntity.getClass());
-//		System.out.println(downLeftEntity.getClass());
+		//		System.out.println(downEntity.getClass());
+		//		System.out.println(rightDownEntity.getClass());
+		//		System.out.println(rightEntity.getClass());
+		//		System.out.println(topRightEntity.getClass());
+		//		System.out.println(topEntity.getClass());
+		//		System.out.println(leftUpEntity.getClass());
+		//		System.out.println(leftEntity.getClass());
+		//		System.out.println(downLeftEntity.getClass());
 		if (downEntity instanceof Empty) {
 			whereToMove += 4;
 		} else if (downEntity instanceof Hero) {
@@ -853,28 +863,28 @@ public class Map extends Observable implements IMap {
 		}else if (rightEntity instanceof Hero) {
 			killPlayer(x, y);//die because of the monster
 		}
-		if (downLeftEntity instanceof Empty) {
+		if (downLeftEntity instanceof Empty || downLeftEntity instanceof Monster) {
 
 		}else {
 			whereNotToMove += 4;
 		}
-		if (topRightEntity instanceof Empty) {
+		if (topRightEntity instanceof Empty || topRightEntity instanceof Monster) {
 
 		}else {
 			whereNotToMove += 1;
 		}
-		if (leftUpEntity instanceof Empty) {
+		if (leftUpEntity instanceof Empty || leftUpEntity instanceof Monster) {
 
 		}else {
 			whereNotToMove += 2;
 		}
-		if (rightDownEntity instanceof Empty) {
+		if (rightDownEntity instanceof Empty || rightDownEntity instanceof Monster) {
 
 		}else {
 			whereNotToMove += 8;
 		}
-//		System.out.println(whereToMove);
-//		System.out.println(whereNotToMove);
+		//		System.out.println(whereToMove);
+		//		System.out.println(whereNotToMove);
 		//		try {
 		//			Thread.sleep(1000);
 		//		} catch (InterruptedException e) {
@@ -952,12 +962,17 @@ public class Map extends Observable implements IMap {
 			}
 		case 11 :
 			if (latestWhereToMove == 8) {
-				moveLeft(x, y);
-				return 8;
-			} else if (latestWhereToMove == 1) {
+				if (whereNotToMove == 1 || whereNotToMove == 3 || whereNotToMove == 5 || whereNotToMove == 7 || whereNotToMove == 9 || whereNotToMove == 11 || whereNotToMove == 13 || whereNotToMove == 15) {
+					moveUp(x, y);
+					return 2;
+				}else {
+					moveLeft(x, y);
+					return 8;
+				}
+			}else if (latestWhereToMove == 1) {
 				moveRight(x, y);
 				return 1;
-			} else if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
+			}else if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
 				moveLeft(x, y);
 				return 8;
 			}else {
@@ -979,26 +994,28 @@ public class Map extends Observable implements IMap {
 			} else if (latestWhereToMove == 8) {
 				moveLeft(x, y);
 				return 8;
-			} else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
-				moveLeft(x, y);
-				return 8;
-			}else {
+			} else if (whereNotToMove == 8 || whereNotToMove == 9 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
 				moveRight(x, y);
 				return 1;
+			}else {
+				moveLeft(x, y);
+				return 8;
 			}
 		case 14 :
 			if (latestWhereToMove == 2) {
 				moveUp(x, y);
 				return 2;
 			} else if (latestWhereToMove == 4) {
+				if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveLeft(x, y);
+					return 8;
+				}else {
 					moveDown(x, y);
 					return 4;
-			} else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
+				}
+			}else {
 				moveDown(x, y);
 				return 4;
-			}else {
-				moveUp(x, y);
-				return 2;
 			}
 		case 15 :
 			switch(latestWhereToMove) {
