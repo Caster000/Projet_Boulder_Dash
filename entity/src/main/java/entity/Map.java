@@ -586,6 +586,9 @@ public class Map extends Observable implements IMap {
 		{
 			for(int y=height-1; y > 0; y--)
 			{
+				if (xu == 1) {
+					System.out.println(getOnTheMapXY(x, y).getClass() +" x : "+ x +" y : "+ y);
+				}
 				if(getOnTheMapXY(x, y) instanceof IGravity)
 				{
 					IGravity faller = (IGravity) onTheMap[x][y];
@@ -860,22 +863,22 @@ public class Map extends Observable implements IMap {
 		}else if (rightEntity instanceof Hero) {
 			killPlayer(x, y);//die because of the monster
 		}
-		if (downLeftEntity instanceof Empty) {
+		if (downLeftEntity instanceof Empty || downLeftEntity instanceof Monster) {
 
 		}else {
 			whereNotToMove += 4;
 		}
-		if (topRightEntity instanceof Empty) {
+		if (topRightEntity instanceof Empty || topRightEntity instanceof Monster) {
 
 		}else {
 			whereNotToMove += 1;
 		}
-		if (leftUpEntity instanceof Empty) {
+		if (leftUpEntity instanceof Empty || leftUpEntity instanceof Monster) {
 
 		}else {
 			whereNotToMove += 2;
 		}
-		if (rightDownEntity instanceof Empty) {
+		if (rightDownEntity instanceof Empty || rightDownEntity instanceof Monster) {
 
 		}else {
 			whereNotToMove += 8;
