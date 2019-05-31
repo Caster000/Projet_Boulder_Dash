@@ -36,6 +36,6 @@ public class TestBlock {
 		assertEquals(expected, block.id);
 		System.out.println("Good Job!");
 		
-	}
+	} 
 
 }

@@ -39,7 +39,7 @@ public class Testdiamond {
 	 */
 	
 	@Test
-	public void test() {
+	public void test() { 
 		int expected = id;
 		assertEquals(expected, diamond.id);
 	}

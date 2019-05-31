@@ -40,7 +40,7 @@ public class ViewTest {
 
 	@Before
 	public void setUp() throws Exception {
-		
+		 
 	}
 
 	@After

@@ -19,7 +19,7 @@ public class MapTest {
 	@Test
 	public void ExistMap() {
 		assert this.map.getWidth() >= 1: "Error : id should be <=1";
-		assert this.map.getHeight() >=1: "Error : id should be <=1";
+		assert this.map.getHeight() >=1: "Error : id should be <=1"; 
 	}
 	
 	@Test
