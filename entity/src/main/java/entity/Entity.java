@@ -13,8 +13,6 @@ public abstract class Entity implements IEntity {
     /** The sprite. */
     private Sprite       sprite;
 
-    private int numberOfDiamonds;
-
     /**
      * Instantiates a new element.
      *
@@ -25,10 +23,7 @@ public abstract class Entity implements IEntity {
         this.setSprite(sprite);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.insanevehicles.model.element.IElement#getSprite()
-     */
+    /** return the sprite. */
     public final Sprite getSprite() {
         return this.sprite;
     }
@@ -43,28 +38,9 @@ public abstract class Entity implements IEntity {
         this.sprite = sprite;
     }
     
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.showboard.ISquare#getImage()
-     */
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.insanevehicles.model.element.IElement#getImage()
-     */
+    /** return the image. */
     public final Image getImage() {
         return this.getSprite().getImage();
     }
 
-    public void die() {
-		// TODO Auto-generated method stub
-		
-	}
-
-    public int getNumberOfDiamonds() {
-        return numberOfDiamonds;
-    }
-
-    public void setNumberOfDiamonds(int numberOfDiamonds) {
-        this.numberOfDiamonds = numberOfDiamonds;
-    }
 }

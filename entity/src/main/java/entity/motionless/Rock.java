@@ -5,7 +5,7 @@ import entity.Sprite;
 
 public class Rock extends MotionlessEntity implements IPermeability{
 	
-//	private int id = 3;
+	/** The sprite. */
 	private static final Sprite SPRITE = new Sprite('3',"Rock.png");
 	
 	/**
@@ -15,7 +15,10 @@ public class Rock extends MotionlessEntity implements IPermeability{
 		super(SPRITE);
 		// TODO Auto-generated constructor stub
 	}
-
+    
+    /**
+     * permeability method 
+     */
 	@Override
 	public void permeability() {
 		// TODO Auto-generated method stub

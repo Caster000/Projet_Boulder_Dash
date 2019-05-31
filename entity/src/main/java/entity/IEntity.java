@@ -10,19 +10,11 @@ public interface IEntity  {
      * @return the sprite
      */
     Sprite getSprite();
-   
-
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.showboard.ISquare#getImage()
+    
+    /**
+     * Gets the image.
+     *
+     * @return the image
      */
-   
     Image getImage();
-
-	void die();
-
-	int getNumberOfDiamonds();
-
-	void setNumberOfDiamonds(int i);
-
 }

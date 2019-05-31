@@ -22,10 +22,10 @@ public class MapTest {
 		assert this.map.getHeight() >=1: "Error : id should be <=1"; 
 	}
 	
-	@Test
-	public void ID() {
-		assertEquals(map.getId());
-	}
+//	@Test
+//	public void ID() {
+//		assertEquals(map.getId());
+//	}
 	private void assertEquals(int id) {
 		// TODO Auto-generated method stub
 		

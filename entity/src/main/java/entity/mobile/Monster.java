@@ -1,11 +1,11 @@
 package entity.mobile;
 
+import entity.IPermeability;
 import entity.Sprite;
 
-public class Monster extends Alive {
+public class Monster extends Alive{
     
-//    private boolean isAlive = true;
-//    private int id = 5;
+	/** The sprite. */
     private static final Sprite SPRITE = new Sprite('5',"Monster.png");
 
     /**
@@ -14,6 +14,7 @@ public class Monster extends Alive {
     public Monster() {
         super(SPRITE);
     }
+    
     /**
      * permeability method 
      */

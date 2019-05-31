@@ -4,13 +4,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import entity.IEntity;
-import entity.mobile.Block;
 import entity.mobile.Diamond;
 import entity.mobile.Hero;
 import entity.mobile.IGravity;
@@ -32,56 +26,66 @@ public class Map extends Observable implements IMap {
 	/** The height. */
 	private int          height;
 
-	/** The on the road. */
+	/** The on the map. */
 	private IEntity[][] onTheMap;
 
-	/** The id. */
-	private int            id;
-
-	/** The key. */
-	private String    key;
-
-	/** The message. */
-	private String    message;
+//	/** The id. */
+//	private int            id;
+//
+//	/** The key. */
+//	private String    key;
+//
+//	/** The message. */
+//	private String    message;
 
 	private int time = 120 ;
 
+	/**The number of diamonds the level requires. */
 	private int requiredNumberOfDiamonds = 1;
 
+	/**The number of diamonds the hero has. */
 	private int numberOfDiamonds = 0;
 
-	private int latestDirection = 0;
-
+	/**The latest direction the first monster took. */
 	private int latestWhereToMove1 = 1;
 
+	/**The latest direction the second monster took. */
 	private int latestWhereToMove2 = 1;
 
+	/**The latest direction the third monster took. */
 	private int latestWhereToMove3 = 1;
 
-	private int latestWhereNotToMove = 0;
+	/**The number the method updateMap was used. */
+	private int numberOfUpdates = 0;
 
-	private boolean mapIsAlive = true;
-
-	private int xu = 0;
-
+	/**The old x position of the first monster. */
 	private int oldMonster1x = 0;
 
+	/**The old y position of the first monster. */
 	private int oldMonster1y = 0;
 
+	/**The old x position of the second monster. */
 	private int oldMonster2x = 0;
 
+	/**The old y position of the second monster. */
 	private int oldMonster2y = 0;
 
+	/**The old x position of the third monster. */
 	private int oldMonster3x = 0;
 
+	/**The old y position of the third monster */
 	private int oldMonster3y = 0;
 
-	private int level = 3;
+	/**the level */
+	private int level = 2;
 
+	/** the number of lives the hero has*/
 	private int numberOfLives = 3;
 
+	/**A random number between 0 and 1, used to make random decision */
 	private double random;
 
+	/**To prevent the blocks to keep the is Falling operator to true even when they're not falling */
 	private int debug = 0; 
 
 	//timer
@@ -92,6 +96,11 @@ public class Map extends Observable implements IMap {
 	};
 	Timer timer;
 
+	/**
+     * Gets the map.
+     *
+     * @return the onTheMap
+     */
 	public IEntity[][] getOnTheMap() {
 		return onTheMap;
 	}
@@ -101,11 +110,11 @@ public class Map extends Observable implements IMap {
 		onTheMap=new IEntity[1][1];
 	}
 
-	public Map(final int id, final String key, final String message) {
-		this.setId(id);
-		this.setKey(key);
-		this.setMessage(message);
-	}
+//	public Map(final int id, final String key, final String message) {
+//		this.setId(id);
+//		this.setKey(key);
+//		this.setMessage(message);
+//	}
 
 	public Map( int width, int height) {
 		timer=new Timer();
@@ -180,62 +189,62 @@ public class Map extends Observable implements IMap {
 	}
 
 
-	/**
-	 * Gets the id.
-	 *
-	 * @return the id
-	 */
-	public int getId() {
-		return this.id;
-	}
-
-	/**
-	 * Sets the id.
-	 *
-	 * @param id
-	 *          the new id
-	 */
-	public void setId(final int id) {
-		this.id = id;
-	}
-
-	/**
-	 * Gets the key.
-	 *
-	 * @return the key
-	 */
-	public String getKey() {
-		return this.key;
-	}
-
-	/**
-	 * Sets the key.
-	 *
-	 * @param key
-	 *          the new key
-	 */
-	public void setKey(final String key) {
-		this.key = key;
-	}
-
-	/**
-	 * Gets the message.
-	 *
-	 * @return the message
-	 */
-	public String getMessage() {
-		return this.message;
-	}
-
-	/**
-	 * Sets the message.
-	 *
-	 * @param message
-	 *          the new message
-	 */
-	public void setMessage(final String message) {
-		this.message = message;
-	}
+//	/**
+//	 * Gets the id.
+//	 *
+//	 * @return the id
+//	 */
+//	public int getId() {
+//		return this.id;
+//	}
+//
+//	/**
+//	 * Sets the id.
+//	 *
+//	 * @param id
+//	 *          the new id
+//	 */
+//	public void setId(final int id) {
+//		this.id = id;
+//	}
+//
+//	/**
+//	 * Gets the key.
+//	 *
+//	 * @return the key
+//	 */
+//	public String getKey() {
+//		return this.key;
+//	}
+//
+//	/**
+//	 * Sets the key.
+//	 *
+//	 * @param key
+//	 *          the new key
+//	 */
+//	public void setKey(final String key) {
+//		this.key = key;
+//	}
+//
+//	/**
+//	 * Gets the message.
+//	 *
+//	 * @return the message
+//	 */
+//	public String getMessage() {
+//		return this.message;
+//	}
+//
+//	/**
+//	 * Sets the message.
+//	 *
+//	 * @param message
+//	 *          the new message
+//	 */
+//	public void setMessage(final String message) {
+//		this.message = message;
+//	}
 
 	//generic function for moving left
 	public void moveLeft(int x, int y) {
@@ -420,7 +429,7 @@ public class Map extends Observable implements IMap {
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}			setLevel(getLevel() + 1);
+				}			
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -442,28 +451,28 @@ public class Map extends Observable implements IMap {
 
 	}
 
-	public boolean fall(int x, int y){
-		IGravity faller = (IGravity) onTheMap[x][y];
-		//		System.out.println(faller.isFalling());							//debug
-		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity down of the Stone
-		if(!faller.isFalling()) {
-			//			System.out.println("je ne suis pas en train de tomber"); 				//debug
-			if(downEntity instanceof Empty){
-				moveDown(x, y);
-				return true;
-			}
-		}else if(downEntity instanceof IPermeability){
-			//			System.out.println("mais moi oui !");					//debug
-			if(downEntity instanceof Diamond || downEntity instanceof Rock){
-				return false;
-			}else {
-				fallerChecks(downEntity, x, y);
-				moveDown(x, y);
-				return true;
-			}
-		}
-		return false;
-	}
+//	public boolean fall(int x, int y){
+//		IGravity faller = (IGravity) onTheMap[x][y];
+//		//		System.out.println(faller.isFalling());							//debug
+//		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity down of the Stone
+//		if(!faller.isFalling()) {
+//			//			System.out.println("je ne suis pas en train de tomber"); 				//debug
+//			if(downEntity instanceof Empty){
+//				moveDown(x, y);
+//				return true;
+//			}
+//		}else if(downEntity instanceof IPermeability){
+//			//			System.out.println("mais moi oui !");					//debug
+//			if(downEntity instanceof Diamond || downEntity instanceof Rock){
+//				return false;
+//			}else {
+//				fallerChecks(downEntity, x, y);
+//				moveDown(x, y);
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 
 	public int slide(IEntity downEntity, IGravity faller, int x, int y) {
 		IEntity downLeftEntity = this.getOnTheMapXY(x-1, y+1);//checks what's the entity down right of the Stone
@@ -503,7 +512,7 @@ public class Map extends Observable implements IMap {
 			e.printStackTrace();
 		}
 		fallerChecks(downLeftEntity, x, y);
-		moveDown(x-1, y);//to slide, you need to move left or right then down
+//		moveDown(x-1, y);//to slide, you need to move left or right then down
 		faller.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
 
@@ -515,17 +524,15 @@ public class Map extends Observable implements IMap {
 			e.printStackTrace();
 		}
 		fallerChecks(downRightEntity, x, y);
-		moveDown(x+1, y);//to slide, you need to move left or right then down
+//		moveDown(x+1, y);//to slide, you need to move left or right then down
 		faller.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
 
 	public boolean fallerChecks(IEntity e, int x, int y) { 
 		if (e instanceof Monster) {//if a monster is under a stone falling
-			e.die();//hero die because of the stone
 			killMonster(x, y+1);
 			return true;
 		}else if (e instanceof Hero) {//if the hero is under a stone falling
-			e.die();//hero die because of the stone
 			killPlayer(x, y+1);
 			return true;
 		}
@@ -577,8 +584,8 @@ public class Map extends Observable implements IMap {
 		int monster2y = 0;
 		int monster3x = 0;
 		int monster3y = 0;
-		//		System.out.println(xu);							//debug
-		xu++;											//debug
+		//		System.out.println(numberOfUpdates);							//debug
+		numberOfUpdates++;											//debug
 
 
 		int leftOrRight = 0;
@@ -586,9 +593,9 @@ public class Map extends Observable implements IMap {
 		{
 			for(int y=height-1; y > 0; y--)
 			{
-				if (xu == 1) {
-					System.out.println(getOnTheMapXY(x, y).getClass() +" x : "+ x +" y : "+ y);
-				}
+//				if (numberOfUpdates == 1) {
+//					System.out.println(getOnTheMapXY(x, y).getClass() +" x : "+ x +" y : "+ y);
+//				}
 				if(getOnTheMapXY(x, y) instanceof IGravity)
 				{
 					IGravity faller = (IGravity) onTheMap[x][y];
@@ -696,7 +703,7 @@ public class Map extends Observable implements IMap {
 
 			}
 		}
-		if (xu == 1) {		
+		if (numberOfUpdates == 1) {		
 			if (monster1x != 0) {
 				latestWhereToMove1 = monsterMoving(monster1x, monster1y, latestWhereToMove1);
 			}
@@ -766,15 +773,6 @@ public class Map extends Observable implements IMap {
 		return this;
 	}
 
-	//	public int getLevel() {
-	//		return level;
-	//	}
-	//
-	//
-	//	public void setLevel(int level) {
-	//		this.level = level;
-	//	}
-
 	private void killPlayer(int x, int y){
 		setNumberOfLives(getNumberOfLives() - 1);
 		System.out.println("The hero is dead");
@@ -822,9 +820,6 @@ public class Map extends Observable implements IMap {
 	}
 
 	private int monsterMoving(int x, int y, int latestWhereToMove) {
-		if (!mapIsAlive) {
-			this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-		}
 		int whereToMove = 0;//bouger à droite = 1, bouger en haut = 2, bouger en bas = 4, bouger à gauche = 8
 		int whereNotToMove = 0;//mur à droite-haut = 1, bouger en haut-gauche = 2, mur en bas-droite = 8, mur à gauche-bas = 4
 		IEntity downEntity = this.getOnTheMapXY(x, y+1);
