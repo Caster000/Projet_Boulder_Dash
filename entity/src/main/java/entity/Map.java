@@ -76,9 +76,11 @@ public class Map extends Observable implements IMap {
 	
 	private int oldMonster3y = 0;
 	
-	private int level = 2;
+	private int level = 3;
 	
 	private int numberOfLives = 3;
+	
+	private double random;
 
 	//timer
 	TimerTask task = new TimerTask() {
@@ -1001,17 +1003,121 @@ public class Map extends Observable implements IMap {
 		case 15 :
 			switch(latestWhereToMove) {
 			case 8 :
-				moveUp(x, y);
-				return 2;
+				if (whereNotToMove == 1 || whereNotToMove == 3 || whereNotToMove == 5 || whereNotToMove == 7 || whereNotToMove == 9 || whereNotToMove == 11 || whereNotToMove == 13 || whereNotToMove == 15) {
+					moveUp(x, y);
+					return 2;
+				}else if (whereNotToMove == 8 || whereNotToMove == 9 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveDown(x, y);
+					return 4;
+				}else if(whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveUp(x, y);
+					return 2;
+				}else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveDown(x, y);
+					return 4;
+				}else {
+					random = Math.random();
+					if (random < 0.25) {
+						moveUp(x, y);
+						return 2;
+					} else if (random < 0.5) {
+						moveLeft(x, y);
+						return 8;
+					} else if (random < 0.75) {
+						moveDown(x, y);
+						return 4;
+					}else {
+						moveRight(x, y);
+						return 1;
+					}
+				}
 			case 4 :
-				moveLeft(x, y);
-				return 8;
+				if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveLeft(x, y);
+					return 8;
+				}else if (whereNotToMove == 1 || whereNotToMove == 3 || whereNotToMove == 5 || whereNotToMove == 7 || whereNotToMove == 9 || whereNotToMove == 11 || whereNotToMove == 13 || whereNotToMove == 15) {
+					moveRight(x, y);
+					return 1;
+				}else if(whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveLeft(x, y);
+					return 8;
+				}else if (whereNotToMove == 8 || whereNotToMove == 9 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveRight(x, y);
+					return 1;
+				}else {
+					random = Math.random();
+					if (random < 0.25) {
+						moveUp(x, y);
+						return 2;
+					} else if (random < 0.5) {
+						moveLeft(x, y);
+						return 8;
+					} else if (random < 0.75) {
+						moveDown(x, y);
+						return 4;
+					}else {
+						moveRight(x, y);
+						return 1;
+					}
+				}
 			case 2 :
-				moveRight(x, y);
-				return 1;
+				if (whereNotToMove == 8 || whereNotToMove == 9 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveRight(x, y);
+					return 1;
+				}else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveLeft(x, y);
+					return 8;
+				}else if(whereNotToMove == 1 || whereNotToMove == 3 || whereNotToMove == 5 || whereNotToMove == 7 || whereNotToMove == 9 || whereNotToMove == 11 || whereNotToMove == 13 || whereNotToMove == 15) {
+					moveRight(x, y);
+					return 1;
+				}else if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveLeft(x, y);
+					return 8;
+				}else {
+					random = Math.random();
+					if (random < 0.25) {
+						moveUp(x, y);
+						return 2;
+					} else if (random < 0.5) {
+						moveLeft(x, y);
+						return 8;
+					} else if (random < 0.75) {
+						moveDown(x, y);
+						return 4;
+					}else {
+						moveRight(x, y);
+						return 1;
+					}
+				}
 			case 1 :
-				moveDown(x, y);
-				return 4;
+				if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveDown(x, y);
+					return 4;
+				}else if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveUp(x, y);
+					return 2;
+				}else if(whereNotToMove == 8 || whereNotToMove == 9 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
+					moveDown(x, y);
+					return 4;
+				}else if (whereNotToMove == 1 || whereNotToMove == 3 || whereNotToMove == 5 || whereNotToMove == 7 || whereNotToMove == 9 || whereNotToMove == 11 || whereNotToMove == 13 || whereNotToMove == 15) {
+					moveUp(x, y);
+					return 2;
+				}else {
+					random = Math.random();
+					if (random < 0.25) {
+						moveUp(x, y);
+						return 2;
+					} else if (random < 0.5) {
+						moveLeft(x, y);
+						return 8;
+					} else if (random < 0.75) {
+						moveDown(x, y);
+						return 4;
+					}else {
+						moveRight(x, y);
+						return 1;
+					}
+				}
 			}
 		}
 		return 0;

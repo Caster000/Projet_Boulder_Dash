@@ -115,7 +115,7 @@ public final class Controller implements IController{
 				this.heroY = 2;
 				break;
 			case 6 :
-				this.model.getMap().setRequiredNumberOfDiamonds(8);
+				this.model.getMap().setRequiredNumberOfDiamonds(13);
 				//				this.model.getMap().setLevel(6);
 				this.heroX = 1;
 				this.heroY = 2;
