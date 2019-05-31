@@ -17,12 +17,18 @@ public class ViewTest {
 
 
 	UserOrder userOrder;
+	
 	private KeyEvent L1;
-	private String changeMap;
 	private KeyEvent D;
 	private KeyEvent Z;
 	private KeyEvent Q;
 	private KeyEvent S;
+	
+	private String changeMap;
+	private String RIGHT;
+	private String LEFT;
+	private String UP;
+	private String DOWN;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -49,7 +55,6 @@ public class ViewTest {
 		assertEquals(KeyEvent(Q));
 		assertEquals(KeyEvent(S));
 		
-		
 	}
 
 
@@ -57,7 +62,6 @@ public class ViewTest {
 		// TODO Auto-generated method stub
 		return changeMap;
 	}
-
 	private void assertEquals(String keyEvent) {
 		// TODO Auto-generated method stub
 		

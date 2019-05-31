@@ -1,5 +1,6 @@
 package entity;
 
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -7,7 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TryAndCatch {
+public class TestBlock {
+
+	int id = 1;
+	TestBlock block;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -19,6 +23,7 @@ public class TryAndCatch {
 
 	@Before
 	public void setUp() throws Exception {
+		block = new TestBlock();
 	}
 
 	@After
@@ -27,13 +32,10 @@ public class TryAndCatch {
 
 	@Test
 	public void test() {
+		int expected = id;
+		assertEquals(expected, block.id);
+		System.out.println("Good Job!");
 		
-		try {
-			Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("It's ok");
 	}
 
 }

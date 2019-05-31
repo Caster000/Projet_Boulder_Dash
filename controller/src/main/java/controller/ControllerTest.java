@@ -18,8 +18,6 @@ public class ControllerTest {
 	
 	private IModel model;
 	private Map map;
-	private int heroX = 1;
-	private int heroY = 1;
 	private Hero hero;
 	
 	
@@ -33,8 +31,8 @@ public class ControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.map = new Map();
-		this.hero = new Hero();
+		hero = new Hero();
+		map = new Map();
 	}
 
 	@After
@@ -43,9 +41,10 @@ public class ControllerTest {
 
 	@Test
 	public void test() {
-		int id = 0;
-		this.model.loadMap(id);
-		Assert.assertEquals(hero, this.model.getMap().getMessage());
+		int heroX = 1;
+		int heroY = 1;
+		
+		assert this.map.heroMoveDown(hero, heroX + 1, heroY);
 	}
 
 }
