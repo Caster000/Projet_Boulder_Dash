@@ -76,7 +76,9 @@ public class Map extends Observable implements IMap {
 	
 	private int oldMonster3y = 0;
 	
-	private int temp;
+	private int level = 2;
+	
+	private int numberOfLives = 3;
 
 	//timer
 	TimerTask task = new TimerTask() {
@@ -272,7 +274,7 @@ public class Map extends Observable implements IMap {
 			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				try {
-
+					setLevel(getLevel() + 1);
 					Robot r;
 					r = new Robot();
 					//    level--;
@@ -308,7 +310,7 @@ public class Map extends Observable implements IMap {
 			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				try {
-
+					setLevel(getLevel() + 1);
 					Robot r;
 					r = new Robot();
 					//    level--;
@@ -356,7 +358,7 @@ public class Map extends Observable implements IMap {
 				moveRight(x, y);
 				System.out.println("Win !");
 				try {
-
+					setLevel(getLevel() + 1);
 					Robot r;
 					r = new Robot();
 					//    level--;
@@ -400,8 +402,21 @@ public class Map extends Observable implements IMap {
 			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				System.out.println("Win !");
-				System.out.println("press 1");
-				//				level++;
+				try {
+					setLevel(getLevel() + 1);
+					Robot r;
+					r = new Robot();
+					//    level--;
+					Thread.sleep(1000);
+					r.keyPress(KeyEvent.VK_1);System.out.println("Robot press");
+					Thread.sleep(100);
+				} catch (AWTException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			setLevel(getLevel() + 1);
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -654,14 +669,16 @@ public class Map extends Observable implements IMap {
 						monster1x = x;
 						monster1y = y;
 					} else if (monster2x == 0){
+//						System.out.println("il y a au moins deux monstres");			//debug
 						monster2x = x;
 						monster2y = y;
 					} else {
+//						System.out.println("il y a trois monstres");			//debug
 						monster3x = x;
 						monster3y = y;
 					}
-//						monsterMoving(x, y);
-//						System.out.println("A monster was supposed to move");
+//						monsterMoving(x, y);			//debug
+//						System.out.println("A monster was supposed to move");			//debug
 					}
 				
 
@@ -687,14 +704,14 @@ public class Map extends Observable implements IMap {
 						latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove2);
 					}
 					if (monster3x != 0) {
-						latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
+						latestWhereToMove3 = monsterMoving(monster3x, monster3y, latestWhereToMove3);
 					}
 				} else {
 					if (monster2x != 0) {
 						latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
 					}
 					if (monster3x != 0) {
-						latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove2);
+						latestWhereToMove3 = monsterMoving(monster3x, monster3y, latestWhereToMove2);
 					}
 				}
 			} else if((oldMonster2x + 1 == monster1x || oldMonster2x - 1 == monster1x || oldMonster2x == monster1x) && (oldMonster2y + 1 == monster1y || oldMonster2y - 1 == monster1y || oldMonster2y == monster1y)) {
@@ -706,14 +723,14 @@ public class Map extends Observable implements IMap {
 						latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
 					}
 					if (monster3x != 0) {
-						latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove1);
+						latestWhereToMove3 = monsterMoving(monster3x, monster3y, latestWhereToMove1);
 					}
 				}else {
 					if (monster2x != 0) {
 						latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove1);
 					}
 					if (monster3x != 0) {
-						latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
+						latestWhereToMove3 = monsterMoving(monster3x, monster3y, latestWhereToMove3);
 					}
 				}
 			}
@@ -747,6 +764,7 @@ public class Map extends Observable implements IMap {
 	//	}
 
 	private void killPlayer(int x, int y){
+		setNumberOfLives(getNumberOfLives() - 1);
 		System.out.println("The hero is dead");
 		this.onTheMap[x][y] = new Door();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x][y-1] = new Door();//when an entity leaves a space, it creates a new empty entity on the space
@@ -938,11 +956,11 @@ public class Map extends Observable implements IMap {
 				moveRight(x, y);
 				return 1;
 			} else if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
-				moveRight(x, y);
-				return 1;
-			}else {
 				moveLeft(x, y);
 				return 8;
+			}else {
+				moveRight(x, y);
+				return 1;
 			}
 		case 12 :
 			if (latestWhereToMove == 1) {
@@ -959,7 +977,7 @@ public class Map extends Observable implements IMap {
 			} else if (latestWhereToMove == 8) {
 				moveLeft(x, y);
 				return 8;
-			} else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 15) {
+			} else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
 				moveLeft(x, y);
 				return 8;
 			}else {
@@ -971,14 +989,9 @@ public class Map extends Observable implements IMap {
 				moveUp(x, y);
 				return 2;
 			} else if (latestWhereToMove == 4) {
-				if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
-					moveLeft(x, y);
-					return 8;
-				}else {
 					moveDown(x, y);
-					return 2;
-				}
-			} else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 11 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 15) {
+					return 4;
+			} else if (whereNotToMove == 4 || whereNotToMove == 5 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 12 || whereNotToMove == 13 || whereNotToMove == 14 || whereNotToMove == 15) {
 				moveDown(x, y);
 				return 4;
 			}else {
@@ -1002,6 +1015,22 @@ public class Map extends Observable implements IMap {
 			}
 		}
 		return 0;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public int getNumberOfLives() {
+		return numberOfLives;
+	}
+
+	public void setNumberOfLives(int numberOfLives) {
+		this.numberOfLives = numberOfLives;
 	}
 
 }

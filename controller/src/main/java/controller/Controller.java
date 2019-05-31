@@ -20,6 +20,8 @@ public final class Controller implements IController{
 	private int heroY = 1;
 
 	private int level ;
+	
+	private int lives ;
 
 	private boolean hasMoved;
 	/**
@@ -69,11 +71,18 @@ public final class Controller implements IController{
 	public void orderPerform(final UserOrder userOrder) {
 		switch (userOrder) {
 		case L1:
-			level++;
-			this.model.loadMap(/*this.model.getMap().getLevel()*/level);
+			level = this.model.getMap().getLevel();
+			lives = this.model.getMap().getNumberOfLives();
+			System.out.println(lives);
+			if(this.model.getMap().getNumberOfLives() == 0) {
+				this.model.getMap().setLevel(1);
+			}
+			this.model.loadMap(this.model.getMap().getLevel());
+			this.model.getMap().setNumberOfLives(lives);
+			this.model.getMap().setLevel(level);
 			this.model.getMap().setNumberOfDiamonds(0);
 			//System.out.println(/*this.model.getMap().getLevel()*/level);	debug
-			switch(/*this.model.getMap().getLevel()*/level) {
+			switch(this.model.getMap().getLevel()) {
 			case 1 :
 				this.model.getMap().setRequiredNumberOfDiamonds(1);
 				//this.model.getMap().setLevel(1);
@@ -110,6 +119,12 @@ public final class Controller implements IController{
 				//				this.model.getMap().setLevel(6);
 				this.heroX = 1;
 				this.heroY = 2;
+				break;
+			case 7 :
+				this.model.getMap().setRequiredNumberOfDiamonds(0);
+				//				this.model.getMap().setLevel(6);
+				this.heroX = 0;
+				this.heroY = 0;
 				level = 0;
 				break;
 			}
