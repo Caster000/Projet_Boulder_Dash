@@ -64,17 +64,17 @@ public class Map extends Observable implements IMap {
 
 	private int xu = 0;
 	
-	private boolean monster1SupMonster2 = false;
+	private int oldMonster1x = 0;
 	
-	private boolean monster2SupMonster3 = false;
+	private int oldMonster1y = 0;
 	
-	private boolean monster3SupMonster1 = false;
+	private int oldMonster2x = 0;
 	
-	private boolean oldMonster1SupMonster2 = false;
+	private int oldMonster2y = 0;
 	
-	private boolean oldMonster2SupMonster3 = false;
+	private int oldMonster3x = 0;
 	
-	private boolean oldMonster3SupMonster1 = false;
+	private int oldMonster3y = 0;
 	
 	private int temp;
 
@@ -261,7 +261,6 @@ public class Map extends Observable implements IMap {
 
 	//specific function for the hero to move up
 	public boolean heroMoveUp(IEntity hero, int x, int y) {
-		updateMap();
 		IEntity topEntity = this.getOnTheMapXY(x, y-1);//checks whant's the entity where the hero wanted to move
 		if (topEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(topEntity, x, y);
@@ -286,7 +285,6 @@ public class Map extends Observable implements IMap {
 
 	//specific function for the hero to move down
 	public boolean heroMoveDown(IEntity hero, int x, int y) {
-		updateMap();
 		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity where the hero wanted to move
 		if (downEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(downEntity, x, y);
@@ -311,7 +309,6 @@ public class Map extends Observable implements IMap {
 
 	//specific function for the hero to move left
 	public boolean heroMoveLeft(IEntity hero, int x, int y) {
-		updateMap();
 		IEntity leftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity where the hero wanted to move
 		if (leftEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(leftEntity, x, y);
@@ -347,7 +344,6 @@ public class Map extends Observable implements IMap {
 
 	//specific function for the hero to move right
 	public boolean heroMoveRight(IEntity hero, int x, int y) {
-		updateMap();
 		IEntity rightEntity = this.getOnTheMapXY(x+1, y);//checks whant's the entity where the hero wanted to move
 		if (rightEntity instanceof IPermeability) {//if the entity is penetrable
 			HeroMovingChecks(rightEntity, x, y);
@@ -526,10 +522,9 @@ public class Map extends Observable implements IMap {
 		int monster3x = 0;
 		int monster3y = 0;
 //		System.out.println(xu);							//debug
-//		xu++;											//debug
-		if (xu >= 5) {
-			xu = 0;
-		}
+		xu++;											//debug
+		
+		
 		int leftOrRight = 0;
 		for(int x=width-1; x > 0; x--)
 		{
@@ -635,41 +630,64 @@ public class Map extends Observable implements IMap {
 
 			}
 		}
-//		if (monster1y == monster2y && monster1x < monster2x || monster1y > monster2y) {
-//			monster1SupMonster2 = true;
-//		}
-//		if (monster2y == monster3y && monster2x < monster3x || monster2y > monster3y) {
-//			monster2SupMonster3 = true;
-//		}
-//		if (monster3y == monster1y && monster3x < monster1x || monster3y > monster1y) {
-//			monster3SupMonster1 = true;
-//		}
-//		if (monster1SupMonster2 == oldMonster1SupMonster2) {
-//			if (monster3SupMonster1 == oldMonster3SupMonster1) {
-//				if (monster1x != 0) {
-//					latestWhereToMove1 = monsterMoving(monster1x, monster1y, latestWhereToMove1);
-//				}
-//				if (monster2SupMonster3 == oldMonster2SupMonster3) {
-//					if (monster2x != 0) {
-//						latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove2);
-//					}
-//					if (monster3x != 0) {
-//						latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
-//					}
-//				}
-//			}
-//		}else {
-//			
-//		}
-		if (monster1x != 0) {
-			latestWhereToMove1 = monsterMoving(monster1x, monster1y, latestWhereToMove1);
+		if (xu == 1) {		
+			if (monster1x != 0) {
+				latestWhereToMove1 = monsterMoving(monster1x, monster1y, latestWhereToMove1);
+			}
+			if (monster2x != 0) {
+				latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove2);
+			}
+			if (monster3x != 0) {
+				latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
+			}
+		}else {
+			if ((oldMonster1x + 1 == monster1x || oldMonster1x - 1 == monster1x || oldMonster1x == monster1x) && (oldMonster1y + 1 == monster1y || oldMonster1y - 1 == monster1y || oldMonster1y == monster1y)) {
+				if (monster1x != 0) {
+					latestWhereToMove1 = monsterMoving(monster1x, monster1y, latestWhereToMove1);
+				}
+				if ((oldMonster2x + 1 == monster2x || oldMonster2x - 1 == monster2x || oldMonster2x == monster2x) && (oldMonster2y + 1 == monster2y || oldMonster2y - 1 == monster2y || oldMonster2y == monster2y)) {
+					if (monster2x != 0) {
+						latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove2);
+					}
+					if (monster3x != 0) {
+						latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
+					}
+				} else {
+					if (monster2x != 0) {
+						latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
+					}
+					if (monster3x != 0) {
+						latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove2);
+					}
+				}
+			} else if((oldMonster2x + 1 == monster1x || oldMonster2x - 1 == monster1x || oldMonster2x == monster1x) && (oldMonster2y + 1 == monster1y || oldMonster2y - 1 == monster1y || oldMonster2y == monster1y)) {
+				if (monster1x != 0) {
+					latestWhereToMove1 = monsterMoving(monster1x, monster1y, latestWhereToMove2);
+				}
+				if ((oldMonster3x + 1 == monster2x || oldMonster3x - 1 == monster2x || oldMonster3x == monster2x) && (oldMonster3y + 1 == monster2y || oldMonster3y - 1 == monster2y || oldMonster3y == monster2y)) {
+					if (monster2x != 0) {
+						latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
+					}
+					if (monster3x != 0) {
+						latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove1);
+					}
+				}else {
+					if (monster2x != 0) {
+						latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove1);
+					}
+					if (monster3x != 0) {
+						latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
+					}
+				}
+			}
 		}
-		if (monster2x != 0) {
-			latestWhereToMove2 = monsterMoving(monster2x, monster2y, latestWhereToMove2);
-		}
-		if (monster3x != 0) {
-			latestWhereToMove3 = monsterMoving(monster2x, monster2y, latestWhereToMove3);
-		}
+		oldMonster1x = monster1x;
+		oldMonster1y = monster1y;
+		oldMonster2x = monster2x;
+		oldMonster2y = monster2y;
+		oldMonster3x = monster3x;
+		oldMonster3y = monster3y;
+		
 
 		setChanged();
 		notifyObservers();
@@ -813,8 +831,7 @@ public class Map extends Observable implements IMap {
 			return 1;
 		case 2 :
 			moveUp(x, y);
-			latestWhereToMove = 2;
-			break;
+			return 2;
 		case 3 :
 			if (latestWhereToMove == 8) {
 				moveUp(x, y);
