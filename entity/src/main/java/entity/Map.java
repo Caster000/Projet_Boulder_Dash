@@ -124,9 +124,9 @@ public class Map extends Observable implements IMap {
 		onTheMap = new Entity[width][height];
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.exia.insanevehicles.model.IRoad#getWidth()
+	/**
+	 * Method to get the width of the map
+	 * 
 	 */
 	@Override
 	public final int getWidth() {
@@ -143,9 +143,8 @@ public class Map extends Observable implements IMap {
 		this.width = width;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.exia.insanevehicles.model.IRoad#getHeight()
+	/**
+	 * Method to get the height of the map
 	 */
 	@Override
 	public final int getHeight() {
@@ -162,9 +161,8 @@ public class Map extends Observable implements IMap {
 		this.height = height;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see fr.exia.insanevehicles.model.IRoad#getOnTheRoadXY(int, int)
+	/**
+	 * Method to get a position on the map
 	 */
 	@Override
 	public final IEntity getOnTheMapXY(final int x, final int y) {
@@ -246,35 +244,57 @@ public class Map extends Observable implements IMap {
 //		this.message = message;
 //	}
 
-	//generic function for moving left
+	/**
+	 * generic function for moving left
+	 * @param x
+	 * @param y
+	 */
 	public void moveLeft(int x, int y) {
 		this.onTheMap[x-1][y] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		//		System.out.println("Went left");
 	}
 
-	//generic function for moving right
+	/**
+	 * generic function for moving right
+	 * @param x
+	 * @param y
+	 */
 	public void moveRight(int x, int y) {
 		this.onTheMap[x+1][y] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		//		System.out.println("Went right");
 	}
 
-	//generic function for moving up
+	/**
+	 * generic function for moving up
+	 * @param x
+	 * @param y
+	 */
 	public void moveUp(int x, int y) {
 		this.onTheMap[x][y-1] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		//		System.out.println("Went up");
 	}
 
-	//generic function for moving down
+	/**
+	 * generic function for moving down
+	 * @param x
+	 * @param y
+	 */
 	public void moveDown(int x, int y) {
 		this.onTheMap[x][y+1] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
 		//		System.out.println("Went down");
 	}
 
-	//specific function for the hero to move up
+	/**
+	 * specific function for the hero to move up
+	 * @param hero
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean heroMoveUp(IEntity hero, int x, int y) {
 		IEntity topEntity = this.getOnTheMapXY(x, y-1);//checks whant's the entity where the hero wanted to move
 		if (topEntity instanceof IPermeability) {//if the entity is penetrable
@@ -310,7 +330,13 @@ public class Map extends Observable implements IMap {
 		return false;
 	}
 
-	//specific function for the hero to move down
+	/**
+	 * specific function for the hero to move down
+	 * @param hero
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean heroMoveDown(IEntity hero, int x, int y) {
 		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity where the hero wanted to move
 		if (downEntity instanceof IPermeability) {//if the entity is penetrable
@@ -346,7 +372,13 @@ public class Map extends Observable implements IMap {
 		return false;
 	}
 
-	//specific function for the hero to move left
+	/**
+	 * specific function for the hero to move left
+	 * @param hero
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean heroMoveLeft(IEntity hero, int x, int y) {
 		IEntity leftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity where the hero wanted to move
 		if (leftEntity instanceof IPermeability) {//if the entity is penetrable
@@ -394,7 +426,13 @@ public class Map extends Observable implements IMap {
 		return false;
 	}
 
-	//specific function for the hero to move right
+	/**
+	 * specific function for the hero to move right
+	 * @param hero
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean heroMoveRight(IEntity hero, int x, int y) {
 		IEntity rightEntity = this.getOnTheMapXY(x+1, y);//checks whant's the entity where the hero wanted to move
 		if (rightEntity instanceof IPermeability) {//if the entity is penetrable
@@ -438,15 +476,21 @@ public class Map extends Observable implements IMap {
 		}
 		return false;
 	}
-
+	/**
+	 * Method to check the entity next to the hero
+	 * @param e
+	 * @param x
+	 * @param y
+	 */
+	
 	public void HeroMovingChecks(IEntity e, int x, int y) { 
 		if (e instanceof Monster) {//different cases
 			killPlayer(x, y);//die because of the monster
 		}else if (e instanceof Diamond) {
-			System.out.println("supposed to be taken");
+			//System.out.println("supposed to be taken");	debug
 			this.setNumberOfDiamonds(this.getNumberOfDiamonds() + 1);
-			System.out.println("Taken !");
-			System.out.println(this.getNumberOfDiamonds());
+			//System.out.println("Taken !");	debug
+			//System.out.println(this.getNumberOfDiamonds());	debug
 		}
 
 	}
@@ -473,7 +517,15 @@ public class Map extends Observable implements IMap {
 //		}
 //		return false;
 //	}
-
+	/**
+	 * Method for slide function
+	 * Diamond and Stone fall when they are superimposed
+	 * @param downEntity
+	 * @param faller
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public int slide(IEntity downEntity, IGravity faller, int x, int y) {
 		IEntity downLeftEntity = this.getOnTheMapXY(x-1, y+1);//checks what's the entity down right of the Stone
 		IEntity downRightEntity = this.getOnTheMapXY(x+1, y+1);//checks what's the entity down left of the Stone
@@ -503,7 +555,13 @@ public class Map extends Observable implements IMap {
 		}
 		return 0;
 	}
-
+	/**
+	 * Method for slide function to left
+	 * @param downLeftEntity
+	 * @param faller
+	 * @param x
+	 * @param y
+	 */
 	public void slideLeft(IEntity downLeftEntity, IGravity faller, int x, int y) {
 		moveLeft(x, y);
 		try {
@@ -515,7 +573,13 @@ public class Map extends Observable implements IMap {
 //		moveDown(x-1, y);//to slide, you need to move left or right then down
 		faller.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
-
+	/**
+	 * Method for slide function to right
+	 * @param downLeftEntity
+	 * @param faller
+	 * @param x
+	 * @param y
+	 */
 	public void slideRight(IEntity downRightEntity, IGravity faller, int x, int y) {
 		moveRight(x, y);
 		try {
@@ -527,7 +591,13 @@ public class Map extends Observable implements IMap {
 //		moveDown(x+1, y);//to slide, you need to move left or right then down
 		faller.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
-
+	/**
+	 * Method to check when fall is call
+	 * @param e
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean fallerChecks(IEntity e, int x, int y) { 
 		if (e instanceof Monster) {//if a monster is under a stone falling
 			killMonster(x, y+1);
@@ -539,11 +609,17 @@ public class Map extends Observable implements IMap {
 		return false;
 	}
 
-
+	/**
+	 * Method to get the number of diamond required
+	 * @return
+	 */
 	public int getRequiredNumberOfDiamonds() {
 		return requiredNumberOfDiamonds;
 	}
-
+	/**
+	 * Method to set the number of diamond required
+	 * @return
+	 */
 	public void setRequiredNumberOfDiamonds(int requiredNumberOfDiamonds) {
 		this.requiredNumberOfDiamonds = requiredNumberOfDiamonds;
 	}
@@ -564,19 +640,31 @@ public class Map extends Observable implements IMap {
 	//		}
 	//		time --;
 	//	}
-
+	/**
+	 * Method to get the time
+	 * @return
+	 */
 	public int getTimeSecond() {
 		return time;
 	}
-
+	/**
+	 * Method to get the actual number of diamond
+	 * @return
+	 */
 	public int getNumberOfDiamonds() {
 		return numberOfDiamonds;
 	}
-
+	/**
+	 * Method to set the actual number of diamond
+	 * @return
+	 */
 	public void setNumberOfDiamonds(int numberOfDiamonds) {
 		this.numberOfDiamonds = numberOfDiamonds;
 	}
-
+	/**
+	 * Method to update the map and apply all the change
+	 * @return
+	 */
 	public int updateMap() {
 		int monster1x = 0;
 		int monster1y = 0;
@@ -772,10 +860,14 @@ public class Map extends Observable implements IMap {
 		// TODO Auto-generated method stub
 		return this;
 	}
-
+	/**
+	 * Method to kill the player
+	 * @param x
+	 * @param y
+	 */
 	private void killPlayer(int x, int y){
 		setNumberOfLives(getNumberOfLives() - 1);
-		System.out.println("The hero is dead");
+		//System.out.println("The hero is dead");	debug
 		this.onTheMap[x][y] = new Door();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x][y-1] = new Door();//when an entity leaves a space, it creates a new empty entity on the space
 		this.onTheMap[x][y+1] = new Door();//when an entity leaves a space, it creates a new empty entity on the space
@@ -791,7 +883,7 @@ public class Map extends Observable implements IMap {
 			r = new Robot();
 			//    level--;
 			Thread.sleep(1000);
-			r.keyPress(KeyEvent.VK_1);System.out.println("Robot press");
+			r.keyPress(KeyEvent.VK_1);//System.out.println("Robot press");	debug
 			Thread.sleep(100);
 		} catch (AWTException e) {
 			// TODO Auto-generated catch block
@@ -803,7 +895,11 @@ public class Map extends Observable implements IMap {
 
 
 	}
-
+	/**
+	 * Method to kill a monster
+	 * @param x
+	 * @param y
+	 */
 	private void killMonster(int x, int y) {
 		System.out.println("A monster is dead");
 		this.onTheMap[x][y] = new Diamond();//when an entity leaves a space, it creates a new empty entity on the space
@@ -818,7 +914,13 @@ public class Map extends Observable implements IMap {
 
 
 	}
-
+	/**
+	 * Specific method to move monsters
+	 * @param x
+	 * @param y
+	 * @param latestWhereToMove
+	 * @return
+	 */
 	private int monsterMoving(int x, int y, int latestWhereToMove) {
 		int whereToMove = 0;//bouger à droite = 1, bouger en haut = 2, bouger en bas = 4, bouger à gauche = 8
 		int whereNotToMove = 0;//mur à droite-haut = 1, bouger en haut-gauche = 2, mur en bas-droite = 8, mur à gauche-bas = 4
@@ -1134,19 +1236,31 @@ public class Map extends Observable implements IMap {
 		}
 		return 0;
 	}
-
+	/**
+	 * Method to get the level
+	 * @return
+	 */
 	public int getLevel() {
 		return level;
 	}
-
+	/**
+	 * Method to set the level
+	 * @return
+	 */
 	public void setLevel(int level) {
 		this.level = level;
 	}
-
+	/**
+	 * Method to get the number of lives
+	 * @return
+	 */
 	public int getNumberOfLives() {
 		return numberOfLives;
 	}
-
+	/**
+	 * Method to set the number of lives
+	 * @return
+	 */
 	public void setNumberOfLives(int numberOfLives) {
 		this.numberOfLives = numberOfLives;
 	}
