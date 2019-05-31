@@ -271,9 +271,21 @@ public class Map extends Observable implements IMap {
 			System.out.println("it's a door");
 			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
-				System.out.println("Win !");
-				System.out.println("press 1");
-				//				level++;
+				try {
+
+					Robot r;
+					r = new Robot();
+					//    level--;
+					Thread.sleep(1000);
+					r.keyPress(KeyEvent.VK_1);System.out.println("Robot press");
+					Thread.sleep(100);
+				} catch (AWTException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -295,9 +307,21 @@ public class Map extends Observable implements IMap {
 			System.out.println("it's a door");
 			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
-				System.out.println("Win !");
-				System.out.println("press 1");
-				//				level++;
+				try {
+
+					Robot r;
+					r = new Robot();
+					//    level--;
+					Thread.sleep(1000);
+					r.keyPress(KeyEvent.VK_1);System.out.println("Robot press");
+					Thread.sleep(100);
+				} catch (AWTException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -331,8 +355,21 @@ public class Map extends Observable implements IMap {
 			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
 				moveRight(x, y);
 				System.out.println("Win !");
-				System.out.println("press 1");
-				//				level++;
+				try {
+
+					Robot r;
+					r = new Robot();
+					//    level--;
+					Thread.sleep(1000);
+					r.keyPress(KeyEvent.VK_1);System.out.println("Robot press");
+					Thread.sleep(100);
+				} catch (AWTException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				return true;
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
@@ -735,7 +772,6 @@ public class Map extends Observable implements IMap {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		mapIsAlive = false;
 
 
 	}
@@ -853,11 +889,11 @@ public class Map extends Observable implements IMap {
 			}
 		case 6 :
 			if (latestWhereToMove == 2) {
-				moveDown(x, y);
-				return 4;
-			}else {
 				moveUp(x, y);
 				return 2;
+			}else {
+				moveDown(x, y);
+				return 4;
 			}
 		case 7 :
 			if (latestWhereToMove == 4) {
@@ -880,11 +916,11 @@ public class Map extends Observable implements IMap {
 			return 8;
 		case 9 :
 			if (latestWhereToMove == 8) {
-				moveRight(x, y);
-				return 1;
-			}else {
 				moveLeft(x, y);
 				return 8;
+			}else {
+				moveRight(x, y);
+				return 1;
 			}
 		case 10 :
 			if (latestWhereToMove == 1) {
@@ -902,11 +938,11 @@ public class Map extends Observable implements IMap {
 				moveRight(x, y);
 				return 1;
 			} else if (whereNotToMove == 2 || whereNotToMove == 3 || whereNotToMove == 6 || whereNotToMove == 7 || whereNotToMove == 10 || whereNotToMove == 11 || whereNotToMove == 14 || whereNotToMove == 15) {
-				moveLeft(x, y);
-				return 8;
-			}else {
 				moveRight(x, y);
 				return 1;
+			}else {
+				moveLeft(x, y);
+				return 8;
 			}
 		case 12 :
 			if (latestWhereToMove == 1) {
