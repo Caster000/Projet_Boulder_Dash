@@ -31,11 +31,9 @@ public class TestBlock {
 	}
 
 	@Test
-	public void test() {
+	public void BlockExist() {
 		int expected = id;
-		assertEquals(expected, block.id);
-		System.out.println("Good Job!");
-		
+		assertEquals(expected, block.id);		
 	} 
 
 }
