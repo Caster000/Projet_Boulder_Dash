@@ -11,31 +11,49 @@ import entity.motionless.Wall;
 
 public abstract class EntityFactory {
     
-    //The Constant Wall
+    /**
+     * The Constant Wall
+     */
     private static Wall WALL = new Wall(); 
     
-    //The Constant Rock
+    /**
+     * The Constant Rock
+     */
     private static Rock ROCK = new Rock();
     
-    //The Constant Empty
+    /**
+     * The Constant Empty
+     */
     private static Empty EMPTY = new Empty();
     
-    //The Constant Door
+    /**
+     * The Constant Door
+     */
     private static Door DOOR = new Door();
     
-    //The Constant Diamond
+    /**
+     * The Constant Diamond
+     */
     private static Diamond DIAMOND = new Diamond();
     
-    //The Constant Stone
+    /**
+     * The Constant Stone
+     */
     private static Stone STONE = new Stone();
     
-    //The Constant Monster
+    /**
+     * The Constant Monster
+     */
     private static Monster MONSTER = new Monster();;
     
-    //The Constant Hero
+    /**
+     * The Constant Hero
+     */
     private static Hero HERO = new Hero();
     
-    //The entity is an array of all possible entity
+    /**
+     * The entity is an array of all possible entity
+     */
     private static Entity[] Entities = {
         WALL,
         ROCK,
@@ -47,41 +65,65 @@ public abstract class EntityFactory {
         HERO
     };
     
-    //creates a new motionlessEntity object (Wall type)    
+    /**
+     * creates a new motionlessEntity object (Wall type)    
+     * @return
+     */
     public static Entity createWall() {
         return WALL;
     }
     
-    //creates a new motionlessEntity object (Rock type)    
+    /**
+     * creates a new motionlessEntity object (Rock type)    
+     * @return
+     */
     public static Entity createRock() {
         return ROCK;
     }
     
-    //creates a new motionlessEntity object (Empty type)    
+    /**
+     * creates a new motionlessEntity object (Empty type)    
+     * @return
+     */
     public static Entity createEmpty() {
         return EMPTY;
     }
     
-    //creates a new motionlessEntity object (Door type)    
+    /**
+     * creates a new motionlessEntity object (Door type)    
+     * @return
+     */
     public static Entity createDoor() {
         return DOOR;
     }
     
-    //creates a new mobile object (Diamond type)    
+    /**
+     * creates a new mobile object (Diamond type)    
+     * @return
+     */
     public static Entity createDiamond() {
         return DIAMOND;
     }
     
-    //creates a new mobile object (Stone type)    
+    /**
+     * creates a new mobile object (Stone type)    
+     * @return
+     */
     public static Entity createStone() {
         return STONE;
     }
-    //creates a new mobile object (Monster type)    
+    /**
+     * creates a new mobile object (Monster type)    
+     * @return
+     */
     public static Entity createMonster() {
         return MONSTER;
     }
     
-    //creates a new mobile object (Hero type)    
+    /**
+     * creates a new mobile object (Hero type)    
+     * @return
+     */
     public static Entity createHero() {
         return HERO;
     }

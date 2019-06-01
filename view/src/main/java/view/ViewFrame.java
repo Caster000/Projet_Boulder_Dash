@@ -1,15 +1,12 @@
 package view;
 
-/**
- * library
- */
 
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import contract.IController;
 import contract.IModel;
@@ -137,15 +134,15 @@ class ViewFrame extends JFrame implements KeyListener {
 		
 	}
 
-	/**
-	 * Prints the message.
-	 *
-	 * @param message
-	 *          the message
-	 */
-	public void printMessage(final String message) {
-		JOptionPane.showMessageDialog(null, message);
-	}
+//	/**
+//	 * Prints the message.
+//	 *
+//	 * @param message
+//	 *          the message
+//	 */
+//	public void printMessage(final String message) {
+//		JOptionPane.showMessageDialog(null, message);
+//	}
 
 	/*
 	 * (non-Javadoc)

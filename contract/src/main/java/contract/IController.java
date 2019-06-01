@@ -1,6 +1,5 @@
 package contract;
 
-import java.io.IOException;
 
 /**
  * The Interface IController.

@@ -859,7 +859,7 @@ public class Map extends Observable implements IMap {
 		IEntity topRightEntity = this.getOnTheMapXY(x+1, y-1);
 		IEntity leftUpEntity = this.getOnTheMapXY(x-1, y-1);
 		IEntity rightDownEntity = this.getOnTheMapXY(x+1, y+1);
-		//		System.out.println(downEntity.getClass());
+		//		System.out.println(downEntity.getClass());			debug
 		//		System.out.println(rightDownEntity.getClass());
 		//		System.out.println(rightEntity.getClass());
 		//		System.out.println(topRightEntity.getClass());

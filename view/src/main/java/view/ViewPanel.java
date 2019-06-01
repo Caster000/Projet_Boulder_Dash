@@ -56,12 +56,6 @@ class ViewPanel extends JPanel implements Observer {
 		this.viewFrame = viewFrame;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
-	 */
-
 	/**
 	 *@param update 
 	 */
@@ -69,8 +63,8 @@ class ViewPanel extends JPanel implements Observer {
 	public void update(final Observable arg0, final Object arg1) {
 		this.repaint();
 	}
-/*
-	 * (non-Javadoc)
+	/**
+	 * Method to change the view with the new model
 	 *
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
@@ -102,7 +96,7 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.drawString("Diamond : "+this.getViewFrame().getModel().getMap().getNumberOfDiamonds() + "/" + this.getViewFrame().getModel().getMap().getRequiredNumberOfDiamonds(), 1, 845);
 		
 		try{
-//			System.out.println("J'actualise_2");
+//			System.out.println("J'actualise_2");	debug
 		viewFrame.getModel().getMap().getObservable().addObserver(this);
 
 		}catch(Exception e){ 

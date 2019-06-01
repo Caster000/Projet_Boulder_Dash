@@ -1,6 +1,5 @@
 package entity.mobile;
 
-import entity.IPermeability;
 import entity.Sprite;
 
 public class Monster extends Alive{
