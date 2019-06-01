@@ -87,6 +87,8 @@ public class Map extends Observable implements IMap {
 
 	/**To prevent the blocks to keep the is Falling operator to true even when they're not falling */
 	private int debug = 0; 
+	
+	Timer timer;
 
 	//timer
 	TimerTask task = new TimerTask() {
@@ -94,7 +96,6 @@ public class Map extends Observable implements IMap {
 			updateMap();
 		}
 	};
-	Timer timer;
 
 	/**
      * Gets the map.
@@ -102,7 +103,7 @@ public class Map extends Observable implements IMap {
      * @return the onTheMap
      */
 	public IEntity[][] getOnTheMap() {
-		return onTheMap;
+		return onTheMap;// returns the map
 	}
 
 	public Map() {
@@ -126,11 +127,12 @@ public class Map extends Observable implements IMap {
 
 	/**
 	 * Method to get the width of the map
-	 * 
+	 *
+     * @return the width
 	 */
 	@Override
 	public final int getWidth() {
-		return this.width;
+		return this.width;//return the width
 	}
 
 	/**
@@ -140,15 +142,17 @@ public class Map extends Observable implements IMap {
 	 *            the new width
 	 */
 	public void setWidth(final int width) {
-		this.width = width;
+		this.width = width;//sets the width
 	}
 
 	/**
 	 * Method to get the height of the map
+	 *
+     * @return the height
 	 */
 	@Override
 	public final int getHeight() {
-		return this.height;
+		return this.height;//return the height
 	}
 
 	/**
@@ -158,16 +162,18 @@ public class Map extends Observable implements IMap {
 	 *            the new height
 	 */
 	public void setHeight(final int height) {
-		this.height = height;
+		this.height = height;//sets the height
 	}
 
 	/**
-	 * Method to get a position on the map
+	 * Method to get an entity from a position on the map
+	 *
+     * @return the entity
 	 */
 	@Override
 	public final IEntity getOnTheMapXY(final int x, final int y) {
-		if (x <= width-1 && y <= height-1) {
-			return this.onTheMap[x][y];
+		if (x <= width-1 && y <= height-1) {//if the coordinates are on the map
+			return this.onTheMap[x][y];//returns the entity
 		}
 		return null;
 	}
@@ -183,66 +189,8 @@ public class Map extends Observable implements IMap {
 	 *            the y
 	 */
 	public void setOnTheMapXY(final IEntity entity, final int x, final int y) {
-		this.onTheMap[x][y] = entity;
+		this.onTheMap[x][y] = entity; // sets the entity
 	}
-
-
-//	/**
-//	 * Gets the id.
-//	 *
-//	 * @return the id
-//	 */
-//	public int getId() {
-//		return this.id;
-//	}
-//
-//	/**
-//	 * Sets the id.
-//	 *
-//	 * @param id
-//	 *          the new id
-//	 */
-//	public void setId(final int id) {
-//		this.id = id;
-//	}
-//
-//	/**
-//	 * Gets the key.
-//	 *
-//	 * @return the key
-//	 */
-//	public String getKey() {
-//		return this.key;
-//	}
-//
-//	/**
-//	 * Sets the key.
-//	 *
-//	 * @param key
-//	 *          the new key
-//	 */
-//	public void setKey(final String key) {
-//		this.key = key;
-//	}
-//
-//	/**
-//	 * Gets the message.
-//	 *
-//	 * @return the message
-//	 */
-//	public String getMessage() {
-//		return this.message;
-//	}
-//
-//	/**
-//	 * Sets the message.
-//	 *
-//	 * @param message
-//	 *          the new message
-//	 */
-//	public void setMessage(final String message) {
-//		this.message = message;
-//	}
 
 	/**
 	 * generic function for moving left
@@ -252,7 +200,7 @@ public class Map extends Observable implements IMap {
 	public void moveLeft(int x, int y) {
 		this.onTheMap[x-1][y] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-		//		System.out.println("Went left");
+		//		System.out.println("Went left");		//debug
 	}
 
 	/**
@@ -263,7 +211,7 @@ public class Map extends Observable implements IMap {
 	public void moveRight(int x, int y) {
 		this.onTheMap[x+1][y] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-		//		System.out.println("Went right");
+		//		System.out.println("Went right");		//debug
 	}
 
 	/**
@@ -274,7 +222,7 @@ public class Map extends Observable implements IMap {
 	public void moveUp(int x, int y) {
 		this.onTheMap[x][y-1] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-		//		System.out.println("Went up");
+		//		System.out.println("Went up");		//debug
 	}
 
 	/**
@@ -285,7 +233,7 @@ public class Map extends Observable implements IMap {
 	public void moveDown(int x, int y) {
 		this.onTheMap[x][y+1] = this.onTheMap[x][y];//the entity moves
 		this.onTheMap[x][y] = new Empty();//when an entity leaves a space, it creates a new empty entity on the space
-		//		System.out.println("Went down");
+		//		System.out.println("Went down");		//debug
 	}
 
 	/**
@@ -293,27 +241,27 @@ public class Map extends Observable implements IMap {
 	 * @param hero
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return the has moved
 	 */
 	public boolean heroMoveUp(IEntity hero, int x, int y) {
 		IEntity topEntity = this.getOnTheMapXY(x, y-1);//checks whant's the entity where the hero wanted to move
 		if (topEntity instanceof IPermeability) {//if the entity is penetrable
-			HeroMovingChecks(topEntity, x, y);
-			moveUp(x, y);
-			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-			return true;
-		}else if (topEntity instanceof Door){
-			System.out.println("it's a door");
+			HeroMovingChecks(topEntity, x, y);//checks if the hero dies or pick a diamond
+			moveUp(x, y);//move the hero
+			return true;//the hero has moved
+		}else if (topEntity instanceof Door){//if the hero wants to go on a door
+//			System.out.println("it's a door");		//debug
 			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
-				moveRight(x, y);
+				moveUp(x, y);//the hero move to the door
 				try {
-					setLevel(getLevel() + 1);
+					setLevel(getLevel() + 1);//the level increment itself
 					Robot r;
 					r = new Robot();
 					//    level--;
-					Thread.sleep(1000);
-					r.keyPress(KeyEvent.VK_1);System.out.println("Robot press");
-					Thread.sleep(100);
+					Thread.sleep(1000);//wait for the player to understand
+					r.keyPress(KeyEvent.VK_1);//the level changes
+//					System.out.println("Robot press");		//debug
+					Thread.sleep(100);//wait for the player to understand
 				} catch (AWTException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -321,13 +269,13 @@ public class Map extends Observable implements IMap {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				return true;
+				return true;//the hero has moved
 			}else {
-				System.out.println("can't move right");//print a message for testing purposes
-				return false;
+//				System.out.println("can't move right");		//debug
+				return false;//the hero hasn't moved
 			}
 		}
-		return false;
+		return false;//the hero hasn't moved
 	}
 
 	/**
@@ -335,27 +283,27 @@ public class Map extends Observable implements IMap {
 	 * @param hero
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return the has moved
 	 */
 	public boolean heroMoveDown(IEntity hero, int x, int y) {
 		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity where the hero wanted to move
 		if (downEntity instanceof IPermeability) {//if the entity is penetrable
-			HeroMovingChecks(downEntity, x, y);
-			moveDown(x, y);
-			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-			return true;
-		}else if (downEntity instanceof Door){
-			System.out.println("it's a door");
+			HeroMovingChecks(downEntity, x, y);//checks if the hero dies or pick a diamond
+			moveDown(x, y);//the hero move down
+			return true;//the hero has moved
+		}else if (downEntity instanceof Door){//if the entity is a door
+//			System.out.println("it's a door");		//debug
 			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
-				moveRight(x, y);
+				moveDown(x, y);//the hero moves
 				try {
-					setLevel(getLevel() + 1);
+					setLevel(getLevel() + 1);//the level increment itself
 					Robot r;
 					r = new Robot();
 					//    level--;
-					Thread.sleep(1000);
-					r.keyPress(KeyEvent.VK_1);System.out.println("Robot press");
-					Thread.sleep(100);
+					Thread.sleep(1000);//wait for the player to understand
+					r.keyPress(KeyEvent.VK_1);//the level changes
+//					System.out.println("Robot press");		//debug
+					Thread.sleep(100);//wait for the player to understand
 				} catch (AWTException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -363,13 +311,13 @@ public class Map extends Observable implements IMap {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				return true;
+				return true;//the hero has moved
 			}else {
-				System.out.println("can't move right");//print a message for testing purposes
-				return false;
+//				System.out.println("can't move right");		//debug
+				return false;//the hero hasn't moved
 			}
 		}
-		return false;
+		return false;//the hero hasn't moved
 	}
 
 	/**
@@ -377,39 +325,38 @@ public class Map extends Observable implements IMap {
 	 * @param hero
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return the has moved
 	 */
 	public boolean heroMoveLeft(IEntity hero, int x, int y) {
 		IEntity leftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity where the hero wanted to move
 		if (leftEntity instanceof IPermeability) {//if the entity is penetrable
-			HeroMovingChecks(leftEntity, x, y);
-			moveLeft(x, y);
-			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
-			return true;
-		}else if (leftEntity instanceof Stone) {
+			HeroMovingChecks(leftEntity, x, y);//checks if the hero dies or pick a diamond
+			moveLeft(x, y);//the hero moves
+			return true;//the hero has moved
+		}else if (leftEntity instanceof Stone) {//if the entity is a stone
 			IEntity leftLeftEntity = this.getOnTheMapXY(x-2, y);//checks what's the entity left to where the hero wanted to move
-			if(leftLeftEntity instanceof Empty) {
-				moveLeft(x-1, y);
-				moveLeft(x, y);
-				System.out.println("pushed");
-				return true;
+			if(leftLeftEntity instanceof Empty) {//if the stone can be pushed left where the hero wanted to move
+				moveLeft(x-1, y);//the stone moves
+				moveLeft(x, y);//the hero moves
+//				System.out.println("pushed");		//debug
+				return true;//the hero has moved
 			}else {
-				return false;
+				return false;//the hero hasn't moved
 			}
-
-		}else if (leftEntity instanceof Door){
-			System.out.println("it's a door");
+		}else if (leftEntity instanceof Door){//if the hero wants to go on a door
+//			System.out.println("it's a door");		//debug
 			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
-				moveRight(x, y);
-				System.out.println("Win !");
+				moveRight(x, y);//the hero moves
+//				System.out.println("Win !");		//debug
 				try {
-					setLevel(getLevel() + 1);
+					setLevel(getLevel() + 1);//the level increment itself
 					Robot r;
 					r = new Robot();
 					//    level--;
-					Thread.sleep(1000);
-					r.keyPress(KeyEvent.VK_1);System.out.println("Robot press");
-					Thread.sleep(100);
+					Thread.sleep(1000);//wait for the player to understand
+					r.keyPress(KeyEvent.VK_1);//the level changes
+//					System.out.println("Robot press");		//debug
+					Thread.sleep(100);//wait for the player to understand
 				} catch (AWTException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -417,13 +364,13 @@ public class Map extends Observable implements IMap {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				return true;
+				return true;//the hero has moved
 			}else {
-				System.out.println("can't move right");//print a message for testing purposes
-				return false;
+//				System.out.println("can't move right");		//debug
+				return false;//the hero hasn't moved
 			}
 		}
-		return false;
+		return false;//the hero hasn't moved
 	}
 
 	/**
@@ -431,36 +378,37 @@ public class Map extends Observable implements IMap {
 	 * @param hero
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return the has moved
 	 */
 	public boolean heroMoveRight(IEntity hero, int x, int y) {
 		IEntity rightEntity = this.getOnTheMapXY(x+1, y);//checks whant's the entity where the hero wanted to move
 		if (rightEntity instanceof IPermeability) {//if the entity is penetrable
-			HeroMovingChecks(rightEntity, x, y);
-			moveRight(x, y);
+			HeroMovingChecks(rightEntity, x, y);//checks if the hero dies or pick a diamond
+			moveRight(x, y);//the hero moves
 			//On Titouan's code there's a function which updates the map, maybe we shall do something like that
 			return true;
-		}else if (rightEntity instanceof Stone) {
+		}else if (rightEntity instanceof Stone) {//if the entity is a stone
 			IEntity rightRightEntity = this.getOnTheMapXY(x+2, y);//checks what's the entity right to where the hero wanted to move
-			if(rightRightEntity instanceof Empty) {
-				moveRight(x+1, y);
-				moveRight(x, y);
-				System.out.println("pushed");
-				return true;
+			if(rightRightEntity instanceof Empty) {//if the stone can be pushed left where the hero wanted to move
+				moveRight(x+1, y);//the stone moves
+				moveRight(x, y);//the hero moves
+//				System.out.println("pushed");		//debug
+				return true;//the hero has moved
 			}
-		}else if (rightEntity instanceof Door){
-			System.out.println("it's a door");
+		}else if (rightEntity instanceof Door){//if the hero wants to go on a door
+//			System.out.println("it's a door");		//debug
 			if(this.getNumberOfDiamonds() >= requiredNumberOfDiamonds) {//when the players enters a door tile, it checks if he has the good number of diamonds and launches the victory cinematic
-				moveRight(x, y);
-				System.out.println("Win !");
+				moveRight(x, y);//the hero moves
+//				System.out.println("Win !");		//debug
 				try {
-					setLevel(getLevel() + 1);
+					setLevel(getLevel() + 1);//the level increment itself
 					Robot r;
 					r = new Robot();
 					//    level--;
-					Thread.sleep(1000);
-					r.keyPress(KeyEvent.VK_1);System.out.println("Robot press");
-					Thread.sleep(100);
+					Thread.sleep(1000);//wait for the player to understand
+					r.keyPress(KeyEvent.VK_1);//the level changes
+//					System.out.println("Robot press");		//debug
+					Thread.sleep(100);//wait for the player to understand
 				} catch (AWTException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -468,55 +416,33 @@ public class Map extends Observable implements IMap {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}			
-				return true;
+				return true;//the hero has moved
 			}else {
 				System.out.println("can't move right");//print a message for testing purposes
-				return false;
+				return false;//the hero hasn't moved
 			}
 		}
-		return false;
+		return false;//the hero hasn't moved
 	}
+
 	/**
-	 * Method to check the entity next to the hero
+	 * Method to check the entity where the hero wants to move
 	 * @param e
 	 * @param x
 	 * @param y
 	 */
-	
 	public void HeroMovingChecks(IEntity e, int x, int y) { 
-		if (e instanceof Monster) {//different cases
+		if (e instanceof Monster) {//if it's a monster
 			killPlayer(x, y);//die because of the monster
-		}else if (e instanceof Diamond) {
-			//System.out.println("supposed to be taken");	debug
-			this.setNumberOfDiamonds(this.getNumberOfDiamonds() + 1);
-			//System.out.println("Taken !");	debug
-			//System.out.println(this.getNumberOfDiamonds());	debug
+		}else if (e instanceof Diamond) {//if it's a diamond
+			//System.out.println("supposed to be taken");	//debug
+			this.setNumberOfDiamonds(this.getNumberOfDiamonds() + 1);//increases the number of diamonds
+			//System.out.println("Taken !");	//debug
+			//System.out.println(this.getNumberOfDiamonds());	//debug
 		}
 
 	}
 
-//	public boolean fall(int x, int y){
-//		IGravity faller = (IGravity) onTheMap[x][y];
-//		//		System.out.println(faller.isFalling());							//debug
-//		IEntity downEntity = this.getOnTheMapXY(x, y+1);//checks what's the entity down of the Stone
-//		if(!faller.isFalling()) {
-//			//			System.out.println("je ne suis pas en train de tomber"); 				//debug
-//			if(downEntity instanceof Empty){
-//				moveDown(x, y);
-//				return true;
-//			}
-//		}else if(downEntity instanceof IPermeability){
-//			//			System.out.println("mais moi oui !");					//debug
-//			if(downEntity instanceof Diamond || downEntity instanceof Rock){
-//				return false;
-//			}else {
-//				fallerChecks(downEntity, x, y);
-//				moveDown(x, y);
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
 	/**
 	 * Method for slide function
 	 * Diamond and Stone fall when they are superimposed
@@ -524,7 +450,7 @@ public class Map extends Observable implements IMap {
 	 * @param faller
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return the direction the block has slide
 	 */
 	public int slide(IEntity downEntity, IGravity faller, int x, int y) {
 		IEntity downLeftEntity = this.getOnTheMapXY(x-1, y+1);//checks what's the entity down right of the Stone
@@ -532,29 +458,38 @@ public class Map extends Observable implements IMap {
 		IEntity leftEntity = this.getOnTheMapXY(x-1, y);//checks what's the entity left of the stone
 		IEntity rightEntity = this.getOnTheMapXY(x+1, y);//checks what's the entity right of the stone
 
-		if(downEntity instanceof Diamond || downEntity instanceof Stone || downEntity instanceof Wall) {
-			if (downLeftEntity instanceof Empty && leftEntity instanceof Empty) {
+		if(downEntity instanceof Diamond || downEntity instanceof Stone || downEntity instanceof Wall) {//if behind the stone, there's an entity the stone can slide on
+			if (downLeftEntity instanceof Empty && leftEntity instanceof Empty) {//if both left and left down entity are empty
 				slideLeft(downLeftEntity, faller, x, y);//we call the method which allows the entity to slide left
-				return 1;//the codes return that the sliding succeed
-
+				return 1;//the codes return that the sliding succeed, and that the stone went left
 			} else if(downRightEntity instanceof Empty && rightEntity instanceof Empty) {
 				slideRight(downRightEntity, faller, x, y);
-				return 2;//the codes return that the sliding succeed
-
+				return 2;//the codes return that the sliding succeed, and that the stone went right
 			}
-		}else if(faller.isFalling() == true) {
-			if(downLeftEntity instanceof Monster || downLeftEntity instanceof Hero || downLeftEntity instanceof Empty && leftEntity instanceof Empty) {
+		}else if(faller.isFalling() == true) {//if the stone is already falling
+			if(downLeftEntity instanceof Monster || downLeftEntity instanceof Hero || downLeftEntity instanceof Empty && leftEntity instanceof Empty) {//if there's a hero/monster/empty left down of it and and empty left of it
 				slideLeft(downLeftEntity, faller, x, y);//we call the method which allows the entity to slide left
-				return 1;//the codes return that the sliding succeed
+				if (downLeftEntity instanceof Hero) {//if the entity left behind the stone if a hero
+					killPlayer(x-1, y+1);//the hero dies
+				} else if (downLeftEntity instanceof Monster) {//if the entity left behind the stone if a monster
+					killMonster(x-1, y+1);//the monster dies
+				}
+				return 1;//the codes return that the sliding succeed, and that the stone went left
 
-			}else if(downRightEntity instanceof Monster || downRightEntity instanceof Hero || downRightEntity instanceof Empty && rightEntity instanceof Empty) {
-				slideLeft(downRightEntity, faller, x, y);//we call the method which allows the entity to slide left
-				return 2;//the codes return that the sliding succeed
+			}else if(downRightEntity instanceof Monster || downRightEntity instanceof Hero || downRightEntity instanceof Empty && rightEntity instanceof Empty) {//if there's a hero/monster/empty right down of it and an empty right of it 
+				slideRight(downRightEntity, faller, x, y);//we call the method which allows the entity to slide right
+				if (downRightEntity instanceof Hero) {//if the entity right behind the stone if a hero
+					killPlayer(x+1, y+1);//the hero dies
+				} else if (downRightEntity instanceof Monster) {//if the entity right behind the stone if a monster
+					killMonster(x+1, y+1);//the monster dies
+				}
+				return 2;//the codes return that the sliding succeed, and that the stone went right
 
 			}
 		}
-		return 0;
+		return 0;//the code returns that the sliding failed
 	}
+	
 	/**
 	 * Method for slide function to left
 	 * @param downLeftEntity
@@ -563,16 +498,11 @@ public class Map extends Observable implements IMap {
 	 * @param y
 	 */
 	public void slideLeft(IEntity downLeftEntity, IGravity faller, int x, int y) {
-		moveLeft(x, y);
-		try {
-			Thread.sleep(100);//a little pause in the execution so that the user can see the sliding
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		fallerChecks(downLeftEntity, x, y);
-//		moveDown(x-1, y);//to slide, you need to move left or right then down
+		moveLeft(x, y);//the stone moves left
+		fallerChecks(downLeftEntity, x, y);//the stone check if it kills some one
 		faller.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
+	
 	/**
 	 * Method for slide function to right
 	 * @param downLeftEntity
@@ -581,16 +511,11 @@ public class Map extends Observable implements IMap {
 	 * @param y
 	 */
 	public void slideRight(IEntity downRightEntity, IGravity faller, int x, int y) {
-		moveRight(x, y);
-		try {
-			Thread.sleep(100);//a little pause in the execution so that the user can see the sliding
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		fallerChecks(downRightEntity, x, y);
-//		moveDown(x+1, y);//to slide, you need to move left or right then down
+		moveRight(x, y);//the stone move right
+		fallerChecks(downRightEntity, x, y);//the block checks if it kills someone
 		faller.setIsFalling(true);//the stone is now falling so it can kill monsters or hero
 	}
+	
 	/**
 	 * Method to check when fall is call
 	 * @param e
@@ -600,10 +525,10 @@ public class Map extends Observable implements IMap {
 	 */
 	public boolean fallerChecks(IEntity e, int x, int y) { 
 		if (e instanceof Monster) {//if a monster is under a stone falling
-			killMonster(x, y+1);
+			killMonster(x, y+1);//the monster die because of a block
 			return true;
 		}else if (e instanceof Hero) {//if the hero is under a stone falling
-			killPlayer(x, y+1);
+			killPlayer(x, y+1);//the hero die because of a block
 			return true;
 		}
 		return false;
@@ -611,14 +536,15 @@ public class Map extends Observable implements IMap {
 
 	/**
 	 * Method to get the number of diamond required
-	 * @return
+	 * @return requiredNumberOfDiamonds
 	 */
 	public int getRequiredNumberOfDiamonds() {
 		return requiredNumberOfDiamonds;
 	}
+	
 	/**
 	 * Method to set the number of diamond required
-	 * @return
+	 * @param requiredNumberOfDiamonds
 	 */
 	public void setRequiredNumberOfDiamonds(int requiredNumberOfDiamonds) {
 		this.requiredNumberOfDiamonds = requiredNumberOfDiamonds;
@@ -640,6 +566,7 @@ public class Map extends Observable implements IMap {
 	//		}
 	//		time --;
 	//	}
+	
 	/**
 	 * Method to get the time
 	 * @return

@@ -24,6 +24,7 @@ public final class Controller implements IController{
 	private int lives ;
 
 	private boolean hasMoved;
+
 	/**
 	 * Instantiates a new controller.
 	 *
@@ -76,56 +77,60 @@ public final class Controller implements IController{
 			System.out.println(lives);
 			if(this.model.getMap().getNumberOfLives() == 0) {
 				this.model.getMap().setLevel(1);
+				level = this.model.getMap().getLevel();
 			}
 			this.model.loadMap(this.model.getMap().getLevel());
 			this.model.getMap().setNumberOfLives(lives);
 			this.model.getMap().setLevel(level);
 			this.model.getMap().setNumberOfDiamonds(0);
-			//System.out.println(/*this.model.getMap().getLevel()*/level);	debug
+			//System.out.println(/*this.model.getMap().getLevel()*/level);	//debug
 			switch(this.model.getMap().getLevel()) {
 			case 1 :
 				this.model.getMap().setRequiredNumberOfDiamonds(1);
-				//this.model.getMap().setLevel(1);
+				//this.model.getMap().setLevel(1);		//debug
 				this.heroX = 1;
 				this.heroY = 1;
+				this.model.getMap().setLevel(2);
+				this.model.getMap().setNumberOfLives(3);
 				break;
 			case 2 :
 				this.model.getMap().setRequiredNumberOfDiamonds(8);
-				//this.model.getMap().setLevel(2);
+				//this.model.getMap().setLevel(2);		//debug
 				this.heroX = 2;
-				//System.out.println(heroX);	debug
+				//System.out.println(heroX);	//debug
 				this.heroY = 2;
 				break;
 			case 3 :
 				this.model.getMap().setRequiredNumberOfDiamonds(8);
-				//				this.model.getMap().setLevel(3);
+				//				this.model.getMap().setLevel(3);		//debug
 				this.heroX = 2;
 				this.heroY = 2;
 				break;
 			case 4 :
 				this.model.getMap().setRequiredNumberOfDiamonds(10);
-				//				this.model.getMap().setLevel(4);
+				//				this.model.getMap().setLevel(4);		//debug
 				this.heroX = 2;
 				this.heroY = 2;
 				break;
 			case 5 :
 				this.model.getMap().setRequiredNumberOfDiamonds(8);
-				//				this.model.getMap().setLevel(5);
+				//				this.model.getMap().setLevel(5);		//debug
 				this.heroX = 2;
 				this.heroY = 2;
 				break;
 			case 6 :
 				this.model.getMap().setRequiredNumberOfDiamonds(13);
-				//				this.model.getMap().setLevel(6);
+				//				this.model.getMap().setLevel(6);		//debug
 				this.heroX = 1;
 				this.heroY = 2;
 				break;
 			case 7 :
 				this.model.getMap().setRequiredNumberOfDiamonds(0);
-				//				this.model.getMap().setLevel(6);
+				//				this.model.getMap().setLevel(6);		//debug
 				this.heroX = 0;
 				this.heroY = 0;
 				this.model.getMap().setLevel(2);
+				this.model.getMap().setNumberOfLives(3);
 				break;
 			}
 			break;
