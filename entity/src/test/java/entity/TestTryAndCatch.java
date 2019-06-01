@@ -3,6 +3,7 @@ package entity;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -26,14 +27,13 @@ public class TestTryAndCatch {
 	}
 
 	@Test
-	public void test() {
+	public void thisShouldFailIfExceptionCaught() {
 		
 		try {
 			Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			Assert.fail("Exception" + e);
 		}
-		System.out.println("It's ok");
 	}
-
 }
+
