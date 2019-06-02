@@ -2,7 +2,11 @@ package entity.motionless;
 
 import entity.IPermeability;
 import entity.Sprite;
-
+/**
+ * 
+ * @author Thomas Rivollet & Chevallier Baptiste
+ *
+ */
 public class Empty extends MotionlessEntity implements IPermeability{
 	
 	/** The sprite. */

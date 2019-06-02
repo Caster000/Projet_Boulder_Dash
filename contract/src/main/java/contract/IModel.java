@@ -7,19 +7,19 @@ import entity.Map;
 /**
  * The Interface IModel.
  *
- * @author Jean-Aymeric Diet
+ * @author Jean-Aymeric Diet and Adrien Vandenbossche
  */
 public interface IModel {
 
 	/**
 	 * Gets the hello world.
 	 *
-	 * @return the helloworld entity
+	 * @return the map 
 	 */
 	Map getMap();
 
 	/**
-	 * Load the message.
+	 * Load the map.
 	 *
 	 * @param code
 	 *          the code
@@ -33,5 +33,8 @@ public interface IModel {
 	 */
 	Observable getObservable();
 
+	/**
+	 * Set the map to null
+	 */
 	void setMapNull();
 }

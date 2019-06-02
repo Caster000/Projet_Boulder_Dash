@@ -1,5 +1,10 @@
 package contract;
 
+/**
+ * Order to run the option (Move and level)
+ * @author Adrien Vandenbossche
+ *
+ */
 public enum UserOrder {
 	UP,
 	DOWN,

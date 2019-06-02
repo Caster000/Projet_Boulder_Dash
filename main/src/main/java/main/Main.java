@@ -24,14 +24,14 @@ public abstract class Main {
      *            the arguments
      */
     public static void main(final String[] args) {
-        final Model model = new Model();
-        final View view = new View(model);
-        final Controller controller = new Controller(view, model);
+        final Model model = new Model();			//instantiate a new model
+        final View view = new View(model);			//instantiate a new view
+        final Controller controller = new Controller(view, model);//instantiate a new controller
         view.setController(controller);
 
-        controller.orderPerform(UserOrder.L1);
+        controller.orderPerform(UserOrder.L1);//Start the default game
         
-//        Timer chrono = new Timer();
+//        Timer chrono = new Timer();				//next update to add a timer
 //        chrono.schedule(new Map (), 250,250);
     }
 }

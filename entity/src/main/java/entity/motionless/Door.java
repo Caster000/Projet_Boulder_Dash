@@ -1,7 +1,11 @@
 package entity.motionless;
 
 import entity.Sprite;
-
+/**
+ * 
+ * @author Thomas Rivollet & Chevallier Baptiste
+ *
+ */
 public class Door extends MotionlessEntity{
     
 	/** The sprite. */

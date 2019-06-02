@@ -1,7 +1,11 @@
 package entity.mobile;
 
 import entity.Sprite;
-
+/**
+ * 
+ * @author Thomas Rivollet & Chevallier Baptiste
+ *
+ */
 public class Stone extends Block {
 
 	/**To assure that the Stone is falling and can kill heroes or monsters. */

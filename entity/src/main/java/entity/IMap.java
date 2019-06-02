@@ -4,7 +4,11 @@ package entity;
 import java.util.Observable;
 
 import entity.IEntity;
-
+/**
+ * 
+ * @author Thomas Rivollet & Chevallier Baptiste
+ *
+ */
 public interface IMap {
 
 	/**
@@ -31,7 +35,10 @@ public interface IMap {
      * @return the on the road XY
      */
     IEntity getOnTheMapXY(int x, int y);
-
+    /**
+     * Gets the Observable
+     * @return
+     */
    Observable getObservable();
 }
 

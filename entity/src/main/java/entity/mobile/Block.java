@@ -1,10 +1,14 @@
 package entity.mobile;
 
 import entity.Sprite;
-
+/**
+ * 
+ * @author Thomas Rivollet & Chevallier Baptiste
+ *
+ */
 public abstract class Block extends Mobile implements IGravity{ 
 
-	protected final int SPEED = 4;
+	protected final int SPEED = 4;	//for futur update, to add different speed
 	
 	/**
      * The Block constructor

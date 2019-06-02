@@ -6,7 +6,11 @@ package entity;
  * @author Baptiste Chevallier
  */
 import java.awt.Image;
-
+/**
+ * 
+ * @author Thomas Rivollet & Chevallier Baptiste
+ *
+ */
 public abstract class Entity implements IEntity {
     
 
@@ -14,7 +18,7 @@ public abstract class Entity implements IEntity {
     private Sprite       sprite;
 
     /**
-     * Instantiates a new element.
+     * Instantiates a new entity.
      *
      * @param sprite
      *            the sprite
@@ -23,7 +27,9 @@ public abstract class Entity implements IEntity {
         this.setSprite(sprite);
     }
 
-    /** return the sprite. */
+    /**
+     * return the sprite.
+     */
     public final Sprite getSprite() {
         return this.sprite;
     }
@@ -38,7 +44,9 @@ public abstract class Entity implements IEntity {
         this.sprite = sprite;
     }
     
-    /** return the image. */
+    /** 
+     * return the image. 
+     */
     public final Image getImage() {
         return this.getSprite().getImage();
     }

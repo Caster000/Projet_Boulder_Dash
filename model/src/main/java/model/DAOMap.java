@@ -1,6 +1,5 @@
 package model;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -10,7 +9,11 @@ import com.mysql.jdbc.CallableStatement;
 
 import entity.EntityFactory;
 import entity.Map;
-
+/**
+ * 
+ * @author Chevallier Baptiste
+ *
+ */
 public class DAOMap {
 	/**
 	 * Instantiates a new DAO entity.
@@ -19,18 +22,6 @@ public class DAOMap {
 	public DAOMap()  {
 
 	}
-
-	/*
-	 * Instantiates a new DAO entity.
-	 *
-	 * @param connection
-	 *          the connection
-	 * @throws SQLException
-	 *           the SQL exception
-	 */
-//	public DAOMap(final Connection connection)  {
-//		this.connection = connection;
-//	}
 
 	/*
 	 * (non-Javadoc)
@@ -62,13 +53,13 @@ public class DAOMap {
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Take the map in the database and transform it in entity
 	 *
-	 *Take the map in the database and transform it in entity
+	 *@param id
 	 */
 	public Map find(final int id) {
-		Map map = new Map();
+		Map map = new Map();		//create a Map
 
 	/////   Database access   /////
 			String urlString = "jdbc:mysql://localhost/jpublankproject?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";		//all constant to database access
@@ -85,7 +76,7 @@ public class DAOMap {
 				// 1): Loading driver 
 				// 2): Connection
 				cnConnection = DriverManager.getConnection(urlString, loginString, passwdString);
-				// 3): creation du statement (jsp ce que c'est)
+				// 3): creation statement 
 				stStatement = (CallableStatement) cnConnection.prepareCall(sqlRequestString);
 				stStatement.setInt(1,id);
 				stStatement.execute();

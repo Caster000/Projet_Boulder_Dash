@@ -18,7 +18,11 @@ import entity.motionless.Wall;
 import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
-
+/**
+ * 
+ * @author Thomas Rivollet
+ *
+ */
 public class Map extends Observable implements IMap {
 	/** The width. */
 	private int          width;
@@ -81,7 +85,9 @@ public class Map extends Observable implements IMap {
 	
 	Timer timer;
 
-	//timer
+	/**
+	 * Timer to update the map constantly
+	 */
 	TimerTask task = new TimerTask() {
 		public void run(){
 			updateMap();
@@ -96,18 +102,24 @@ public class Map extends Observable implements IMap {
 	public IEntity[][] getOnTheMap() {
 		return onTheMap;// returns the map
 	}
-
+	/**
+	 * Map constructor to create an empty map
+	 */
 	public Map() {
 		timer = new Timer();
 		onTheMap=new IEntity[1][1];
 	}
 
-//	public Map(final int id, final String key, final String message) {
+//	public Map(final int id, final String key, final String message) {		old constructor
 //		this.setId(id);
 //		this.setKey(key);
 //		this.setMessage(message);
 //	}
-
+	/**
+	 * Map constructor with timer
+	 * @param width
+	 * @param height
+	 */
 	public Map( int width, int height) {
 		timer=new Timer();
 		timer.schedule(task, 200,200);
@@ -808,7 +820,7 @@ public class Map extends Observable implements IMap {
 	 * @param y
 	 */
 	private void killMonster(int x, int y) {
-		System.out.println("A monster is dead");
+		//System.out.println("A monster is dead");	debug
 		this.onTheMap[x][y] = new Diamond();//the explosion leaves diamonds
 		this.onTheMap[x][y-1] = new Diamond();//the explosion leaves diamonds
 		this.onTheMap[x][y+1] = new Diamond();//the explosion leaves diamonds

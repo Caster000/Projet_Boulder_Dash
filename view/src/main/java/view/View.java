@@ -10,7 +10,7 @@ import contract.UserOrder;
 
 /**
  * The Class View.
- *
+ *@author Ghoumid Amine
  */
 public final class View implements  IView,Runnable {
 
@@ -49,7 +49,7 @@ public final class View implements  IView,Runnable {
 				return UserOrder.LEFT;
 			case KeyEvent.VK_1:
 				return UserOrder.L1;
-//			case KeyEvent.VK_2:
+//			case KeyEvent.VK_2:			old key code to change the level
 //				return UserOrder.L2;
 //			case KeyEvent.VK_3:
 //				return UserOrder.L3;
@@ -78,9 +78,9 @@ public final class View implements  IView,Runnable {
 	}
 
 
-	//private Rectangle getCloseView() {
-		//return this.CloseView();
-	//} For Possible camera tracking for the hero
+	//private Rectangle getCloseView() {			For Possible camera tracking for the hero
+	//	return this.CloseView();
+	//} 								
 	
 	/**
 	 * Sets the controller.

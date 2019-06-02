@@ -1,5 +1,9 @@
 package entity.mobile;
-
+/**
+ * 
+ * @author Thomas Rivollet
+ *
+ */
 public interface IGravity {
 
 	/**The fall method */

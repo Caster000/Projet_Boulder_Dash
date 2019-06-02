@@ -16,12 +16,13 @@ import javax.swing.JPanel;
 
 /**
  * The Class ViewPanel.
- *
+ *@author Ghoumid Amine
  */
 class ViewPanel extends JPanel implements Observer {
 
 	/** The view frame. */
 	private ViewFrame					viewFrame;
+	/** The font for the text display*/
 	Font  f1  = new Font("Impact", Font.ITALIC,  35);
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
@@ -72,7 +73,7 @@ class ViewPanel extends JPanel implements Observer {
 	protected void paintComponent(final Graphics graphics) {
 		//graphics.clearRect(50, 50, this.getWidth(), this.getHeight());
 		super.paintComponent(graphics);
-		try {
+		try {																					//load the images in the whole map
 			for(int y=0; y < this.getViewFrame().getModel().getMap().getHeight(); y++)
 			{
 				for(int x=0; x < this.getViewFrame().getModel().getMap().getWidth(); x++)
@@ -84,20 +85,20 @@ class ViewPanel extends JPanel implements Observer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(int y=0; y < this.getViewFrame().getModel().getMap().getHeight(); y++)
+		for(int y=0; y < this.getViewFrame().getModel().getMap().getHeight(); y++)			//Draw the images in the whole map	
 		{
 			for(int x=0; x < this.getViewFrame().getModel().getMap().getWidth(); x++)
 			{
 				graphics.drawImage(this.getViewFrame().getModel().getMap().getOnTheMap()[x][y].getSprite().getImage(), x*50, y*50, this);
 			}
 		}
-		graphics.setFont(f1);
+		graphics.setFont(f1);				//text display for diamond
 		graphics.setColor(Color.orange);
 		graphics.drawString("Diamond : "+this.getViewFrame().getModel().getMap().getNumberOfDiamonds() + "/" + this.getViewFrame().getModel().getMap().getRequiredNumberOfDiamonds(), 1, 845);
 		
 		try{
 //			System.out.println("J'actualise_2");	debug
-		viewFrame.getModel().getMap().getObservable().addObserver(this);
+		viewFrame.getModel().getMap().getObservable().addObserver(this);	//receive the notify from the map
 
 		}catch(Exception e){ 
 			e.printStackTrace();

@@ -3,11 +3,10 @@ package model;
 import java.util.Observable;
 import contract.IModel;
 import entity.Map;
-
 /**
  * The Class Model.
+ * @author Thomas Rivollet & Chevallier Baptiste
  *
- * @author Jean-Aymeric Diet
  */
 public final class Model extends Observable implements IModel {
 
@@ -29,7 +28,7 @@ public final class Model extends Observable implements IModel {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see contract.IModel#getMessage()
+	 * @see contract.IModel#getMap
 	 */
 	public Map getMap() {
 		return this.map;
@@ -53,11 +52,6 @@ public final class Model extends Observable implements IModel {
      * @param code
      *            the code
      */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getMessage(java.lang.String)
-	 */
 	public void loadMap(final int id) {
 //		try {
 			final DAOMap daoMap = new DAOMap(/*DBConnection.getInstance().getConnection()*/);
@@ -80,7 +74,9 @@ public final class Model extends Observable implements IModel {
 	public Observable getObservable() {
 		return this;
 	}
-
+	/**
+	 * Set the map to null
+	 */
 	@Override
 	public void setMapNull() {
 		this.map = null;

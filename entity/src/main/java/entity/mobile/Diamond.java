@@ -2,7 +2,11 @@ package entity.mobile;
 
 import entity.IPermeability;
 import entity.Sprite;
-
+/**
+ * 
+ * @author Thomas Rivollet & Chevallier Baptiste
+ *
+ */
 public class Diamond extends Block implements IPermeability{
 	
 	/**To assure that the Diamond is falling and can kill heroes or monsters. */

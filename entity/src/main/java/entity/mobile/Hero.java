@@ -1,7 +1,11 @@
 package entity.mobile;
 
 import entity.Sprite;
-
+/**
+ * 
+ * @author Thomas Rivollet & Chevallier Baptiste
+ *
+ */
 public class Hero extends Alive {
     
 	/** The sprite. */

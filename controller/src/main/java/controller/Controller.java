@@ -7,6 +7,7 @@ import contract.UserOrder;
 
 /**
  * The Class Controller.
+ * @author Adrien Vandenbossche
  */
 public final class Controller implements IController{
 	/** The view. */
@@ -14,15 +15,15 @@ public final class Controller implements IController{
 
 	/** The model. */
 	private IModel	model;
-
+	/** The hero position in X. */
 	private int heroX = 1;
-
+	/** The hero position in y. */
 	private int heroY = 1;
-
+	/** The level. */
 	private int level ;
-	
+	/** The number of lives. */
 	private int lives ;
-
+	/** boolean to set if the hero has moved. */
 	private boolean hasMoved;
 
 	/**
@@ -59,22 +60,16 @@ public final class Controller implements IController{
 	}
 
 	/**
-	 * Order perform.
-	 *
-	 * @param controllerOrder
-	 *            the controller order
-	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IController#orderPerform(contract.ControllerOrder)
+	 * orderPerform to answer at the player
+	 * @param UserOrder
+	 * 				the user Order
 	 */
 	public void orderPerform(final UserOrder userOrder) {
 		switch (userOrder) {
-		case L1:
+		case L1:											//start the default game
 			level = this.model.getMap().getLevel();
 			lives = this.model.getMap().getNumberOfLives();
-			System.out.println(lives);
+			//System.out.println(lives);	debug
 			if(this.model.getMap().getNumberOfLives() == 0) {
 				this.model.getMap().setLevel(1);
 				level = this.model.getMap().getLevel();
@@ -85,56 +80,56 @@ public final class Controller implements IController{
 			this.model.getMap().setNumberOfDiamonds(0);
 			//System.out.println(/*this.model.getMap().getLevel()*/level);	//debug
 			switch(this.model.getMap().getLevel()) {
-			case 1 :
-				this.model.getMap().setRequiredNumberOfDiamonds(1);
+			case 1 :													//config the die display
+				this.model.getMap().setRequiredNumberOfDiamonds(0);
 				//this.model.getMap().setLevel(1);		//debug
-				this.heroX = 1;
-				this.heroY = 1;
+				//this.heroX = 1;
+				//this.heroY = 1;
 				this.model.getMap().setLevel(2);
 				this.model.getMap().setNumberOfLives(3);
 				break;
-			case 2 :
+			case 2 :													//config the level 1
 				this.model.getMap().setRequiredNumberOfDiamonds(8);
 				//this.model.getMap().setLevel(2);		//debug
 				this.heroX = 2;
 				//System.out.println(heroX);	//debug
 				this.heroY = 2;
 				break;
-			case 3 :
+			case 3 :													//config the level 2
 				this.model.getMap().setRequiredNumberOfDiamonds(8);
 				//				this.model.getMap().setLevel(3);		//debug
 				this.heroX = 2;
 				this.heroY = 2;
 				break;
-			case 4 :
+			case 4 :													//config the level 3
 				this.model.getMap().setRequiredNumberOfDiamonds(10);
 				//				this.model.getMap().setLevel(4);		//debug
 				this.heroX = 2;
 				this.heroY = 2;
 				break;
-			case 5 :
+			case 5 :													//config the level 4
 				this.model.getMap().setRequiredNumberOfDiamonds(8);
 				//				this.model.getMap().setLevel(5);		//debug
 				this.heroX = 2;
 				this.heroY = 2;
 				break;
-			case 6 :
+			case 6 :													//config the level 5
 				this.model.getMap().setRequiredNumberOfDiamonds(13);
 				//				this.model.getMap().setLevel(6);		//debug
 				this.heroX = 1;
 				this.heroY = 2;
 				break;
-			case 7 :
+			case 7 :													//config the win display
 				this.model.getMap().setRequiredNumberOfDiamonds(0);
 				//				this.model.getMap().setLevel(6);		//debug
-				this.heroX = 0;
-				this.heroY = 0;
+				//this.heroX = 0;
+				//this.heroY = 0;
 				this.model.getMap().setLevel(2);
 				this.model.getMap().setNumberOfLives(3);
 				break;
 			}
 			break;
-			//			case L2:
+			//			case L2:							//old case to switch level with keyboard
 			//				this.model.loadMap(2);
 			//				break;
 			//			case L3:
@@ -148,26 +143,26 @@ public final class Controller implements IController{
 			//				break;
 			//			case L6:
 			//				this.model.loadMap(6);
-			//				break;
-		case UP:
+			//				break;								
+		case UP:										//To move the hero up														
 			hasMoved = this.model.getMap().heroMoveUp(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
 			if (hasMoved) {
 				heroY--;
 			}
 			break;
-		case DOWN:
+		case DOWN:										//To move the hero down	
 			hasMoved = this.model.getMap().heroMoveDown(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
 			if (hasMoved) {
 				heroY++;
 			}				
 			break;
-		case LEFT:
+		case LEFT:										//To move the hero left	
 			hasMoved = this.model.getMap().heroMoveLeft(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
 			if (hasMoved) {
 				heroX--;
 			}
 			break;
-		case RIGHT:
+		case RIGHT:										//To move the hero right	
 			hasMoved = this.model.getMap().heroMoveRight(this.model.getMap().getOnTheMapXY(heroX, heroY), heroX, heroY);
 			if (hasMoved) {
 				heroX++;
@@ -180,27 +175,45 @@ public final class Controller implements IController{
 
 	}
 
-
+	/**
+	 * Method to get the View
+	 * @return
+	 */
 	public IView getView() {
 		return view;
 	}
-
+	/**
+	 * Method to get the model
+	 * @return
+	 */
 	public IModel getModel() {
 		return model;
 	}
-
+	/**
+	 * Method to get the x positon of the hero
+	 * @return
+	 */
 	public int getHeroX() {
 		return heroX;
 	}
-
+	/**
+	 * Method to set the x positon of the hero
+	 * @return
+	 */
 	public void setHeroX(int heroX) {
 		this.heroX = heroX;
 	}
-
+	/**
+	 * Method to get the y positon of the hero
+	 * @return
+	 */
 	public int getHeroY() {
 		return heroY;
 	}
-
+	/**
+	 * Method to set the y positon of the hero
+	 * @return
+	 */
 	public void setHeroY(int heroY) {
 		this.heroY = heroY;
 	}
@@ -208,11 +221,17 @@ public final class Controller implements IController{
 	//	public void printDown() {			debug
 	//		System.out.println("Down");
 	//	}
-
+	/**
+	 * Method to get the level
+	 * @return
+	 */
 	public int getLevel() {
 		return level;
 	}
-
+	/**
+	 * Method to set the level
+	 * @return
+	 */
 	public void setLevel(int level) {
 		this.level = level;
 	}

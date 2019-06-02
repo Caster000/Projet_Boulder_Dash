@@ -8,7 +8,11 @@ import entity.motionless.Door;
 import entity.motionless.Empty;
 import entity.motionless.Rock;
 import entity.motionless.Wall;
-
+/**
+ * 
+ * @author Thomas Rivollet & Chevallier Baptiste
+ *
+ */
 public abstract class EntityFactory {
     
     /**

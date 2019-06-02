@@ -1,10 +1,9 @@
 package contract;
 
-
 /**
  * The Interface IController.
  *
- * @author Jean-Aymeric Diet
+ * @author Jean-Aymeric Diet and Adrien Vandenbossche
  */
 public interface IController {
 

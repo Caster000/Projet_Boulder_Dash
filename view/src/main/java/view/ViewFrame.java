@@ -1,6 +1,5 @@
 package view;
 
-
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
@@ -12,7 +11,7 @@ import contract.IController;
 import contract.IModel;
 /**
  * The Class ViewFrame.
- *
+ *@author Ghoumid Amine
  */
 class ViewFrame extends JFrame implements KeyListener {
 
@@ -133,16 +132,6 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setLocationRelativeTo(null);
 		
 	}
-
-//	/**
-//	 * Prints the message.
-//	 *
-//	 * @param message
-//	 *          the message
-//	 */
-//	public void printMessage(final String message) {
-//		JOptionPane.showMessageDialog(null, message);
-//	}
 
 	/*
 	 * (non-Javadoc)
