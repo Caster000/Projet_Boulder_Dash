@@ -42,6 +42,7 @@ public class Testdiamond {
 	public void DiamondExist() { 
 		int expected = id;
 		assertEquals(expected, diamond.id);
+		System.out.println("Diamond Exist");
 	}
 	
 	
@@ -50,6 +51,7 @@ public class Testdiamond {
 	public void DiamondisFalling() throws Exception {	
 		diamond = new Testdiamond();
 		assertFalse(diamond.isFalling);
+		System.out.println("The diamond is falling");
 	}
 
 }

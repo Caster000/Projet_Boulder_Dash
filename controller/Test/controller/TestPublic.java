@@ -1,5 +1,6 @@
-package view;
+package controller;
 
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -7,18 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import contract.IModel;
+public class TestPublic {
 
-public class TestView<Model> {
-
-	private static ViewFrame buildViewFrame;
-	private static ViewPanel viewPanel;
-	private static IModel model;
-	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		buildViewFrame = new ViewFrame(model);
-		viewPanel = new ViewPanel(buildViewFrame);
 	}
 
 	@AfterClass
@@ -26,7 +19,7 @@ public class TestView<Model> {
 	}
 
 	@Before
-	public void setUp() throws Exception {	
+	public void setUp() throws Exception {
 	}
 
 	@After
@@ -35,7 +28,7 @@ public class TestView<Model> {
 
 	@Test
 	public void test() {
-		assert buildViewFrame.isActive();
+		fail("Not yet implemented");
 	}
 
 }

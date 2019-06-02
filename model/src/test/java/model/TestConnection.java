@@ -40,6 +40,7 @@ public class TestConnection {
 		this.map.getWidth();
 		this.map.getHeight();
 		this.getDAOMap();
+		System.out.println("Connection ok");
 	}
 
 	public DAOMap getDAOMap() {

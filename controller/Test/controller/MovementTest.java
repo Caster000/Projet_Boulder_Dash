@@ -1,5 +1,7 @@
 package controller;
 
+
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,6 +41,8 @@ public class MovementTest {
 		int heroY = 1;
 		MovementTest.map.moveDown(heroX, heroY+1);
 		MovementTest.map.hasChanged();
+		equals(MovementTest.map.heroMoveDown(hero, 1, 2));
+		System.out.println("HerosHasMove");
 		
 	}
 

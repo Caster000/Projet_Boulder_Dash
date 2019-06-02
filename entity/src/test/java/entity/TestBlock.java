@@ -33,7 +33,8 @@ public class TestBlock {
 	@Test
 	public void BlockExist() {
 		int expected = id;
-		assertEquals(expected, block.id);		
+		assertEquals(expected, block.id);
+		System.out.println("Block Exist");
 	} 
 
 }
