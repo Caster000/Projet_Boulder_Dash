@@ -38,6 +38,8 @@ We then programmed our different parts and put them together thanks to Git.
 
 ### 1.3.2 JXR
 
+[JXR](https://github.com/Caster000/Projet_Boulder_Dash/tree/master/documentation/site)
+
 ### 1.3.3 Git
 
 # 2. Example
