@@ -1,5 +1,8 @@
 package view;
 
+import static org.junit.Assert.*;
+
+import java.util.Observable;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,17 +11,16 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import contract.IModel;
+import entity.Map;
 
-public class TestView<Model> {
-
-	private static ViewFrame buildViewFrame;
-	private static ViewPanel viewPanel;
+public class TestView {
+	
 	private static IModel model;
+
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		buildViewFrame = new ViewFrame(model);
-		viewPanel = new ViewPanel(buildViewFrame);
+		model = new FModel();
 	}
 
 	@AfterClass
@@ -26,7 +28,8 @@ public class TestView<Model> {
 	}
 
 	@Before
-	public void setUp() throws Exception {	
+	public void setUp() throws Exception {
+		
 	}
 
 	@After
@@ -35,7 +38,37 @@ public class TestView<Model> {
 
 	@Test
 	public void test() {
-		assert buildViewFrame.isActive();
+		ViewPanel viewPanel = new ViewPanel(new ViewFrame(model));
+		assertNotNull("View Panel shouldn't be null", viewPanel);
 	}
 
+}
+
+class FModel implements IModel{
+	@Override
+	public Map getMap() {
+		return null;
+	}
+	
+
+	@Override
+	public Observable getObservable() {
+		// TODO Auto-generated method stub
+		return new Observable();
+	}
+
+	@Override
+	public void setMapNull() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadMap(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
 }

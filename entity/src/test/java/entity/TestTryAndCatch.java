@@ -28,9 +28,9 @@ public class TestTryAndCatch {
 
 	@Test
 	public void thisShouldFailIfExceptionCaught() {
-		
+		//a little pause in the execution so that the user can see the sliding	
 		try {
-			Thread.sleep(10);//a little pause in the execution so that the user can see the sliding
+			Thread.sleep(10);
 		} catch (InterruptedException e) {
 			Assert.fail("Exception" + e);
 		}

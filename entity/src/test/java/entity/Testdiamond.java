@@ -14,7 +14,7 @@ public class Testdiamond {
 
 	int id = 1;
 	Testdiamond diamond;
-	boolean isFalling = false;
+	boolean isFalling;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
