@@ -39,3 +39,7 @@ We then programmed our different parts and put them together thanks to Git.
 ### 1.3.2 JXR
 
 ### 1.3.3 Git
+
+# 2. Example
+
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://github.com/Caster000/Projet_Boulder_Dash/blob/master/documentation/speedrun%20boulder-dash.flv?raw=true)
