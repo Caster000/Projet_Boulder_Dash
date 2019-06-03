@@ -682,9 +682,9 @@ public class Map extends Observable implements IMap {
 						}
 					}else if (downEntity instanceof IPermeability && faller.isFalling()) {//if the entity down the block is crossable and that the entity is already falling
 						if (downEntity instanceof Diamond || downEntity instanceof Rock) {//if the entity down the block is a rock or a diamond
-//							System.out.println("no");		//debug
+							System.out.println("no");		//debug
 							debug++;//to prevent a bug, 
-							if (debug > 40) {//to prevent a bug, if there's plenty of isFalling
+							if (debug > 200) {//to prevent a bug, if there's plenty of isFalling
 								debug = 0;//restart
 								faller.setIsFalling(false);//the blocks won't be falling anymore
 							}
