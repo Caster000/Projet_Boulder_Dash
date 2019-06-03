@@ -42,4 +42,4 @@ We then programmed our different parts and put them together thanks to Git.
 
 # 2. Example
 
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://github.com/Caster000/Projet_Boulder_Dash/blob/master/documentation/speedrun%20boulder-dash.flv?raw=true)
+[![Watch the video](https://cdn.discordapp.com/attachments/358708954454294538/585035573832450058/images.png)](https://youtu.be/kWQZUZeQmIU)
