@@ -4,7 +4,7 @@ import entity.IPermeability;
 import entity.Sprite;
 /**
  * 
- * @author Thomas Rivollet & Chevallier Baptiste
+ * @author Thomas Rivollet and Chevallier Baptiste
  *
  */
 public class Diamond extends Block implements IPermeability{
@@ -40,7 +40,7 @@ public class Diamond extends Block implements IPermeability{
 
 	/**To sets that the Diamond is falling or not. 
 	 * 
-	 * @param boolean
+	 * @param isFalling
      *            the isFalling
 	 */
 	@Override

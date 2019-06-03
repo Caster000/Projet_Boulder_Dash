@@ -21,7 +21,7 @@ public interface IModel {
 	/**
 	 * Load the map.
 	 *
-	 * @param code
+	 * @param id
 	 *          the code
 	 */
 	void loadMap(int id);

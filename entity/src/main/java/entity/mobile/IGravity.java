@@ -11,7 +11,7 @@ public interface IGravity {
 
 	/**To sets that the Block is falling or not. 
 	 * 
-	 * @param boolean
+	 * @param bool
      *            the isFalling
 	 */
 	public void setIsFalling(boolean bool);

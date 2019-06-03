@@ -5,7 +5,7 @@ import contract.IModel;
 import entity.Map;
 /**
  * The Class Model.
- * @author Thomas Rivollet & Chevallier Baptiste
+ * @author Thomas Rivollet and Chevallier Baptiste
  *
  */
 public final class Model extends Observable implements IModel {
@@ -49,8 +49,8 @@ public final class Model extends Observable implements IModel {
 	/**
      * Load map.
      *
-     * @param code
-     *            the code
+     * @param id
+     *            the id
      */
 	public void loadMap(final int id) {
 //		try {

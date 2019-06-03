@@ -3,7 +3,7 @@ package entity.mobile;
 import entity.Sprite;
 /**
  * 
- * @author Thomas Rivollet & Chevallier Baptiste
+ * @author Thomas Rivollet and Chevallier Baptiste
  *
  */
 public abstract class Block extends Mobile implements IGravity{ 

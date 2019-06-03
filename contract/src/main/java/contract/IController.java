@@ -10,7 +10,7 @@ public interface IController {
 	/**
 	 * Order perform.
 	 *
-	 * @param controllerOrder
+	 * @param keyCodeToUserOrder
 	 *          the controller order
 	 */
 	void orderPerform(UserOrder keyCodeToUserOrder);

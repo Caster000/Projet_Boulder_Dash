@@ -3,7 +3,7 @@ package entity;
 import java.awt.Image;
 /**
  * 
- * @author Thomas Rivollet & Chevallier Baptiste
+ * @author Thomas Rivollet and Chevallier Baptiste
  *
  */
 public interface IEntity  {

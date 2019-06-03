@@ -3,7 +3,7 @@ package entity.mobile;
 import entity.Sprite;
 /**
  * 
- * @author Thomas Rivollet & Chevallier Baptiste
+ * @author Thomas Rivollet and Chevallier Baptiste
  *
  */
 public class Monster extends Alive{

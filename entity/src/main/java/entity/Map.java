@@ -118,7 +118,9 @@ public class Map extends Observable implements IMap {
 	/**
 	 * Map constructor with timer
 	 * @param width
+	 * 			the width
 	 * @param height
+	 * 			the height
 	 */
 	public Map( int width, int height) {
 		timer=new Timer();
@@ -198,7 +200,9 @@ public class Map extends Observable implements IMap {
 	/**
 	 * generic function for moving left
 	 * @param x
+	 *            the x
 	 * @param y
+	 *            the y
 	 */
 	public void moveLeft(int x, int y) {
 		this.onTheMap[x-1][y] = this.onTheMap[x][y];//the entity moves
@@ -209,7 +213,9 @@ public class Map extends Observable implements IMap {
 	/**
 	 * generic function for moving right
 	 * @param x
+	 *            the x
 	 * @param y
+	 *            the y
 	 */
 	public void moveRight(int x, int y) {
 		this.onTheMap[x+1][y] = this.onTheMap[x][y];//the entity moves
@@ -220,7 +226,9 @@ public class Map extends Observable implements IMap {
 	/**
 	 * generic function for moving up
 	 * @param x
+	 *            the x
 	 * @param y
+	 *            the y
 	 */
 	public void moveUp(int x, int y) {
 		this.onTheMap[x][y-1] = this.onTheMap[x][y];//the entity moves
@@ -231,7 +239,9 @@ public class Map extends Observable implements IMap {
 	/**
 	 * generic function for moving down
 	 * @param x
+	 *            the x
 	 * @param y
+	 *            the y
 	 */
 	public void moveDown(int x, int y) {
 		this.onTheMap[x][y+1] = this.onTheMap[x][y];//the entity moves
@@ -242,8 +252,11 @@ public class Map extends Observable implements IMap {
 	/**
 	 * specific function for the hero to move up
 	 * @param hero
+	 * 			the hero
 	 * @param x
+	 *            the x
 	 * @param y
+	 *            the y
 	 * @return the has moved
 	 */
 	public boolean heroMoveUp(IEntity hero, int x, int y) {
@@ -284,8 +297,11 @@ public class Map extends Observable implements IMap {
 	/**
 	 * specific function for the hero to move down
 	 * @param hero
+	 * 			the hero
 	 * @param x
+	 *            the x
 	 * @param y
+	 *            the y
 	 * @return the has moved
 	 */
 	public boolean heroMoveDown(IEntity hero, int x, int y) {
@@ -325,9 +341,12 @@ public class Map extends Observable implements IMap {
 
 	/**
 	 * specific function for the hero to move left
-	 * @param hero
+	 *  @param hero
+	 * 			the hero
 	 * @param x
+	 *            the x
 	 * @param y
+	 *            the y
 	 * @return the has moved
 	 */
 	public boolean heroMoveLeft(IEntity hero, int x, int y) {
@@ -379,8 +398,11 @@ public class Map extends Observable implements IMap {
 	/**
 	 * specific function for the hero to move right
 	 * @param hero
+	 * 			the hero
 	 * @param x
+	 *            the x
 	 * @param y
+	 *            the y
 	 * @return the has moved
 	 */
 	public boolean heroMoveRight(IEntity hero, int x, int y) {
@@ -431,8 +453,11 @@ public class Map extends Observable implements IMap {
 	/**
 	 * Method to check the entity where the hero wants to move
 	 * @param e
+	 * 			the entity
 	 * @param x
+	 * 			the x
 	 * @param y
+	 * 			the y
 	 */
 	public void HeroMovingChecks(IEntity e, int x, int y) { 
 		if (e instanceof Monster) {//if it's a monster
@@ -450,9 +475,13 @@ public class Map extends Observable implements IMap {
 	 * Method for slide function
 	 * Diamond and Stone fall when they are superimposed
 	 * @param downEntity
+	 * 					the down entity
 	 * @param faller
+	 * 					the faller entity
 	 * @param x
+	 * 			the x
 	 * @param y
+	 * 			the y
 	 * @return the direction the block has slide
 	 */
 	public int slide(IEntity downEntity, IGravity faller, int x, int y) {
@@ -495,10 +524,14 @@ public class Map extends Observable implements IMap {
 	
 	/**
 	 * Method for slide function to left
-	 * @param downLeftEntity
+	* @param downLeftEntity
+	 * 					the down entity
 	 * @param faller
+	 * 					the faller entity
 	 * @param x
+	 * 			the x
 	 * @param y
+	 * 			the y
 	 */
 	public void slideLeft(IEntity downLeftEntity, IGravity faller, int x, int y) {
 		moveLeft(x, y);//the stone moves left
@@ -508,10 +541,14 @@ public class Map extends Observable implements IMap {
 	
 	/**
 	 * Method for slide function to right
-	 * @param downLeftEntity
+	 * @param downRightEntity
+	 * 					the down entity
 	 * @param faller
+	 * 					the faller entity
 	 * @param x
+	 * 			the x
 	 * @param y
+	 * 			the y
 	 */
 	public void slideRight(IEntity downRightEntity, IGravity faller, int x, int y) {
 		moveRight(x, y);//the stone move right
@@ -522,9 +559,12 @@ public class Map extends Observable implements IMap {
 	/**
 	 * Method to check when fall is call
 	 * @param e
+	 * 			the entity
 	 * @param x
+	 * 			the x
 	 * @param y
-	 * @return
+	 * 			the y
+	 * @return boolean
 	 */
 	public boolean fallerChecks(IEntity e, int x, int y) { 
 		if (e instanceof Monster) {//if a monster is under a stone falling
@@ -540,6 +580,7 @@ public class Map extends Observable implements IMap {
 	/**
 	 * Method to get the number of diamond required
 	 * @return requiredNumberOfDiamonds
+	 * 				the number required
 	 */
 	public int getRequiredNumberOfDiamonds() {
 		return requiredNumberOfDiamonds;
@@ -548,6 +589,7 @@ public class Map extends Observable implements IMap {
 	/**
 	 * Method to set the number of diamond required
 	 * @param requiredNumberOfDiamonds
+	 * 				the number required
 	 */
 	public void setRequiredNumberOfDiamonds(int requiredNumberOfDiamonds) {
 		this.requiredNumberOfDiamonds = requiredNumberOfDiamonds;
@@ -781,7 +823,9 @@ public class Map extends Observable implements IMap {
 	/**
 	 * Method to kill the player
 	 * @param x
+	 * 			the x
 	 * @param y
+	 * 			the y
 	 */
 	private void killPlayer(int x, int y){
 		setNumberOfLives(getNumberOfLives() - 1);
@@ -817,7 +861,9 @@ public class Map extends Observable implements IMap {
 	/**
 	 * Method to kill a monster
 	 * @param x
+	 * 			the x
 	 * @param y
+	 * 			the y
 	 */
 	private void killMonster(int x, int y) {
 		//System.out.println("A monster is dead");	debug
@@ -836,10 +882,13 @@ public class Map extends Observable implements IMap {
 
 	/**
 	 * Specific method to move monsters
-	 * @param x
+	 *  @param x
+	 * 			the x
 	 * @param y
+	 * 			the y
 	 * @param latestWhereToMove
-	 * @return
+	 * 			the latest move
+	 * @return	int
 	 */
 	private int monsterMoving(int x, int y, int latestWhereToMove) {
 		int whereToMove = 0;//bouger à droite = 1, bouger en haut = 2, bouger en bas = 4, bouger à gauche = 8
@@ -1161,7 +1210,7 @@ public class Map extends Observable implements IMap {
 
 	/**
 	 * Method to set the level
-	 * @param the level
+	 * @param level
 	 */
 	public void setLevel(int level) {
 		this.level = level;
@@ -1177,7 +1226,7 @@ public class Map extends Observable implements IMap {
 
 	/**
 	 * Method to set the number of lives
-	 * @param the numberOfLives
+	 * @param numberOfLives
 	 */
 	public void setNumberOfLives(int numberOfLives) {
 		this.numberOfLives = numberOfLives;

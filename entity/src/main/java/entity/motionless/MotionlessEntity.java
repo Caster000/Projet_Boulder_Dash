@@ -4,7 +4,7 @@ import entity.Entity;
 import entity.Sprite;
 /**
  * 
- * @author Thomas Rivollet & Chevallier Baptiste
+ * @author Thomas Rivollet and Chevallier Baptiste
  *
  */
 public abstract class MotionlessEntity extends Entity{

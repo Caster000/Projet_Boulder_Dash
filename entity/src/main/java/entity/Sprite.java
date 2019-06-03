@@ -29,7 +29,7 @@ public class Sprite {
     /**
      * Instantiates a new sprite.
      *
-     * @param character
+     * @param consoleImage
      *            the character
      * @param imageName
      *            the image name
@@ -82,7 +82,7 @@ public class Sprite {
     /**
      * Sets the console image.
      *
-     * @param code
+     * @param consoleImage
      *            the consoleImage to set
      */
     private void setConsoleImage(final char consoleImage) {

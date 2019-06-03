@@ -10,7 +10,7 @@ import entity.motionless.Rock;
 import entity.motionless.Wall;
 /**
  * 
- * @author Thomas Rivollet & Chevallier Baptiste
+ * @author Thomas Rivollet and Chevallier Baptiste
  *
  */
 public abstract class EntityFactory {
@@ -71,7 +71,7 @@ public abstract class EntityFactory {
     
     /**
      * creates a new motionlessEntity object (Wall type)    
-     * @return
+     * @return WALL
      */
     public static Entity createWall() {
         return WALL;
@@ -79,7 +79,7 @@ public abstract class EntityFactory {
     
     /**
      * creates a new motionlessEntity object (Rock type)    
-     * @return
+     * @return ROCK
      */
     public static Entity createRock() {
         return ROCK;
@@ -87,7 +87,7 @@ public abstract class EntityFactory {
     
     /**
      * creates a new motionlessEntity object (Empty type)    
-     * @return
+     * @return EMPTY
      */
     public static Entity createEmpty() {
         return EMPTY;
@@ -95,7 +95,7 @@ public abstract class EntityFactory {
     
     /**
      * creates a new motionlessEntity object (Door type)    
-     * @return
+     * @return DOOR
      */
     public static Entity createDoor() {
         return DOOR;
@@ -103,7 +103,7 @@ public abstract class EntityFactory {
     
     /**
      * creates a new mobile object (Diamond type)    
-     * @return
+     * @return DIAMOND
      */
     public static Entity createDiamond() {
         return DIAMOND;
@@ -111,14 +111,14 @@ public abstract class EntityFactory {
     
     /**
      * creates a new mobile object (Stone type)    
-     * @return
+     * @return STONE
      */
     public static Entity createStone() {
         return STONE;
     }
     /**
      * creates a new mobile object (Monster type)    
-     * @return
+     * @return MONSTER
      */
     public static Entity createMonster() {
         return MONSTER;
@@ -126,7 +126,7 @@ public abstract class EntityFactory {
     
     /**
      * creates a new mobile object (Hero type)    
-     * @return
+     * @return HERO
      */
     public static Entity createHero() {
         return HERO;

@@ -61,7 +61,7 @@ public final class Controller implements IController{
 
 	/**
 	 * orderPerform to answer at the player
-	 * @param UserOrder
+	 * @param userOrder
 	 * 				the user Order
 	 */
 	public void orderPerform(final UserOrder userOrder) {
@@ -177,42 +177,44 @@ public final class Controller implements IController{
 
 	/**
 	 * Method to get the View
-	 * @return
+	 * @return view
 	 */
 	public IView getView() {
 		return view;
 	}
 	/**
 	 * Method to get the model
-	 * @return
+	 * @return model
 	 */
 	public IModel getModel() {
 		return model;
 	}
 	/**
 	 * Method to get the x positon of the hero
-	 * @return
+	 * @return int
 	 */
 	public int getHeroX() {
 		return heroX;
 	}
 	/**
 	 * Method to set the x positon of the hero
-	 * @return
+	 * @param heroX
+	 * 			the hero x
 	 */
 	public void setHeroX(int heroX) {
 		this.heroX = heroX;
 	}
 	/**
 	 * Method to get the y positon of the hero
-	 * @return
+	 * @return int
 	 */
 	public int getHeroY() {
 		return heroY;
 	}
 	/**
 	 * Method to set the y positon of the hero
-	 * @return
+	 *   @param heroY
+	 * 			the hero y
 	 */
 	public void setHeroY(int heroY) {
 		this.heroY = heroY;
@@ -223,14 +225,14 @@ public final class Controller implements IController{
 	//	}
 	/**
 	 * Method to get the level
-	 * @return
+	 * @return int
 	 */
 	public int getLevel() {
 		return level;
 	}
 	/**
 	 * Method to set the level
-	 * @return
+	 * 
 	 */
 	public void setLevel(int level) {
 		this.level = level;

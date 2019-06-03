@@ -4,7 +4,7 @@ import entity.IPermeability;
 import entity.Sprite;
 /**
  * 
- * @author Thomas Rivollet & Chevallier Baptiste
+ * @author Thomas Rivollet and Chevallier Baptiste
  *
  */
 public class Rock extends MotionlessEntity implements IPermeability{

@@ -3,7 +3,7 @@ package entity.mobile;
 import entity.Sprite;
 /**
  * 
- * @author Thomas Rivollet & Chevallier Baptiste
+ * @author Thomas Rivollet and Chevallier Baptiste
  *
  */
 public class Stone extends Block {
@@ -31,7 +31,7 @@ public class Stone extends Block {
 
 	/**To sets that the Diamond is falling or not. 
 	 * 
-	 * @param boolean
+	 * @param isFalling
      *            the isFalling
 	 */
 	@Override

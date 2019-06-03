@@ -57,6 +57,8 @@ public class DAOMap {
 	 * Take the map in the database and transform it in entity
 	 *
 	 *@param id
+	 *			the id
+	 *@return Map
 	 */
 	public Map find(final int id) {
 		Map map = new Map();		//create a Map
