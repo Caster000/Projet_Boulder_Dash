@@ -50,6 +50,7 @@ We then programmed our different parts and put them together thanks to Git.
 
 ### 1.3.3 Git
 
+[Git log](https://github.com/Caster000/Projet_Boulder_Dash/blob/master/documentation/logGit.txt)
 # 2. Example
 Click on the image to see an exemple of our game.
 
