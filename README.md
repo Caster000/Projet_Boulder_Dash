@@ -42,4 +42,5 @@ We then programmed our different parts and put them together thanks to Git.
 
 # 2. Example
 Click on the image to see an exemple of our game.
-[![Watch the video](https://cdn.discordapp.com/attachments/358708954454294538/585035573832450058/images.png)](https://youtu.be/kWQZUZeQmIU)
+
+[![Watch the video](https://www.google.com/imgres?imgurl=https%3A%2F%2Ffiles.cults3d.com%2Fuploaders%2F12892269%2Fillustration-file%2Fc6f4cb80-3adb-4d89-aec9-4a27a8142351%2FYouTube_Play_Button.PNG&imgrefurl=https%3A%2F%2Fcults3d.com%2Ffr%2Fmod%25C3%25A8le-3d%2Fdivers%2Fyoutube-play-button&docid=hfQcxPNe5NSPuM&tbnid=l2ftTWD-PP8nKM%3A&vet=10ahUKEwiXzaTm_sziAhUOxoUKHX3tD-MQMwhVKAMwAw..i&w=800&h=497&bih=612&biw=1396&q=play%20button&ved=0ahUKEwiXzaTm_sziAhUOxoUKHX3tD-MQMwhVKAMwAw&iact=mrc&uact=8)](https://youtu.be/kWQZUZeQmIU)
