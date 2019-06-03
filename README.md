@@ -32,3 +32,10 @@ We then programmed our different parts and put them together thanks to Git.
 
 [Use case diagram](https://github.com/Caster000/Projet_Boulder_Dash/tree/master/diagram/Use%20case%20diagram)
 
+##  1.3 Report
+
+### 1.3.1 SureFire
+
+### 1.3.2 JXR
+
+### 1.3.3 Git
