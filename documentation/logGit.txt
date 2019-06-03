@@ -1,0 +1,980 @@
+commit c0b92459fc96db29f253a0459e6224ec97f69a07
+Merge: 1c7a221 1cd9bb3
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:47:34 2019 +0200
+
+    surefire finale
+
+commit 1c7a221f4b0ffc7f54222e8dcdf445913f964c32
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:47:05 2019 +0200
+
+    surefire view
+
+commit 1cd9bb3ad83969b5081ffb3c3529726faaf0ea06
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:46:13 2019 +0200
+
+    Update .gitignore
+
+commit 30de30f67b47e3df336b72f9b333c39f76e00c7e
+Merge: a5b8973 3c0650a
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:41:06 2019 +0200
+
+    surefire finale
+
+commit a5b897382baed4a32a3acd5b8e2cc014ee036f69
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:38:34 2019 +0200
+
+    surefire final
+
+commit 3c0650a42671c45a4a1a0b25bc1d0622e5b3be3c
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:37:29 2019 +0200
+
+    Update .gitignore
+
+commit 3921532f58d87f773ffd76793e23defc7af07f2e
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:37:08 2019 +0200
+
+    Update .gitignore
+
+commit fb0662e65ed28a42805e437e75eb70613be8e381
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:36:49 2019 +0200
+
+    Update .gitignore
+
+commit ec087a2d3bc120c52180bd64a422506a41c19554
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:36:33 2019 +0200
+
+    Update .gitignore
+
+commit 5ebca962aa08e8251555411c44dff3d1cb246155
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:36:16 2019 +0200
+
+    Update .gitignore
+
+commit 9e56fb286d4821b0e45b398a66a9ea884cda760c
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:36:06 2019 +0200
+
+    Update .gitignore
+
+commit ab02e789f817b6d3f544fa78862cfb8f3a598c4b
+Merge: 74e1361 2d43281
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:30:10 2019 +0200
+
+    Merge branch 'master' of https://github.com/Caster000/Projet_Boulder_Dash
+
+commit 74e1361385d3b79aefbb9f1ed8cea74dc9ca7a77
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:29:52 2019 +0200
+
+    surefire
+
+commit 2d4328129d01dbd3440b5780260b80a166456792
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:07:28 2019 +0200
+
+    Update README.md
+
+commit 74f7faa280f267ff76ad73a5d5b5815c87260dc9
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 14:03:52 2019 +0200
+
+    report jxr
+
+commit 6d4cf4a6aaf298a0e30199f98b0c346cb832d127
+Merge: 8db9194 129715a
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 13:59:53 2019 +0200
+
+    Merge branch 'master' of https://github.com/Caster000/Projet_Boulder_Dash
+
+commit 8db91948572bde2075e8a572a12858728cf01db4
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 13:58:30 2019 +0200
+
+    jxr
+
+commit 129715a04ddf1de858a881ed958e58a9d3266a12
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 13:51:20 2019 +0200
+
+    Update .gitignore
+
+commit 6a5aaef36bb0644ecedea28dd0cf11f77f7827be
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 13:51:06 2019 +0200
+
+    Update .gitignore
+
+commit 28bb73972467c80b34117dde31cbc0331ab2b6a6
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 13:50:51 2019 +0200
+
+    Update .gitignore
+
+commit a9e42e32a70d3eea9c0941fcdaf2e1896f309c98
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 13:50:30 2019 +0200
+
+    Update .gitignore
+
+commit 4f4058ead43e28ff0d956f542faea16eb27fc664
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 13:50:05 2019 +0200
+
+    Update .gitignore
+
+commit a0757bfe45b1fc2c12fda2a59bf4a473a69b0afc
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 13:48:50 2019 +0200
+
+    report
+
+commit edccc08c9560d27cb10b6c638c528b3712e28095
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 13:47:30 2019 +0200
+
+    Create .gitignore
+
+commit ee4d82ecdf02d78c67b516d8f4e63f82d4e0dffa
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 13:03:03 2019 +0200
+
+    Delete .gitignore
+
+commit 61d98128973bb03be6b19c473b9791890694afdb
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:26:18 2019 +0200
+
+    Update README.md
+
+commit d7171712a7ca64bb132e3df00088619745bb82d1
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:25:34 2019 +0200
+
+    Update README.md
+
+commit 7af932ae53f84641b09bc0f8382dc334c0a46d35
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:24:54 2019 +0200
+
+    Update README.md
+
+commit 92c383c4fd8b7585c0a9b70fa821e29bbc24ee52
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:23:36 2019 +0200
+
+    Update README.md
+
+commit bb642a444989e490a423610eb280719873373025
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:22:42 2019 +0200
+
+    Update README.md
+
+commit b31250b4100cde7ccee97f67b8e11b30e6936de4
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:17:40 2019 +0200
+
+    Delete speedrun boulder-dash.flv
+
+commit 2bc9a2a668d35bd27a1a76e3c2ddbf3c881c0006
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:17:19 2019 +0200
+
+    Update README.md
+
+commit a66ba2819d2463440a602bd86575be423e77d894
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:16:21 2019 +0200
+
+    Add files via upload
+
+commit 94ebdf0019ae0622aaa67756c2fc2e85dc686a2e
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:13:18 2019 +0200
+
+    Update README.md
+
+commit 7af51515b4c5425efde98fb777933ebceb79ec64
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:09:14 2019 +0200
+
+    Update README.md
+
+commit c1fbec526393ee71f99aa8428c3d39372e58a31a
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:08:38 2019 +0200
+
+    Update README.md
+
+commit 37807407ddeb1ceda1de82c8d77e10ddbf5429fe
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:04:57 2019 +0200
+
+    Add files via upload
+
+commit 6d6e1f9abe2bb11872d40bddc77006dd4afedd48
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:03:29 2019 +0200
+
+    Add files via upload
+
+commit 246ef5bf8f2aefeed93807e2337012ed8f0be5ff
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:03:21 2019 +0200
+
+    Delete Real schedule.JPG
+
+commit 6ff5c479b00075576f2620479fb29e0345b5eab1
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:02:45 2019 +0200
+
+    Add files via upload
+
+commit fd3974551c83c6e4b9b1e7340d580125c2c08dbb
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:02:33 2019 +0200
+
+    Delete Real schedule.JPG
+
+commit df09aa436d97a94d16e67a7b8c4dc535be66e710
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:02:03 2019 +0200
+
+    Add files via upload
+
+commit aab0d1a3e1d3b140c350645e02a4aef5fbe3c591
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:01:20 2019 +0200
+
+    Delete Real schedule.JPG
+
+commit 59e7145403cd98275b8e235fced7c8917a4fe0b6
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:00:50 2019 +0200
+
+    Add files via upload
+
+commit 9ad8d8a3aa34b7e19b6657f595e7fbefe1557302
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 11:00:38 2019 +0200
+
+    Delete Real schedule.JPG
+
+commit 6d5b22232f84dc705f53ce32b8b29ed09e10c5b9
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 10:59:20 2019 +0200
+
+    Add files via upload
+
+commit 552186852030ff37ca3d02c64701913a6812f933
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 10:58:43 2019 +0200
+
+    Delete Real schedule.JPG
+
+commit 783576763ea11d5ce8d6d89b429b1ffb25b56ff7
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 10:58:07 2019 +0200
+
+    Delete Diagramme de Gant.JPG
+
+commit c1834b0cde8b04391976e8fbe3d4477a07660046
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 10:57:25 2019 +0200
+
+    Add files via upload
+
+commit c74b0e2c92ea66acdee4082ec5b26cdd29f2961a
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 10:56:01 2019 +0200
+
+    Add files via upload
+
+commit 5429f635a58ba4dd244fefe9133a3c3fb76324c5
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 10:52:30 2019 +0200
+
+    add diagram
+
+commit a5b282b8b6617157fe018060bba52fdc29fe43e6
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Mon Jun 3 10:46:49 2019 +0200
+
+    Test
+
+commit 1020919c5e4c183e5d839f9c47b95270d313ab8f
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 10:27:54 2019 +0200
+
+    Update README.md
+
+commit 5185f9affa5c2e3773ebe8a9a1c9d24cda6dfe65
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 10:23:25 2019 +0200
+
+    Update README.md
+
+commit 37c33dccdcccee42a2a16827f7b05764e4253000
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Mon Jun 3 09:09:00 2019 +0200
+
+    stone debug
+
+commit ca42e50c3268455e541262688f2b190d246da8aa
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon Jun 3 08:15:07 2019 +0200
+
+    fix javadoc
+
+commit 0c21b2c06a02c0ee5c573164c4406f407f9203ff
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Sun Jun 2 23:37:23 2019 +0200
+
+    All test
+
+commit 8a7b8900e6c6f04120ca2d684dafb39fe900063b
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sun Jun 2 19:39:06 2019 +0200
+
+    Final check on the project
+    GOOD JOB !
+
+commit be698df94f1043bc5a84fa7404e2361962a9c82e
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Sun Jun 2 18:41:42 2019 +0200
+
+    map commenting
+
+commit 24ed90ed327de035795cfae204dd57d98e69f571
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Sun Jun 2 13:48:14 2019 +0200
+
+    Test
+
+commit 147867565514839a7060d8f70d001ed9998dba39
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Sat Jun 1 14:06:53 2019 +0200
+
+    too
+
+commit 7debd7eb0f48b081e19ce1d85f9b427c327fa2e3
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Sat Jun 1 14:05:51 2019 +0200
+
+    Good Test
+
+commit 58391778d893ed0d8f413031a09bb2efec68c20d
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sat Jun 1 13:58:12 2019 +0200
+
+    add all the javadoc and clear some warning
+
+commit 9026a30396f628f5e40bfc685e07e7c922dfc4df
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Sat Jun 1 11:47:54 2019 +0200
+
+    commenting code
+
+commit a5100a5115ad92505626f9daeeff5d9d2054e596
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sat Jun 1 10:40:30 2019 +0200
+
+    Update README.md
+
+commit 4a0cd1eb7bae2d27b26568ae22a6d62d6ec6997b
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Fri May 31 22:26:08 2019 +0200
+
+    Javadoc for Map class
+
+commit b7118d2de3983e85c7b6ecf941009ebd8c15c03e
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Fri May 31 22:01:07 2019 +0200
+
+    first part javadoc entities
+
+commit 86948d274b1c7ed4bb4e0d817e37ff0ca592ba72
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Fri May 31 20:02:58 2019 +0200
+
+    ADD 5 TESTS
+
+commit 08fa771f911c8f9c70b120cfbb39455be2cd80ba
+Merge: f683bc2 e69bc84
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Fri May 31 19:15:18 2019 +0200
+
+    Merge branch 'master' of https://github.com/Caster000/Projet_Boulder_Dash
+
+commit f683bc2c9311733f591ef8ba0cad7841fd5e0148
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Fri May 31 19:14:51 2019 +0200
+
+    Test
+
+commit e69bc84b5c82fb5da788fe1f38da8f9aa7150132
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Fri May 31 18:34:28 2019 +0200
+
+    IA done
+
+commit 4b4a19aeb04f29b17366117e24e94cc116a67e7c
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Fri May 31 17:56:56 2019 +0200
+
+    AI finished
+
+commit d36ccebbcde36ee9fa6b0ed9cf23825bb7a7d807
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Fri May 31 13:59:01 2019 +0200
+
+    AI upgrading
+
+commit 3c4c29899efa1fda21591984e854bc09c21607e3
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Fri May 31 12:13:43 2019 +0200
+
+    game over
+
+commit d8547ca95a5b89c650efb2d30d7ca1eeb3071453
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Fri May 31 10:36:21 2019 +0200
+
+    level changes and AI upgrading
+
+commit 7ea5efa4cd3b8986de1d1e7b86271ee5677863d3
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Fri May 31 10:15:40 2019 +0200
+
+    better AI
+
+commit 28e994911d0eaf75a4f91db8eadc9cfc161207cf
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Thu May 30 23:12:06 2019 +0200
+
+    IA bugs not yet solved
+
+commit c050bfc015e5e740b7c1439fc3772dcf7c1590a9
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Thu May 30 22:15:30 2019 +0200
+
+    the AI is not perfect but the monsters can now move !
+
+commit 6803cccf5fba18b3e3251e4210ea144bfc1fa75e
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Thu May 30 21:58:36 2019 +0200
+
+    monster moving
+
+commit 3def13d06eaa268b18b43bec48074570fcba7ffe
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Thu May 30 21:44:49 2019 +0200
+
+    monster now kill the hero
+
+commit fd27bb5f87b12e4d18ebbc06c7e97506899cb8a1
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Wed May 29 19:20:16 2019 +0200
+
+    5 test On
+
+commit 377f879c99334f64355252b9007248ac981055e4
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Wed May 29 17:34:38 2019 +0200
+
+    first try monster moving
+
+commit cfaf7b26629f7b2e4ac8f3f46540d2b09d2b4367
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Wed May 29 15:37:55 2019 +0200
+
+    clear warning in View package
+
+commit 76ba2f86f0a4c0343cabcf413207818216d32aab
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Wed May 29 15:20:45 2019 +0200
+
+    slide done !
+
+commit ce74858306ec3c7d29c0329e2dc5f51cb173784c
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Wed May 29 15:12:48 2019 +0200
+
+    add Diamond graph
+
+commit 6135c23bee241612ca15d1be436b6e64783ffd01
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Wed May 29 15:09:14 2019 +0200
+
+    slide almost done
+
+commit 823128c91643216e1f2751194020d21357939150
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Wed May 29 13:34:57 2019 +0200
+
+    monster diying
+
+commit f45f94003f6ca85966bcafc8a83c2c53c79ed667
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Wed May 29 13:22:21 2019 +0200
+
+    diying animation
+
+commit 0f876fa51427ded2d59e70f5b5380e65ec9c3815
+Author: Adrien <Adrien@DESKTOP-S3J9FV1>
+Date:   Wed May 29 13:20:54 2019 +0200
+
+    Test Entity
+
+commit 1e6896def30576884d1e7a303339846c5540bdbc
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Wed May 29 13:19:46 2019 +0200
+
+    Add files via upload
+
+commit 5f644cafe39646d86ad59794c014ae5db3d7b890
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Wed May 29 13:19:36 2019 +0200
+
+    Test map and entity
+
+commit c953a7c8dcac6b0c64d047eaee6decc31507d3fc
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Wed May 29 12:56:27 2019 +0200
+
+    NOW, THE PLAYER CAN DIE ! ^^
+
+commit a6981471bb753b406ef3d63554053f3e58b6a412
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Wed May 29 09:36:35 2019 +0200
+
+    Graphic refresh step 2
+
+commit 803b8726b8e9304da1f9024f0582294437e21c1c
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Wed May 29 09:27:23 2019 +0200
+
+    trying to solve the falling problems
+
+commit 69376208614c45361fa3d3ef75224c2e801c3e4a
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Wed May 29 08:43:31 2019 +0200
+
+    Refresh step 1
+
+commit ce0df4e758302c68eefc609b4a6db9f49880f23a
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Tue May 28 18:30:47 2019 +0200
+
+    Chrono
+    - Stopper quand le niveau fini à finir
+
+commit deb48489b274c909a97606b1b6c79377657124f2
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Tue May 28 17:17:08 2019 +0200
+
+    try fall
+
+commit d7ef9723439c5cf6ef009ed873f2e8ae89a02d15
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Tue May 28 17:11:08 2019 +0200
+
+    comments
+
+commit 8a19e866641d78ccfc047f3d5a54114b9c4a5780
+Merge: 34da781 3bfdeab
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Tue May 28 17:10:34 2019 +0200
+
+    Merge branch 'master' of https://github.com/Caster000/Projet_Boulder_Dash
+
+commit 34da781c835c00a33f39804c1ffd047a6e84b03e
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Tue May 28 17:09:50 2019 +0200
+
+    Comment
+
+commit 3bfdeab1b11474f6527ec07c6fcaeff7de3548ed
+Author: Adrien <Adrien@DESKTOP-S3J9FV1>
+Date:   Tue May 28 16:28:47 2019 +0200
+
+    True resizable
+
+commit 838354abbebcb2f8fb6c61d9ffe3d13cf72d5086
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Tue May 28 16:18:51 2019 +0200
+
+    View Evolution Good screen
+
+commit 4926df4f8b78fffb918ee294f6c1fc0d681b87eb
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Tue May 28 16:05:32 2019 +0200
+
+    levels
+
+commit 81ca5124033547e81702cce0ea0239c2621bb0aa
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Tue May 28 15:30:00 2019 +0200
+
+    DAO update
+
+commit 39d9367bf1dfa9a198e2f848c04a2c8150f46759
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Tue May 28 15:24:24 2019 +0200
+
+    controller n map n view n entity
+
+commit 756688bb52acaa8aec2939d9184d35decbbde30a
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Tue May 28 15:09:25 2019 +0200
+
+    Clear entities class
+
+commit 6b17b2339da9757d2d42b74601abc641c6bcb747
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Tue May 28 14:12:25 2019 +0200
+
+    timer and map
+
+commit 3e4dcf4eb4d727adcba0a18476628053acefb3da
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Tue May 28 14:04:43 2019 +0200
+
+    it's now possible to win
+
+commit fd5a45170952928f0d148757c88f59d9e45d3ef5
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Tue May 28 11:51:53 2019 +0200
+
+    Chrono
+
+commit 9d38766b2429ace18689cad9a8a919eb0cf39770
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Tue May 28 11:42:37 2019 +0200
+
+    diamonds and stone implemented
+
+commit d2c357491e1b79584f00f045e7be8d484569e46f
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Tue May 28 11:02:52 2019 +0200
+
+    uncrossable walls now
+
+commit 1de39b8d7aa9a10fdf56098935d789b2c17acfd7
+Author: Adrien <Adrien@DESKTOP-S3J9FV1>
+Date:   Tue May 28 10:50:06 2019 +0200
+
+    ALL ORDER
+
+commit a7dd9ca6c7a335be9b8e71df2dee0b044cb851bc
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Tue May 28 10:47:02 2019 +0200
+
+    moving almost done 3
+
+commit ac0bcddef9689abe5e92bcfcb69b3ef1585dda6a
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Tue May 28 10:40:42 2019 +0200
+
+    almost done 2
+
+commit 5d231cf4143da32db59e3f3761fb5b63d88fb373
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Tue May 28 10:33:10 2019 +0200
+
+    moving almost done
+
+commit 0b796fdb94a2ac67b52d98616ae16118afa3abaa
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Tue May 28 10:14:02 2019 +0200
+
+    add comments
+
+commit 7be06e50e6e69d8c20d0267bdf3b5fd7f2349593
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Tue May 28 08:27:35 2019 +0200
+
+    set move
+
+commit 3f7349670ec5e19a10b82348971d6973d37c71a7
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Mon May 27 22:12:09 2019 +0200
+
+    moving entities
+
+commit 9d1b47026471666cef403382a21fed13a6091ddc
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Mon May 27 19:37:39 2019 +0200
+
+    diamond
+
+commit 26bd7995eda8fba73896779972048359f2edb53e
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Mon May 27 17:25:04 2019 +0200
+
+    sliding implementation
+
+commit 6fb7c66f65918c58e5072f184f5c90bff8ba1e14
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon May 27 17:08:17 2019 +0200
+
+    final version monday 27/05/2019 17h
+
+commit d265fb93d124233eefd59dfc21b699733ad465b1
+Author: Adrien <Adrien@DESKTOP-S3J9FV1>
+Date:   Mon May 27 16:45:27 2019 +0200
+
+    Update controller
+
+commit b82c847f1c69fdb39c009c0bb0d9b5eddceac5e4
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon May 27 16:42:55 2019 +0200
+
+    IT WORKS !!! (map)
+
+commit 87cd1a8f416744f9fc7c3309ec21f231148e137f
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Mon May 27 15:42:55 2019 +0200
+
+    map for Baptiste
+
+commit 1b98244be707b719c93a164b349bf7b78554620a
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon May 27 15:41:56 2019 +0200
+
+    add view1
+
+commit 31de4c260fa706d6754cbf02fb0abfa603258583
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Mon May 27 15:23:06 2019 +0200
+
+    fall implementation
+
+commit 615224e07bee52d78e16e7c039ed437e5c2e2b79
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Mon May 27 14:54:55 2019 +0200
+
+    test for Baptiste
+
+commit 085320b4fdf71cf5ee19744a08bdc39748a0038d
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Mon May 27 14:40:33 2019 +0200
+
+    moving hero
+
+commit 4f77e40f28fe36e5b54025ad8963d56b59056886
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Mon May 27 13:58:18 2019 +0200
+
+    enitities
+
+commit f640edb5a08c98cbb7b848d50e97832e69818c0f
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Mon May 27 13:46:04 2019 +0200
+
+    View
+
+commit 6fd32c84c40a90c0268a4857212516e6f64ae7bc
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Mon May 27 13:41:28 2019 +0200
+
+    Test
+
+commit f2d3d1345bbf4ad07daaed58f3d2dacdf096b6cf
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Mon May 27 13:30:33 2019 +0200
+
+    Remise a niveau
+
+commit 28095c9cfcb401805a8a29f907de05402004b7a1
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Mon May 27 13:27:33 2019 +0200
+
+    as
+
+commit 90b708faf66e40ad13aff59587269f63a776aa3c
+Author: Bambino7 <50336142+Bambino7@users.noreply.github.com>
+Date:   Mon May 27 13:26:00 2019 +0200
+
+    as
+
+commit 98cc7204b919eee5d5fb96bce4bc7388174d1aa1
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon May 27 11:20:45 2019 +0200
+
+    update view
+
+commit 81d294b388107898910cca1c9be0b5ee1637940e
+Author: Adrien <Adrien@DESKTOP-S3J9FV1>
+Date:   Mon May 27 11:10:11 2019 +0200
+
+    UserOrder
+
+commit 286627dab5edd2f297e7e6cfbf0f9814264c6e87
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon May 27 10:26:02 2019 +0200
+
+    UserOrder
+
+commit b782c9ee5f911684ff39f0319a3c4493f63c0463
+Author: Adrien <Adrien@DESKTOP-S3J9FV1>
+Date:   Mon May 27 09:30:22 2019 +0200
+
+    UserOrder, Icontroller
+
+commit 569069eb4456cb540e5f575cceb411d54d067041
+Author: Adrien <Adrien@DESKTOP-S3J9FV1>
+Date:   Mon May 27 09:29:52 2019 +0200
+
+    UserOrder, Icontroller
+
+commit e8ca145067b3bdab67dea6567cf03763d23745ab
+Author: Adrien <Adrien@DESKTOP-S3J9FV1>
+Date:   Mon May 27 09:03:50 2019 +0200
+
+    Classe Controller
+
+commit 180c3993ba57fe6a495e7fafab363149916f2e91
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Mon May 27 08:41:16 2019 +0200
+
+    update database
+
+commit e7480ae6012cb2879aecddb049b29e39c3e8f729
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Sun May 26 23:56:08 2019 +0200
+
+    just Diamond
+
+commit e7d9ce49e1f21bd6e307e12977df6e42683fb553
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sun May 26 15:53:43 2019 +0200
+
+    traduction char to sprite done
+
+commit 409dbe9a31d763375f65e28708eb9de7245c221d
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Sun May 26 11:40:35 2019 +0200
+
+    fixing the yesterday code part 2
+
+commit e224a6f27bc3cc6c270cd8bfb05d8064699cb212
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Sun May 26 11:00:34 2019 +0200
+
+    update of the yesterday code
+
+commit e199f6527b277bc950c4f286d395035f43d6a1b1
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Sat May 25 23:30:51 2019 +0200
+
+    entity.Mobile implmentation
+
+commit 6e9ad679f47c971ca88e5efd1c4a2b5bfe191a76
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sat May 25 17:15:19 2019 +0200
+
+    U can work on this to do the view
+
+commit 27c4fd6b3c10acbb62bdf58e81d49d5085a93765
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sat May 25 16:29:21 2019 +0200
+
+    images
+
+commit 1d4580584401f894e34b8df28ceb508991f02bfe
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Sat May 25 16:26:57 2019 +0200
+
+    quick changes
+
+commit 6100e0c805020a279fe58fb4338ada8d6ee97f7c
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sat May 25 16:15:34 2019 +0200
+
+    test 2 traduction
+
+commit b6c3cb8e8c44c05ccaaa907160d639d5c8f40d61
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sat May 25 16:15:15 2019 +0200
+
+    test for traduction
+
+commit afeeeead2396dd2089df2fbd3d7ba7169c3ab606
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sat May 25 15:40:05 2019 +0200
+
+    BIG UPDATE (and it works)
+
+commit b360f6ac5d0a8a8f58e257f4067ddc872e7827a9
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Sat May 25 14:11:33 2019 +0200
+
+    fixing some little mistakes we did in the morning
+
+commit c3179dce7cf0423d29bb52a166c121f497a103c3
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sat May 25 12:51:09 2019 +0200
+
+    1st phase For add map
+
+commit c9b79eb49f20a2fbc36d9bf9967d3098e209910e
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sat May 25 11:43:00 2019 +0200
+
+    fix showboard
+
+commit ccfec81a6f7db7e8c77e4e01113c5b623d8b6c28
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Sat May 25 10:29:26 2019 +0200
+
+    permeability fixing
+
+commit e4b5bdf29ac5cb8243f695181c0a4ba7f4dde7db
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Sat May 25 00:34:41 2019 +0200
+
+    update after thomas's work
+
+commit d84391d3f3cb51828694cc9e79c5c06980c7ed8b
+Author: thoma <thoma@LAPTOP-178BURCV>
+Date:   Fri May 24 23:05:34 2019 +0200
+
+    Après avoir coder la partie MotionlessEntity et le nécessaire à son
+    fonctionnement
+
+commit cd52640c2f5a6426708d6db6c82f15d1d974056b
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Fri May 24 16:44:59 2019 +0200
+
+    build after showboard
+
+commit 5ea33347c8189488e27ae96d61ba59cdcf0d1b58
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Fri May 24 16:37:01 2019 +0200
+
+    add showboard
+
+commit 644c772dd9676cd3eee439927f927f5a2e926e1f
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Fri May 24 16:15:26 2019 +0200
+
+    1er commit
+
+commit 83792961fba05e513f131f166104814471a21156
+Author: Caster000 <45029374+Caster000@users.noreply.github.com>
+Date:   Wed May 22 12:18:46 2019 +0200
+
+    Hello World
