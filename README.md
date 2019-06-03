@@ -41,5 +41,5 @@ We then programmed our different parts and put them together thanks to Git.
 ### 1.3.3 Git
 
 # 2. Example
-
+Click on the image to see an exemple of our game.
 [![Watch the video](https://cdn.discordapp.com/attachments/358708954454294538/585035573832450058/images.png)](https://youtu.be/kWQZUZeQmIU)
