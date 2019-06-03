@@ -36,6 +36,14 @@ We then programmed our different parts and put them together thanks to Git.
 
 ### 1.3.1 SureFire
 
+[Surefire Controller](https://github.com/Caster000/Projet_Boulder_Dash/tree/master/controller/target)
+
+[Surefire Model](https://github.com/Caster000/Projet_Boulder_Dash/tree/master/model/target)
+
+[Surefire Entity](https://github.com/Caster000/Projet_Boulder_Dash/tree/master/entity/target)
+
+[Surefire View](https://github.com/Caster000/Projet_Boulder_Dash/tree/master/view/target)
+
 ### 1.3.2 JXR
 
 [JXR](https://github.com/Caster000/Projet_Boulder_Dash/tree/master/documentation/site)
