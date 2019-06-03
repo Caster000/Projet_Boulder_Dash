@@ -1,5 +1,5 @@
 # Boulder Dash Project
-
+![alt text](https://cdn.discordapp.com/attachments/358708954454294538/585021501741203457/unknown.png)
 Here is the repository of the group composed of Amine Ghoumid, Adrien Vandenbossche, Thomas Rivollet et Baptiste Chevallier.
 
 The goal of this project is to reproduce a game named " Boulder Dash " ( NES version ) in Java language.
