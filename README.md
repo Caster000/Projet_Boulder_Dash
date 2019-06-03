@@ -13,7 +13,7 @@ We then programmed our different parts and put them together thanks to Git.
 ##  1.1 Documentation
 [Summary of the Java project](https://github.com/Caster000/Projet_Boulder_Dash/blob/master/documentation/Summary%20of%20the%20Java%20project(french).docx)
 
-[Project sheet]()
+[Project sheet](https://github.com/Caster000/Projet_Boulder_Dash/blob/master/documentation/JPU2018-2019%20Projet.pdf)
 
 [Previsional schedule](https://github.com/Caster000/Projet_Boulder_Dash/blob/master/documentation/Previsional%20schedule.JPG)
 
