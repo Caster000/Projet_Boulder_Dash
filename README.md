@@ -9,8 +9,8 @@ We first did some of the design with game tests and UML diagrams.
 
 We then programmed our different parts and put them together thanks to Git.
 
-#1. Deliverable
-##1.1 Documentation
+# 1. Deliverable
+##  1.1 Documentation
 [Summary of the Java project](https://github.com/Caster000/Projet_Boulder_Dash/blob/master/documentation/Summary%20of%20the%20Java%20project(french).docx)
 
 [Project sheet]()
@@ -21,7 +21,7 @@ We then programmed our different parts and put them together thanks to Git.
 
 [Dump database](https://github.com/Caster000/Projet_Boulder_Dash/blob/master/documentation/Dump_map.sql)
 
-##1.2 Unified Modeling Language
+##  1.2 Unified Modeling Language
 [Class diagrams](https://github.com/Caster000/Projet_Boulder_Dash/tree/master/diagram/Class%20diagrams)
 
 [Component diagram](https://github.com/Caster000/Projet_Boulder_Dash/tree/master/diagram/Component%20diagram)
